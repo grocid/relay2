@@ -1,0 +1,103 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Karbon, part of Calligra: http://www.calligra.org/karbon -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="102.4pt" height="102.4pt">
+<defs>
+  <linearGradient id="gradient0" gradientTransform="matrix(0.132751 0 0 0.0205882 -15.9302 -7.5486)" gradientUnits="objectBoundingBox" x1="4.72476067784" y1="73.32957800000" x2="4.72476067784" y2="121.90101400000" spreadMethod="pad">
+   <stop stop-color="#000000" offset="0.00000000000" stop-opacity="0.00000000000"/>
+   <stop stop-color="#000000" offset="0.50000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#000000" offset="1.00000000000" stop-opacity="0.00000000000"/>
+  </linearGradient>
+  <radialGradient id="gradient1" gradientTransform="matrix(-0.0313263 0 0 0.0205882 22.7791 -7.5488)" gradientUnits="objectBoundingBox" cx="155.31135641026" cy="97.33413609507" fx="155.31135641026" fy="97.33413609507" r="18.47402092415" spreadMethod="pad">
+   <stop stop-color="#000000" offset="0.00000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#000000" offset="1.00000000000" stop-opacity="0.00000000000"/>
+  </radialGradient>
+  <radialGradient id="gradient2" gradientTransform="matrix(0.0313263 0 0 0.0205882 -18.8791 -7.5488)" gradientUnits="objectBoundingBox" cx="155.31135641026" cy="97.33413609507" fx="155.31135641026" fy="97.33413609507" r="18.47402092415" spreadMethod="pad">
+   <stop stop-color="#000000" offset="0.00000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#000000" offset="1.00000000000" stop-opacity="0.00000000000"/>
+  </radialGradient>
+  <linearGradient id="gradient3" gradientTransform="matrix(2.57143 0 0 3 -27 118.5)" gradientUnits="objectBoundingBox" x1="0.20833334722" y1="-0.09999998889" x2="0.20833334722" y2="-0.44444444444" spreadMethod="pad">
+   <stop stop-color="#ffffff" offset="0.00000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#ffffff" offset="0.04912016168" stop-opacity="0.23529411765"/>
+   <stop stop-color="#ffffff" offset="0.96772348881" stop-opacity="0.15686274510"/>
+   <stop stop-color="#ffffff" offset="1.00000000000" stop-opacity="0.39215686275"/>
+  </linearGradient>
+  <linearGradient id="gradient4" gradientTransform="matrix(0.0673249 0 0 0.0147002 -8.07899 -5.3898)" gradientUnits="objectBoundingBox" x1="12.88298813611" y1="102.70096262714" x2="12.88298813611" y2="170.72717209724" spreadMethod="pad">
+   <stop stop-color="#000000" offset="0.00000000000" stop-opacity="0.00000000000"/>
+   <stop stop-color="#000000" offset="0.50000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#000000" offset="1.00000000000" stop-opacity="0.00000000000"/>
+  </linearGradient>
+  <radialGradient id="gradient5" gradientTransform="matrix(-0.0230399 0 0 0.0147002 16.7536 -5.38993)" gradientUnits="objectBoundingBox" cx="211.16954558655" cy="136.31985163733" fx="211.16954558655" fy="136.31985163733" r="25.57986940190" spreadMethod="pad">
+   <stop stop-color="#000000" offset="0.00000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#000000" offset="1.00000000000" stop-opacity="0.00000000000"/>
+  </radialGradient>
+  <radialGradient id="gradient6" gradientTransform="matrix(0.02304 0 0 0.0147002 -13.8853 -5.38993)" gradientUnits="objectBoundingBox" cx="211.16947196675" cy="136.31985163733" fx="211.16947196675" fy="136.31985163733" r="25.57986590326" spreadMethod="pad">
+   <stop stop-color="#000000" offset="0.00000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#000000" offset="1.00000000000" stop-opacity="0.00000000000"/>
+  </radialGradient>
+  <linearGradient id="gradient7" gradientTransform="translate(-12.5, -2.5)" gradientUnits="objectBoundingBox" x1="0.89601417715" y1="-0.06903567417" x2="0.89285746173" y2="1.16666658333" spreadMethod="pad">
+   <stop stop-color="#ffffff" offset="0.00000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#dddddd" offset="0.13722108305" stop-opacity="1.00000000000"/>
+   <stop stop-color="#abacae" offset="0.66093999147" stop-opacity="1.00000000000"/>
+   <stop stop-color="#89898b" offset="1.00000000000" stop-opacity="1.00000000000"/>
+  </linearGradient>
+  <linearGradient id="gradient8" gradientTransform="translate(-16.996, -1.99804)" gradientUnits="objectBoundingBox" x1="1.26289336083" y1="0.16661214918" x2="1.28909876641" y2="1.33289853964" spreadMethod="pad">
+   <stop stop-color="#ffffff" offset="0.00000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#ffffff" offset="1.00000000000" stop-opacity="0.00000000000"/>
+  </linearGradient>
+  <linearGradient id="gradient9" gradientTransform="translate(-12.5, -1.5)" gradientUnits="objectBoundingBox" x1="0.98783860912" y1="0.42857142857" x2="0.98783860912" y2="1.00000000000" spreadMethod="pad">
+   <stop stop-color="#ffffff" offset="0.00000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#ffffff" offset="1.00000000000" stop-opacity="0.00000000000"/>
+  </linearGradient>
+  <linearGradient id="gradient10" gradientTransform="matrix(0.132751 0 0 0.0205882 -15.9302 -7.5486)" gradientUnits="objectBoundingBox" x1="4.72476067784" y1="73.32957800000" x2="4.72476067784" y2="121.90101400000" spreadMethod="pad">
+   <stop stop-color="#000000" offset="0.00000000000" stop-opacity="0.00000000000"/>
+   <stop stop-color="#000000" offset="0.50000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#000000" offset="1.00000000000" stop-opacity="0.00000000000"/>
+  </linearGradient>
+  <radialGradient id="gradient11" gradientTransform="matrix(-0.0313263 0 0 0.0205882 22.7791 -7.5488)" gradientUnits="objectBoundingBox" cx="155.31135641026" cy="97.33413609507" fx="155.31135641026" fy="97.33413609507" r="18.47402092415" spreadMethod="pad">
+   <stop stop-color="#000000" offset="0.00000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#000000" offset="1.00000000000" stop-opacity="0.00000000000"/>
+  </radialGradient>
+  <radialGradient id="gradient12" gradientTransform="matrix(0.0313263 0 0 0.0205882 -18.8791 -7.5488)" gradientUnits="objectBoundingBox" cx="155.31135641026" cy="97.33413609507" fx="155.31135641026" fy="97.33413609507" r="18.47402092415" spreadMethod="pad">
+   <stop stop-color="#000000" offset="0.00000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#000000" offset="1.00000000000" stop-opacity="0.00000000000"/>
+  </radialGradient>
+  <linearGradient id="gradient13" gradientTransform="matrix(1.91428 0 0 1.82517 -12.4428 -4.60435)" gradientUnits="objectBoundingBox" x1="0.37510813420" y1="0.01172864532" x2="0.37510813420" y2="0.55968244483" spreadMethod="pad">
+   <stop stop-color="#f4f4f4" offset="0.00000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#dbdbdb" offset="1.00000000000" stop-opacity="1.00000000000"/>
+  </linearGradient>
+  <linearGradient id="gradient14" gradientTransform="matrix(1.75676 0 0 2.21621 -9.66215 -12.1891)" gradientUnits="objectBoundingBox" x1="0.36923061538" y1="0.06785548990" x2="0.36923061538" y2="0.52439026948" spreadMethod="pad">
+   <stop stop-color="#ffffff" offset="0.00000000000" stop-opacity="1.00000000000"/>
+   <stop stop-color="#ffffff" offset="0.03626216948" stop-opacity="0.23529411765"/>
+   <stop stop-color="#ffffff" offset="0.95056331158" stop-opacity="0.15686274510"/>
+   <stop stop-color="#ffffff" offset="1.00000000000" stop-opacity="0.39215686275"/>
+  </linearGradient>
+ </defs>
+<g id="layer0">
+  <g id="g4484" transform="translate(10.375, 101.375)" fill="none">
+   <rect id="rect4486" transform="translate(4.52501, 0.625)" fill="url(#gradient0)" opacity="0.30000000000" width="51.27999840000pt" height="4.00000000000pt"/>
+   <path id="path4488" transform="translate(0.625, 0.6252)" fill="url(#gradient1)" opacity="0.30000000000" d="M3.9 0C3.9 0 3.9 4.9997 3.9 4.9997C2.28677 5.0097 0 3.8795 0 2.4995C0 1.1195 1.80024 0 3.9 0Z"/>
+   <path id="path4490" transform="translate(68.625, 0.6252)" fill="url(#gradient2)" opacity="0.30000000000" d="M0 0C0 0 0 4.9997 0 4.9997C1.61323 5.0097 3.9 3.8795 3.9 2.4995C3.9 1.1195 2.09976 0 0 0Z"/>
+  </g>
+  <rect id="rect4613" transform="matrix(1 0 0 -1 12.5 104.5)" fill="#2e3d47" stroke="#66430b" stroke-opacity="0.49803921569" stroke-width="1.00000000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4.00000000000" width="59.20000000000pt" height="73.60000000000pt" rx="2.40000000000pt" ry="2.40000000000pt"/>
+  <rect id="rect5786" transform="matrix(1 0 0 -1 13.5 103.5)" fill="#486187" stroke="url(#gradient3)" stroke-width="0.99999994000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4.00000000000" opacity="0.50000000000" width="57.60000000000pt" height="72.00000000000pt" rx="1.60000000000pt" ry="1.60000000000pt"/>
+  <g id="g4348" transform="translate(34.375, 16.8049)" fill="none">
+   <path id="rect4336" transform="translate(3.49338, 0.625)" fill="url(#gradient4)" opacity="0.30000000000" d="M3.55271e-15 0L23.5083 0L23.5083 3.57005L0 3.57005Z"/>
+   <path id="path4338" transform="translate(0.625, 0.625155)" fill="url(#gradient5)" opacity="0.30000000000" d="M2.86838 0C2.86838 0 2.86838 3.56986 2.86838 3.56986C1.68188 3.57656 0 2.77003 0 1.7847C0 0.799365 1.32405 1e-06 2.86838 0Z"/>
+   <path id="path4340" transform="translate(27.0017, 0.625155)" fill="url(#gradient6)" opacity="0.30000000000" d="M0 0C0 0 0 3.56986 0 3.56986C1.1865 3.57656 2.86838 2.77003 2.86838 1.7847C2.86838 0.799365 1.54434 1e-06 0 0Z"/>
+  </g>
+  <path id="path5584" transform="translate(35.5, 7.5)" fill="url(#gradient7)" stroke="#000000" stroke-opacity="0.34509803922" stroke-width="1.00000000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4.00000000000" d="M26 12C27.9552 11.988 28 10 28 10L25 7L25.0001 2C25.0001 2 24.9697 0.044194 23.0001 0L5.00006 0.03108C2.90376 0.03108 2.991 2.0322 2.991 2.0322L3 7L0 10C0 10 0.07699 11.9277 1.99999 12Z"/>
+  <path id="path5377" transform="translate(39.996, 8.99804)" fill="url(#gradient8)" d="M0.00397986 6.00196L0.00397986 1.00196C-0.0354201 0.370401 0.21196 -0.0316578 1.00398 0.00195721L18.004 0.00195721C18.467 0.0758172 18.946 0.117937 19.004 1.00196L19.004 6.00196L18.004 1.00196L1.00398 1.00196Z"/>
+  <path id="path4353" transform="translate(37.0071, 18.5)" fill="none" stroke="#ffffff" stroke-width="1.00000000000" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="2.00000000000" opacity="0.40000000000" d="M0 0L25 0"/>
+  <path id="rect4357" transform="translate(39.5, 8.5)" fill="none" stroke="url(#gradient9)" stroke-width="1.00000000000" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4.00000000000" opacity="0.60000000000" d="M1 0L19 0C19.554 0 20 0.446 20 1L20 6C20 6.554 20.554 7 20 7L1 7C0.446 7 0 6.554 0 6L0 1C0 0.446 0.446 0 1 0Z"/>
+  <path id="path4453" transform="translate(36.5071, 17.5)" fill="none" stroke="#000000" stroke-width="1.00000000000" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="2.00000000000" opacity="0.10000000000" d="M0 0L26 0"/>
+  <path id="path4160-3-9-6" transform="translate(45, 29)" fill="#000000" opacity="0.05000000000" d="M0 0C8.47858 0 40 0.0044 40 0.0044L40 74L0 74L0 0.000191Z"/>
+  <g id="g4479" transform="translate(43.375, 111.375)" fill="none">
+   <rect id="rect2879" transform="translate(4.52501, 0.625)" fill="url(#gradient10)" opacity="0.30000000000" width="51.27999840000pt" height="4.00000000000pt"/>
+   <path id="path2881" transform="translate(0.625, 0.6252)" fill="url(#gradient11)" opacity="0.30000000000" d="M3.9 0C3.9 0 3.9 4.9997 3.9 4.9997C2.28677 5.0097 0 3.8795 0 2.4995C0 1.1195 1.80024 0 3.9 0Z"/>
+   <path id="path2883" transform="translate(68.625, 0.6252)" fill="url(#gradient12)" opacity="0.30000000000" d="M0 0C0 0 0 4.9997 0 4.9997C1.61323 5.0097 3.9 3.8795 3.9 2.4995C3.9 1.1195 2.09976 0 0 0Z"/>
+  </g>
+  <path id="path4160-6" transform="translate(46.5, 30.5)" fill="url(#gradient13)" stroke="#000000" stroke-opacity="0.34509803922" stroke-width="0.99992192000" stroke-linecap="butt" stroke-linejoin="round" d="M0 0C15.3531 0 67 0.0057 67 0.0057L67.0001 84C67.0001 84 22.3334 84 0 84C0 56 0 28.0003 0 0.000361Z"/>
+  <path id="rect6741-1-8" transform="translate(47.5, 31.5)" fill="none" stroke="url(#gradient14)" stroke-width="0.99999994000" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4.00000000000" d="M65 82L0 82L0 0L65 0Z"/>
+ </g>
+</svg>
