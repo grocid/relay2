@@ -47,8 +47,8 @@ typedef struct _SettingsPrivate SettingsPrivate;
 #define _g_free0(var) (var = (g_free (var), NULL))
 #define _g_error_free0(var) ((var == NULL) ? NULL : (var = (g_error_free (var), NULL)))
 #define _g_regex_unref0(var) ((var == NULL) ? NULL : (var = (g_regex_unref (var), NULL)))
+typedef struct _Block21Data Block21Data;
 typedef struct _Block22Data Block22Data;
-typedef struct _Block23Data Block23Data;
 #define __vala_PangoFontDescription_free0(var) ((var == NULL) ? NULL : (var = (_vala_PangoFontDescription_free (var), NULL)))
 
 struct _Settings {
@@ -66,16 +66,16 @@ struct _SettingsPrivate {
 	GtkWindow* window;
 };
 
-struct _Block22Data {
+struct _Block21Data {
 	int _ref_count_;
 	Settings* self;
 	gchar* type;
 	GtkEntry* colors;
 };
 
-struct _Block23Data {
+struct _Block22Data {
 	int _ref_count_;
-	Block22Data * _data22_;
+	Block21Data * _data21_;
 	GtkColorChooserDialog* picker;
 };
 
@@ -93,18 +93,18 @@ gchar* relay_get_asset_file (const gchar* name);
 #define MAIN_WINDOW_UI_FILE_SETTINGS "ui/settings_window.ui"
 static gboolean __lambda11_ (Settings* self, gboolean state);
 static gboolean ___lambda11__gtk_switch_state_set (GtkSwitch* _sender, gboolean state, gpointer self);
+static Block21Data* block21_data_ref (Block21Data* _data21_);
+static void block21_data_unref (void * _userdata_);
+static gboolean ____lambda12_ (Block21Data* _data21_, GdkEventButton* event);
 static Block22Data* block22_data_ref (Block22Data* _data22_);
 static void block22_data_unref (void * _userdata_);
-static gboolean ____lambda12_ (Block22Data* _data22_, GdkEventButton* event);
-static Block23Data* block23_data_ref (Block23Data* _data23_);
-static void block23_data_unref (void * _userdata_);
-static void __lambda13_ (Block23Data* _data23_, gint id);
+static void __lambda13_ (Block22Data* _data22_, gint id);
 gchar* settings_RGBA_to_hex (GdkRGBA* rgba);
 static void ___lambda13__gtk_dialog_response (GtkDialog* _sender, gint response_id, gpointer self);
 static gboolean _____lambda12__gtk_widget_button_press_event (GtkWidget* _sender, GdkEventButton* event, gpointer self);
-static void ____lambda14_ (Block22Data* _data22_);
+static void ____lambda14_ (Block21Data* _data21_);
 static void _____lambda14__gtk_editable_changed (GtkEditable* _sender, gpointer self);
-static gboolean ____lambda15_ (Block22Data* _data22_, GdkEventButton* event);
+static gboolean ____lambda15_ (Block21Data* _data21_, GdkEventButton* event);
 static gboolean _____lambda15__gtk_widget_button_release_event (GtkWidget* _sender, GdkEventButton* event, gpointer self);
 static void _vala_PangoFontDescription_free (PangoFontDescription* self);
 static gboolean __lambda16_ (Settings* self, GdkEventButton* event);
@@ -214,6 +214,26 @@ static gboolean ___lambda11__gtk_switch_state_set (GtkSwitch* _sender, gboolean 
 }
 
 
+static Block21Data* block21_data_ref (Block21Data* _data21_) {
+	g_atomic_int_inc (&_data21_->_ref_count_);
+	return _data21_;
+}
+
+
+static void block21_data_unref (void * _userdata_) {
+	Block21Data* _data21_;
+	_data21_ = (Block21Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data21_->_ref_count_)) {
+		Settings* self;
+		self = _data21_->self;
+		_g_object_unref0 (_data21_->colors);
+		_g_free0 (_data21_->type);
+		_g_object_unref0 (self);
+		g_slice_free (Block21Data, _data21_);
+	}
+}
+
+
 static Block22Data* block22_data_ref (Block22Data* _data22_) {
 	g_atomic_int_inc (&_data22_->_ref_count_);
 	return _data22_;
@@ -225,42 +245,22 @@ static void block22_data_unref (void * _userdata_) {
 	_data22_ = (Block22Data*) _userdata_;
 	if (g_atomic_int_dec_and_test (&_data22_->_ref_count_)) {
 		Settings* self;
-		self = _data22_->self;
-		_g_object_unref0 (_data22_->colors);
-		_g_free0 (_data22_->type);
-		_g_object_unref0 (self);
+		self = _data22_->_data21_->self;
+		_g_object_unref0 (_data22_->picker);
+		block21_data_unref (_data22_->_data21_);
+		_data22_->_data21_ = NULL;
 		g_slice_free (Block22Data, _data22_);
 	}
 }
 
 
-static Block23Data* block23_data_ref (Block23Data* _data23_) {
-	g_atomic_int_inc (&_data23_->_ref_count_);
-	return _data23_;
-}
-
-
-static void block23_data_unref (void * _userdata_) {
-	Block23Data* _data23_;
-	_data23_ = (Block23Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data23_->_ref_count_)) {
-		Settings* self;
-		self = _data23_->_data22_->self;
-		_g_object_unref0 (_data23_->picker);
-		block22_data_unref (_data23_->_data22_);
-		_data23_->_data22_ = NULL;
-		g_slice_free (Block23Data, _data23_);
-	}
-}
-
-
-static void __lambda13_ (Block23Data* _data23_, gint id) {
-	Block22Data* _data22_;
+static void __lambda13_ (Block22Data* _data22_, gint id) {
+	Block21Data* _data21_;
 	Settings* self;
 	gint _tmp0_ = 0;
 	GtkColorChooserDialog* _tmp6_ = NULL;
-	_data22_ = _data23_->_data22_;
-	self = _data22_->self;
+	_data21_ = _data22_->_data21_;
+	self = _data21_->self;
 	_tmp0_ = id;
 	if (_tmp0_ == ((gint) GTK_RESPONSE_OK)) {
 		GtkEntry* _tmp1_ = NULL;
@@ -268,15 +268,15 @@ static void __lambda13_ (Block23Data* _data23_, gint id) {
 		GdkRGBA _tmp3_ = {0};
 		gchar* _tmp4_ = NULL;
 		gchar* _tmp5_ = NULL;
-		_tmp1_ = _data22_->colors;
-		_tmp2_ = _data23_->picker;
+		_tmp1_ = _data21_->colors;
+		_tmp2_ = _data22_->picker;
 		gtk_color_chooser_get_rgba ((GtkColorChooser*) _tmp2_, &_tmp3_);
 		_tmp4_ = settings_RGBA_to_hex (&_tmp3_);
 		_tmp5_ = _tmp4_;
 		gtk_entry_set_text (_tmp1_, _tmp5_);
 		_g_free0 (_tmp5_);
 	}
-	_tmp6_ = _data23_->picker;
+	_tmp6_ = _data22_->picker;
 	g_signal_emit_by_name ((GtkDialog*) _tmp6_, "close");
 }
 
@@ -286,10 +286,10 @@ static void ___lambda13__gtk_dialog_response (GtkDialog* _sender, gint response_
 }
 
 
-static gboolean ____lambda12_ (Block22Data* _data22_, GdkEventButton* event) {
+static gboolean ____lambda12_ (Block21Data* _data21_, GdkEventButton* event) {
 	Settings* self;
 	gboolean result = FALSE;
-	Block23Data* _data23_;
+	Block22Data* _data22_;
 	GdkEventButton* _tmp0_ = NULL;
 	guint _tmp1_ = 0U;
 	const gchar* _tmp2_ = NULL;
@@ -303,39 +303,39 @@ static gboolean ____lambda12_ (Block22Data* _data22_, GdkEventButton* event) {
 	GtkColorChooserDialog* _tmp9_ = NULL;
 	GdkRGBA _tmp10_ = {0};
 	GtkColorChooserDialog* _tmp11_ = NULL;
-	self = _data22_->self;
+	self = _data21_->self;
 	g_return_val_if_fail (event != NULL, FALSE);
-	_data23_ = g_slice_new0 (Block23Data);
-	_data23_->_ref_count_ = 1;
-	_data23_->_data22_ = block22_data_ref (_data22_);
+	_data22_ = g_slice_new0 (Block22Data);
+	_data22_->_ref_count_ = 1;
+	_data22_->_data21_ = block21_data_ref (_data21_);
 	_tmp0_ = event;
 	_tmp1_ = _tmp0_->button;
 	if (_tmp1_ != ((guint) 1)) {
 		result = TRUE;
-		block23_data_unref (_data23_);
-		_data23_ = NULL;
+		block22_data_unref (_data22_);
+		_data22_ = NULL;
 		return result;
 	}
 	_tmp2_ = _ ("Color Picker");
 	_tmp3_ = self->priv->window;
 	_tmp4_ = (GtkColorChooserDialog*) gtk_color_chooser_dialog_new (_tmp2_, _tmp3_);
 	g_object_ref_sink (_tmp4_);
-	_data23_->picker = _tmp4_;
-	_tmp5_ = _data23_->picker;
-	g_signal_connect_data ((GtkDialog*) _tmp5_, "response", (GCallback) ___lambda13__gtk_dialog_response, block23_data_ref (_data23_), (GClosureNotify) block23_data_unref, 0);
+	_data22_->picker = _tmp4_;
+	_tmp5_ = _data22_->picker;
+	g_signal_connect_data ((GtkDialog*) _tmp5_, "response", (GCallback) ___lambda13__gtk_dialog_response, block22_data_ref (_data22_), (GClosureNotify) block22_data_unref, 0);
 	memset (&color, 0, sizeof (GdkRGBA));
-	_tmp6_ = _data22_->colors;
+	_tmp6_ = _data21_->colors;
 	_tmp7_ = gtk_entry_get_text (_tmp6_);
 	_tmp8_ = _tmp7_;
 	gdk_rgba_parse (&color, _tmp8_);
-	_tmp9_ = _data23_->picker;
+	_tmp9_ = _data22_->picker;
 	_tmp10_ = color;
 	gtk_color_chooser_set_rgba ((GtkColorChooser*) _tmp9_, &_tmp10_);
-	_tmp11_ = _data23_->picker;
+	_tmp11_ = _data22_->picker;
 	gtk_widget_show_all ((GtkWidget*) _tmp11_);
 	result = TRUE;
-	block23_data_unref (_data23_);
-	_data23_ = NULL;
+	block22_data_unref (_data22_);
+	_data22_ = NULL;
 	return result;
 }
 
@@ -347,7 +347,7 @@ static gboolean _____lambda12__gtk_widget_button_press_event (GtkWidget* _sender
 }
 
 
-static void ____lambda14_ (Block22Data* _data22_) {
+static void ____lambda14_ (Block21Data* _data21_) {
 	Settings* self;
 	GtkEntry* _tmp0_ = NULL;
 	const gchar* _tmp1_ = NULL;
@@ -358,8 +358,8 @@ static void ____lambda14_ (Block22Data* _data22_) {
 	const gchar* _tmp10_ = NULL;
 	GtkEntry* _tmp11_ = NULL;
 	GdkRGBA _tmp12_ = {0};
-	self = _data22_->self;
-	_tmp0_ = _data22_->colors;
+	self = _data21_->self;
+	_tmp0_ = _data21_->colors;
 	_tmp1_ = gtk_entry_get_text (_tmp0_);
 	_tmp2_ = _tmp1_;
 	if (g_strcmp0 (_tmp2_, "default") == 0) {
@@ -368,20 +368,20 @@ static void ____lambda14_ (Block22Data* _data22_) {
 		const gchar* _tmp5_ = NULL;
 		gpointer _tmp6_ = NULL;
 		gchar* _tmp7_ = NULL;
-		_tmp3_ = _data22_->colors;
+		_tmp3_ = _data21_->colors;
 		_tmp4_ = self->priv->colors_defaults;
-		_tmp5_ = _data22_->type;
+		_tmp5_ = _data21_->type;
 		_tmp6_ = gee_abstract_map_get ((GeeAbstractMap*) _tmp4_, _tmp5_);
 		_tmp7_ = (gchar*) _tmp6_;
 		gtk_entry_set_text (_tmp3_, _tmp7_);
 		_g_free0 (_tmp7_);
 	}
 	memset (&bg, 0, sizeof (GdkRGBA));
-	_tmp8_ = _data22_->colors;
+	_tmp8_ = _data21_->colors;
 	_tmp9_ = gtk_entry_get_text (_tmp8_);
 	_tmp10_ = _tmp9_;
 	gdk_rgba_parse (&bg, _tmp10_);
-	_tmp11_ = _data22_->colors;
+	_tmp11_ = _data21_->colors;
 	_tmp12_ = bg;
 	gtk_widget_override_color ((GtkWidget*) _tmp11_, GTK_STATE_FLAG_NORMAL, &_tmp12_);
 	g_signal_emit_by_name (self, "changed-color");
@@ -393,13 +393,13 @@ static void _____lambda14__gtk_editable_changed (GtkEditable* _sender, gpointer 
 }
 
 
-static gboolean ____lambda15_ (Block22Data* _data22_, GdkEventButton* event) {
+static gboolean ____lambda15_ (Block21Data* _data21_, GdkEventButton* event) {
 	Settings* self;
 	gboolean result = FALSE;
 	GtkEntry* _tmp0_ = NULL;
-	self = _data22_->self;
+	self = _data21_->self;
 	g_return_val_if_fail (event != NULL, FALSE);
-	_tmp0_ = _data22_->colors;
+	_tmp0_ = _data21_->colors;
 	gtk_entry_set_text (_tmp0_, "default");
 	result = FALSE;
 	return result;
@@ -582,7 +582,7 @@ gboolean settings_show_window (Settings* self) {
 			_tmp31_ = g_strdup (type_collection[type_it]);
 			type = _tmp31_;
 			{
-				Block22Data* _data22_;
+				Block21Data* _data21_;
 				GtkBuilder* _tmp32_ = NULL;
 				const gchar* _tmp33_ = NULL;
 				GObject* _tmp34_ = NULL;
@@ -614,25 +614,25 @@ gboolean settings_show_window (Settings* self) {
 				PangoFontDescription* _tmp57_ = NULL;
 				GtkEntry* _tmp58_ = NULL;
 				PangoFontDescription* _tmp59_ = NULL;
-				_data22_ = g_slice_new0 (Block22Data);
-				_data22_->_ref_count_ = 1;
-				_data22_->self = g_object_ref (self);
-				_data22_->type = type;
+				_data21_ = g_slice_new0 (Block21Data);
+				_data21_->_ref_count_ = 1;
+				_data21_->self = g_object_ref (self);
+				_data21_->type = type;
 				_tmp32_ = builder;
-				_tmp33_ = _data22_->type;
+				_tmp33_ = _data21_->type;
 				_tmp34_ = gtk_builder_get_object (_tmp32_, _tmp33_);
 				_tmp35_ = _g_object_ref0 (G_TYPE_CHECK_INSTANCE_TYPE (_tmp34_, gtk_entry_get_type ()) ? ((GtkEntry*) _tmp34_) : NULL);
-				_data22_->colors = _tmp35_;
+				_data21_->colors = _tmp35_;
 				_tmp36_ = self->priv->settings;
-				_tmp37_ = _data22_->type;
-				_tmp38_ = _data22_->colors;
+				_tmp37_ = _data21_->type;
+				_tmp38_ = _data21_->colors;
 				g_settings_bind (_tmp36_, _tmp37_, (GObject*) _tmp38_, "text", G_SETTINGS_BIND_DEFAULT);
-				_tmp39_ = _data22_->colors;
-				g_signal_connect_data ((GtkWidget*) _tmp39_, "button-press-event", (GCallback) _____lambda12__gtk_widget_button_press_event, block22_data_ref (_data22_), (GClosureNotify) block22_data_unref, 0);
-				_tmp40_ = _data22_->colors;
-				g_signal_connect_data ((GtkEditable*) _tmp40_, "changed", (GCallback) _____lambda14__gtk_editable_changed, block22_data_ref (_data22_), (GClosureNotify) block22_data_unref, 0);
+				_tmp39_ = _data21_->colors;
+				g_signal_connect_data ((GtkWidget*) _tmp39_, "button-press-event", (GCallback) _____lambda12__gtk_widget_button_press_event, block21_data_ref (_data21_), (GClosureNotify) block21_data_unref, 0);
+				_tmp40_ = _data21_->colors;
+				g_signal_connect_data ((GtkEditable*) _tmp40_, "changed", (GCallback) _____lambda14__gtk_editable_changed, block21_data_ref (_data21_), (GClosureNotify) block21_data_unref, 0);
 				_tmp41_ = builder;
-				_tmp42_ = _data22_->type;
+				_tmp42_ = _data21_->type;
 				_tmp43_ = g_strconcat (_tmp42_, "-reset", NULL);
 				_tmp44_ = _tmp43_;
 				_tmp45_ = gtk_builder_get_object (_tmp41_, _tmp44_);
@@ -641,29 +641,29 @@ gboolean settings_show_window (Settings* self) {
 				_g_free0 (_tmp44_);
 				reset = _tmp47_;
 				_tmp48_ = reset;
-				g_signal_connect_data ((GtkWidget*) _tmp48_, "button-release-event", (GCallback) _____lambda15__gtk_widget_button_release_event, block22_data_ref (_data22_), (GClosureNotify) block22_data_unref, 0);
-				_tmp49_ = _data22_->colors;
+				g_signal_connect_data ((GtkWidget*) _tmp48_, "button-release-event", (GCallback) _____lambda15__gtk_widget_button_release_event, block21_data_ref (_data21_), (GClosureNotify) block21_data_unref, 0);
+				_tmp49_ = _data21_->colors;
 				_tmp50_ = gtk_entry_get_text (_tmp49_);
 				_tmp51_ = _tmp50_;
 				_tmp52_ = g_strdup (_tmp51_);
 				change_back = _tmp52_;
-				_tmp53_ = _data22_->colors;
+				_tmp53_ = _data21_->colors;
 				gtk_entry_set_text (_tmp53_, "");
-				_tmp54_ = _data22_->colors;
+				_tmp54_ = _data21_->colors;
 				_tmp55_ = change_back;
 				gtk_entry_set_text (_tmp54_, _tmp55_);
 				_tmp56_ = pango_font_description_new ();
 				bold = _tmp56_;
 				_tmp57_ = bold;
 				pango_font_description_set_weight (_tmp57_, PANGO_WEIGHT_BOLD);
-				_tmp58_ = _data22_->colors;
+				_tmp58_ = _data21_->colors;
 				_tmp59_ = bold;
 				gtk_widget_override_font ((GtkWidget*) _tmp58_, _tmp59_);
 				__vala_PangoFontDescription_free0 (bold);
 				_g_free0 (change_back);
 				_g_object_unref0 (reset);
-				block22_data_unref (_data22_);
-				_data22_ = NULL;
+				block21_data_unref (_data21_);
+				_data21_ = NULL;
 			}
 		}
 	}

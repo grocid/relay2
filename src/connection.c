@@ -80,7 +80,7 @@ typedef struct _ChannelTabPrivate ChannelTabPrivate;
 #define _g_free0(var) (var = (g_free (var), NULL))
 #define __g_list_free__g_object_unref0_0(var) ((var == NULL) ? NULL : (var = (_g_list_free__g_object_unref0_ (var), NULL)))
 #define _g_error_free0(var) ((var == NULL) ? NULL : (var = (g_error_free (var), NULL)))
-typedef struct _Block17Data Block17Data;
+typedef struct _Block16Data Block16Data;
 
 #define TYPE_MESSAGE (message_get_type ())
 #define MESSAGE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TYPE_MESSAGE, Message))
@@ -92,8 +92,8 @@ typedef struct _Block17Data Block17Data;
 typedef struct _Message Message;
 typedef struct _MessageClass MessageClass;
 typedef struct _MessagePrivate MessagePrivate;
+typedef struct _Block17Data Block17Data;
 typedef struct _Block18Data Block18Data;
-typedef struct _Block19Data Block19Data;
 
 struct _Connection {
 	GObject parent_instance;
@@ -162,7 +162,7 @@ struct _ChannelTabClass {
 	GObjectClass parent_class;
 };
 
-struct _Block17Data {
+struct _Block16Data {
 	int _ref_count_;
 	Connection* self;
 	GError* e;
@@ -180,15 +180,15 @@ struct _MessageClass {
 	GObjectClass parent_class;
 };
 
-struct _Block18Data {
+struct _Block17Data {
 	int _ref_count_;
 	Connection* self;
 	gchar* message;
 };
 
-struct _Block19Data {
+struct _Block18Data {
 	int _ref_count_;
-	Block18Data * _data18_;
+	Block17Data * _data17_;
 	GtkDialog* dialog;
 	GtkEntry* server_name;
 };
@@ -226,9 +226,9 @@ static void _g_object_unref0_ (gpointer var);
 static void _g_list_free__g_object_unref0_ (GList* self);
 void connection_do_register (Connection* self);
 static void connection_handle_input (Connection* self, const gchar* msg);
-static Block17Data* block17_data_ref (Block17Data* _data17_);
-static void block17_data_unref (void * _userdata_);
-static gboolean ___lambda24_ (Block17Data* _data17_);
+static Block16Data* block16_data_ref (Block16Data* _data16_);
+static void block16_data_unref (void * _userdata_);
+static gboolean ___lambda24_ (Block16Data* _data16_);
 void relay_show_error_window (const gchar* error_msg);
 void connection_turn_off_icon (Connection* self, const gchar* channel);
 static gboolean ____lambda24__gsource_func (gpointer self);
@@ -299,14 +299,14 @@ void connection_join (Connection* self, const gchar* channel);
 static gboolean __lambda20_ (Connection* self);
 static gboolean ___lambda20__gsource_func (gpointer self);
 void channel_tab_send_text_out (ChannelTab* self, const gchar* message);
+static Block17Data* block17_data_ref (Block17Data* _data17_);
+static void block17_data_unref (void * _userdata_);
+static gboolean __lambda21_ (Block17Data* _data17_);
 static Block18Data* block18_data_ref (Block18Data* _data18_);
 static void block18_data_unref (void * _userdata_);
-static gboolean __lambda21_ (Block18Data* _data18_);
-static Block19Data* block19_data_ref (Block19Data* _data19_);
-static void block19_data_unref (void * _userdata_);
-static void __lambda22_ (Block19Data* _data19_);
+static void __lambda22_ (Block18Data* _data18_);
 static void ___lambda22__gtk_entry_activate (GtkEntry* _sender, gpointer self);
-static void __lambda23_ (Block19Data* _data19_, gint id);
+static void __lambda23_ (Block18Data* _data18_, gint id);
 static void ___lambda23__gtk_dialog_response (GtkDialog* _sender, gint response_id, gpointer self);
 static gboolean ___lambda21__gsource_func (gpointer self);
 gboolean connection_is_stream_out (Connection* self, GDataOutputStream* output);
@@ -407,34 +407,34 @@ static gchar* string_strip (const gchar* self) {
 }
 
 
-static Block17Data* block17_data_ref (Block17Data* _data17_) {
-	g_atomic_int_inc (&_data17_->_ref_count_);
-	return _data17_;
+static Block16Data* block16_data_ref (Block16Data* _data16_) {
+	g_atomic_int_inc (&_data16_->_ref_count_);
+	return _data16_;
 }
 
 
-static void block17_data_unref (void * _userdata_) {
-	Block17Data* _data17_;
-	_data17_ = (Block17Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data17_->_ref_count_)) {
+static void block16_data_unref (void * _userdata_) {
+	Block16Data* _data16_;
+	_data16_ = (Block16Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data16_->_ref_count_)) {
 		Connection* self;
-		self = _data17_->self;
-		_g_error_free0 (_data17_->e);
+		self = _data16_->self;
+		_g_error_free0 (_data16_->e);
 		_g_object_unref0 (self);
-		g_slice_free (Block17Data, _data17_);
+		g_slice_free (Block16Data, _data16_);
 	}
 }
 
 
-static gboolean ___lambda24_ (Block17Data* _data17_) {
+static gboolean ___lambda24_ (Block16Data* _data16_) {
 	Connection* self;
 	gboolean result = FALSE;
 	GError* _tmp0_ = NULL;
 	const gchar* _tmp1_ = NULL;
 	ChannelTab* _tmp2_ = NULL;
 	GraniteWidgetsTab* _tmp3_ = NULL;
-	self = _data17_->self;
-	_tmp0_ = _data17_->e;
+	self = _data16_->self;
+	_tmp0_ = _data16_->e;
 	_tmp1_ = _tmp0_->message;
 	relay_show_error_window (_tmp1_);
 	_tmp2_ = self->server_tab;
@@ -772,7 +772,7 @@ static gint connection_do_connect (Connection* self) {
 	__catch9_g_error:
 	{
 		GError* err = NULL;
-		Block17Data* _data17_;
+		Block16Data* _data16_;
 		GError* _tmp78_ = NULL;
 		GError* _tmp79_ = NULL;
 		const gchar* _tmp80_ = NULL;
@@ -780,24 +780,24 @@ static gint connection_do_connect (Connection* self) {
 		gchar* _tmp82_ = NULL;
 		err = _inner_error_;
 		_inner_error_ = NULL;
-		_data17_ = g_slice_new0 (Block17Data);
-		_data17_->_ref_count_ = 1;
-		_data17_->self = g_object_ref (self);
+		_data16_ = g_slice_new0 (Block16Data);
+		_data16_->_ref_count_ = 1;
+		_data16_->self = g_object_ref (self);
 		_tmp78_ = err;
 		err = NULL;
-		_data17_->e = _tmp78_;
-		_tmp79_ = _data17_->e;
+		_data16_->e = _tmp78_;
+		_tmp79_ = _data16_->e;
 		_tmp80_ = _tmp79_->message;
 		_tmp81_ = g_strconcat ("Could not connect ", _tmp80_, NULL);
 		_tmp82_ = _tmp81_;
 		g_warning ("connection.vala:91: %s", _tmp82_);
 		_g_free0 (_tmp82_);
 		self->error_state = TRUE;
-		g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ____lambda24__gsource_func, block17_data_ref (_data17_), block17_data_unref);
+		g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ____lambda24__gsource_func, block16_data_ref (_data16_), block16_data_unref);
 		result = 0;
 		_g_error_free0 (err);
-		block17_data_unref (_data17_);
-		_data17_ = NULL;
+		block16_data_unref (_data16_);
+		_data16_ = NULL;
 		return result;
 	}
 	__finally9:
@@ -2069,6 +2069,25 @@ void connection_run_on_connect_cmds (Connection* self) {
 }
 
 
+static Block17Data* block17_data_ref (Block17Data* _data17_) {
+	g_atomic_int_inc (&_data17_->_ref_count_);
+	return _data17_;
+}
+
+
+static void block17_data_unref (void * _userdata_) {
+	Block17Data* _data17_;
+	_data17_ = (Block17Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data17_->_ref_count_)) {
+		Connection* self;
+		self = _data17_->self;
+		_g_free0 (_data17_->message);
+		_g_object_unref0 (self);
+		g_slice_free (Block17Data, _data17_);
+	}
+}
+
+
 static Block18Data* block18_data_ref (Block18Data* _data18_) {
 	g_atomic_int_inc (&_data18_->_ref_count_);
 	return _data18_;
@@ -2080,41 +2099,22 @@ static void block18_data_unref (void * _userdata_) {
 	_data18_ = (Block18Data*) _userdata_;
 	if (g_atomic_int_dec_and_test (&_data18_->_ref_count_)) {
 		Connection* self;
-		self = _data18_->self;
-		_g_free0 (_data18_->message);
-		_g_object_unref0 (self);
+		self = _data18_->_data17_->self;
+		_g_object_unref0 (_data18_->server_name);
+		_g_object_unref0 (_data18_->dialog);
+		block17_data_unref (_data18_->_data17_);
+		_data18_->_data17_ = NULL;
 		g_slice_free (Block18Data, _data18_);
 	}
 }
 
 
-static Block19Data* block19_data_ref (Block19Data* _data19_) {
-	g_atomic_int_inc (&_data19_->_ref_count_);
-	return _data19_;
-}
-
-
-static void block19_data_unref (void * _userdata_) {
-	Block19Data* _data19_;
-	_data19_ = (Block19Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data19_->_ref_count_)) {
-		Connection* self;
-		self = _data19_->_data18_->self;
-		_g_object_unref0 (_data19_->server_name);
-		_g_object_unref0 (_data19_->dialog);
-		block18_data_unref (_data19_->_data18_);
-		_data19_->_data18_ = NULL;
-		g_slice_free (Block19Data, _data19_);
-	}
-}
-
-
-static void __lambda22_ (Block19Data* _data19_) {
-	Block18Data* _data18_;
+static void __lambda22_ (Block18Data* _data18_) {
+	Block17Data* _data17_;
 	Connection* self;
-	_data18_ = _data19_->_data18_;
-	self = _data18_->self;
-	gtk_dialog_response (_data19_->dialog, (gint) GTK_RESPONSE_ACCEPT);
+	_data17_ = _data18_->_data17_;
+	self = _data17_->self;
+	gtk_dialog_response (_data18_->dialog, (gint) GTK_RESPONSE_ACCEPT);
 }
 
 
@@ -2123,12 +2123,12 @@ static void ___lambda22__gtk_entry_activate (GtkEntry* _sender, gpointer self) {
 }
 
 
-static void __lambda23_ (Block19Data* _data19_, gint id) {
-	Block18Data* _data18_;
+static void __lambda23_ (Block18Data* _data18_, gint id) {
+	Block17Data* _data17_;
 	Connection* self;
 	gint _tmp0_ = 0;
-	_data18_ = _data19_->_data18_;
-	self = _data18_->self;
+	_data17_ = _data18_->_data17_;
+	self = _data17_->self;
 	_tmp0_ = id;
 	switch (_tmp0_) {
 		case GTK_RESPONSE_ACCEPT:
@@ -2139,7 +2139,7 @@ static void __lambda23_ (Block19Data* _data19_, gint id) {
 			const gchar* _tmp3_ = NULL;
 			gint _tmp4_ = 0;
 			gint _tmp5_ = 0;
-			_tmp1_ = gtk_entry_get_text (_data19_->server_name);
+			_tmp1_ = gtk_entry_get_text (_data18_->server_name);
 			_tmp2_ = string_strip (_tmp1_);
 			name = _tmp2_;
 			_tmp3_ = name;
@@ -2158,7 +2158,7 @@ static void __lambda23_ (Block19Data* _data19_, gint id) {
 				gint _tmp15_ = 0;
 				_tmp6_ = self->server;
 				_tmp7_ = self->server;
-				_tmp8_ = gtk_entry_get_text (_data19_->server_name);
+				_tmp8_ = gtk_entry_get_text (_data18_->server_name);
 				_tmp9_ = g_strdup (_tmp8_);
 				_g_free0 (_tmp7_->username);
 				_tmp7_->username = _tmp9_;
@@ -2183,7 +2183,7 @@ static void __lambda23_ (Block19Data* _data19_, gint id) {
 					_tmp16_->realname = _tmp19_;
 				}
 				connection_do_register (self);
-				g_signal_emit_by_name (_data19_->dialog, "close");
+				g_signal_emit_by_name (_data18_->dialog, "close");
 			}
 			_g_free0 (name);
 			break;
@@ -2192,7 +2192,7 @@ static void __lambda23_ (Block19Data* _data19_, gint id) {
 		{
 			ChannelTab* _tmp20_ = NULL;
 			GraniteWidgetsTab* _tmp21_ = NULL;
-			g_signal_emit_by_name (_data19_->dialog, "close");
+			g_signal_emit_by_name (_data18_->dialog, "close");
 			_tmp20_ = self->server_tab;
 			_tmp21_ = _tmp20_->tab;
 			granite_widgets_tab_close (_tmp21_);
@@ -2252,10 +2252,10 @@ static void ___lambda23__gtk_dialog_response (GtkDialog* _sender, gint response_
 }
 
 
-static gboolean __lambda21_ (Block18Data* _data18_) {
+static gboolean __lambda21_ (Block17Data* _data17_) {
 	Connection* self;
 	gboolean result = FALSE;
-	Block19Data* _data19_;
+	Block18Data* _data18_;
 	const gchar* _tmp0_ = NULL;
 	GtkWindow* _tmp1_ = NULL;
 	const gchar* _tmp2_ = NULL;
@@ -2270,21 +2270,21 @@ static gboolean __lambda21_ (Block18Data* _data18_) {
 	GtkLabel* _tmp10_ = NULL;
 	GtkEntry* _tmp11_ = NULL;
 	const gchar* _tmp12_ = NULL;
-	self = _data18_->self;
-	_data19_ = g_slice_new0 (Block19Data);
-	_data19_->_ref_count_ = 1;
-	_data19_->_data18_ = block18_data_ref (_data18_);
+	self = _data17_->self;
+	_data18_ = g_slice_new0 (Block18Data);
+	_data18_->_ref_count_ = 1;
+	_data18_->_data17_ = block17_data_ref (_data17_);
 	_tmp0_ = _ ("Nickname in use");
 	_tmp1_ = main_window_window;
 	_tmp2_ = _ ("Connect");
 	_tmp3_ = _ ("Cancel");
 	_tmp4_ = (GtkDialog*) gtk_dialog_new_with_buttons (_tmp0_, _tmp1_, GTK_DIALOG_DESTROY_WITH_PARENT, _tmp2_, GTK_RESPONSE_ACCEPT, _tmp3_, GTK_RESPONSE_CANCEL, NULL);
 	g_object_ref_sink (_tmp4_);
-	_data19_->dialog = _tmp4_;
-	_tmp5_ = (GtkBox*) gtk_dialog_get_content_area (_data19_->dialog);
+	_data18_->dialog = _tmp4_;
+	_tmp5_ = (GtkBox*) gtk_dialog_get_content_area (_data18_->dialog);
 	_tmp6_ = _g_object_ref0 (G_TYPE_CHECK_INSTANCE_TYPE (_tmp5_, gtk_box_get_type ()) ? ((GtkBox*) _tmp5_) : NULL);
 	content = _tmp6_;
-	_tmp7_ = _data18_->message;
+	_tmp7_ = _data17_->message;
 	_tmp8_ = _ (_tmp7_);
 	_tmp9_ = (GtkLabel*) gtk_label_new (_tmp8_);
 	g_object_ref_sink (_tmp9_);
@@ -2293,17 +2293,17 @@ static gboolean __lambda21_ (Block18Data* _data18_) {
 	_g_object_unref0 (_tmp10_);
 	_tmp11_ = (GtkEntry*) gtk_entry_new ();
 	g_object_ref_sink (_tmp11_);
-	_data19_->server_name = _tmp11_;
+	_data18_->server_name = _tmp11_;
 	_tmp12_ = _ ("New username");
-	gtk_entry_set_placeholder_text (_data19_->server_name, _tmp12_);
-	g_signal_connect_data (_data19_->server_name, "activate", (GCallback) ___lambda22__gtk_entry_activate, block19_data_ref (_data19_), (GClosureNotify) block19_data_unref, 0);
-	gtk_box_pack_start (content, (GtkWidget*) _data19_->server_name, FALSE, FALSE, (guint) 5);
-	gtk_widget_show_all ((GtkWidget*) _data19_->dialog);
-	g_signal_connect_data (_data19_->dialog, "response", (GCallback) ___lambda23__gtk_dialog_response, block19_data_ref (_data19_), (GClosureNotify) block19_data_unref, 0);
+	gtk_entry_set_placeholder_text (_data18_->server_name, _tmp12_);
+	g_signal_connect_data (_data18_->server_name, "activate", (GCallback) ___lambda22__gtk_entry_activate, block18_data_ref (_data18_), (GClosureNotify) block18_data_unref, 0);
+	gtk_box_pack_start (content, (GtkWidget*) _data18_->server_name, FALSE, FALSE, (guint) 5);
+	gtk_widget_show_all ((GtkWidget*) _data18_->dialog);
+	g_signal_connect_data (_data18_->dialog, "response", (GCallback) ___lambda23__gtk_dialog_response, block18_data_ref (_data18_), (GClosureNotify) block18_data_unref, 0);
 	result = FALSE;
 	_g_object_unref0 (content);
-	block19_data_unref (_data19_);
-	_data19_ = NULL;
+	block18_data_unref (_data18_);
+	_data18_ = NULL;
 	return result;
 }
 
@@ -2316,22 +2316,22 @@ static gboolean ___lambda21__gsource_func (gpointer self) {
 
 
 void connection_name_in_use (Connection* self, const gchar* message) {
-	Block18Data* _data18_;
+	Block17Data* _data17_;
 	const gchar* _tmp0_ = NULL;
 	gchar* _tmp1_ = NULL;
 	g_return_if_fail (self != NULL);
 	g_return_if_fail (message != NULL);
-	_data18_ = g_slice_new0 (Block18Data);
-	_data18_->_ref_count_ = 1;
-	_data18_->self = g_object_ref (self);
+	_data17_ = g_slice_new0 (Block17Data);
+	_data17_->_ref_count_ = 1;
+	_data17_->self = g_object_ref (self);
 	_tmp0_ = message;
 	_tmp1_ = g_strdup (_tmp0_);
-	_g_free0 (_data18_->message);
-	_data18_->message = _tmp1_;
+	_g_free0 (_data17_->message);
+	_data17_->message = _tmp1_;
 	g_debug ("connection.vala:301: At name in use");
-	g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ___lambda21__gsource_func, block18_data_ref (_data18_), block18_data_unref);
-	block18_data_unref (_data18_);
-	_data18_ = NULL;
+	g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ___lambda21__gsource_func, block17_data_ref (_data17_), block17_data_unref);
+	block17_data_unref (_data17_);
+	_data17_ = NULL;
 }
 
 

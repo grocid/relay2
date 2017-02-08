@@ -41,9 +41,9 @@ typedef struct _DragFile DragFile;
 typedef struct _DragFileClass DragFileClass;
 typedef struct _DragFilePrivate DragFilePrivate;
 #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
-typedef struct _Block20Data Block20Data;
+typedef struct _Block19Data Block19Data;
 #define _g_free0(var) (var = (g_free (var), NULL))
-typedef struct _Block21Data Block21Data;
+typedef struct _Block20Data Block20Data;
 #define __g_list_free__g_object_unref0_0(var) ((var == NULL) ? NULL : (var = (_g_list_free__g_object_unref0_ (var), NULL)))
 #define _g_error_free0(var) ((var == NULL) ? NULL : (var = (g_error_free (var), NULL)))
 #define _g_thread_unref0(var) ((var == NULL) ? NULL : (var = (g_thread_unref (var), NULL)))
@@ -62,15 +62,15 @@ struct _DragFilePrivate {
 	GtkSpinner* spinner;
 };
 
-struct _Block20Data {
+struct _Block19Data {
 	int _ref_count_;
 	DragFile* self;
 	gchar* uri;
 };
 
-struct _Block21Data {
+struct _Block20Data {
 	int _ref_count_;
-	Block20Data * _data20_;
+	Block19Data * _data19_;
 	gchar* json;
 };
 
@@ -90,15 +90,15 @@ void drag_file_reset_ui (DragFile* self);
 static gboolean __lambda6_ (DragFile* self);
 static gboolean ___lambda6__gsource_func (gpointer self);
 void drag_file_drop_file (DragFile* self, GdkDragContext* context, gint x, gint y, GtkSelectionData* selection_data, guint info, guint time_);
+static Block19Data* block19_data_ref (Block19Data* _data19_);
+static void block19_data_unref (void * _userdata_);
+static gint ____lambda7_ (Block19Data* _data19_);
 static Block20Data* block20_data_ref (Block20Data* _data20_);
 static void block20_data_unref (void * _userdata_);
-static gint ____lambda7_ (Block20Data* _data20_);
-static Block21Data* block21_data_ref (Block21Data* _data21_);
-static void block21_data_unref (void * _userdata_);
 void relay_show_error_window (const gchar* error_msg);
 static void _g_object_unref0_ (gpointer var);
 static void _g_list_free__g_object_unref0_ (GList* self);
-static gboolean ___lambda8_ (Block21Data* _data21_);
+static gboolean ___lambda8_ (Block20Data* _data20_);
 static gboolean ____lambda8__gsource_func (gpointer self);
 static gpointer _____lambda7__gthread_func (gpointer self);
 DragFile* drag_file_new (void);
@@ -175,6 +175,25 @@ void drag_file_reset_ui (DragFile* self) {
 }
 
 
+static Block19Data* block19_data_ref (Block19Data* _data19_) {
+	g_atomic_int_inc (&_data19_->_ref_count_);
+	return _data19_;
+}
+
+
+static void block19_data_unref (void * _userdata_) {
+	Block19Data* _data19_;
+	_data19_ = (Block19Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data19_->_ref_count_)) {
+		DragFile* self;
+		self = _data19_->self;
+		_g_free0 (_data19_->uri);
+		_g_object_unref0 (self);
+		g_slice_free (Block19Data, _data19_);
+	}
+}
+
+
 static Block20Data* block20_data_ref (Block20Data* _data20_) {
 	g_atomic_int_inc (&_data20_->_ref_count_);
 	return _data20_;
@@ -186,30 +205,11 @@ static void block20_data_unref (void * _userdata_) {
 	_data20_ = (Block20Data*) _userdata_;
 	if (g_atomic_int_dec_and_test (&_data20_->_ref_count_)) {
 		DragFile* self;
-		self = _data20_->self;
-		_g_free0 (_data20_->uri);
-		_g_object_unref0 (self);
+		self = _data20_->_data19_->self;
+		_g_free0 (_data20_->json);
+		block19_data_unref (_data20_->_data19_);
+		_data20_->_data19_ = NULL;
 		g_slice_free (Block20Data, _data20_);
-	}
-}
-
-
-static Block21Data* block21_data_ref (Block21Data* _data21_) {
-	g_atomic_int_inc (&_data21_->_ref_count_);
-	return _data21_;
-}
-
-
-static void block21_data_unref (void * _userdata_) {
-	Block21Data* _data21_;
-	_data21_ = (Block21Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data21_->_ref_count_)) {
-		DragFile* self;
-		self = _data21_->_data20_->self;
-		_g_free0 (_data21_->json);
-		block20_data_unref (_data21_->_data20_);
-		_data21_->_data20_ = NULL;
-		g_slice_free (Block21Data, _data21_);
 	}
 }
 
@@ -308,19 +308,19 @@ static gchar* string_slice (const gchar* self, glong start, glong end) {
 }
 
 
-static gboolean ___lambda8_ (Block21Data* _data21_) {
-	Block20Data* _data20_;
+static gboolean ___lambda8_ (Block20Data* _data20_) {
+	Block19Data* _data19_;
 	DragFile* self;
 	gboolean result = FALSE;
 	GtkButton* _tmp0_ = NULL;
 	const gchar* _tmp1_ = NULL;
 	gchar* _tmp2_ = NULL;
 	gchar* _tmp3_ = NULL;
-	_data20_ = _data21_->_data20_;
-	self = _data20_->self;
+	_data19_ = _data20_->_data19_;
+	self = _data19_->self;
 	_tmp0_ = main_window_paste;
 	gtk_widget_show ((GtkWidget*) _tmp0_);
-	_tmp1_ = _data21_->json;
+	_tmp1_ = _data20_->json;
 	_tmp2_ = g_strconcat ("http://" DRAG_FILE_HASTEBIN_HOST "/", _tmp1_, NULL);
 	_tmp3_ = _tmp2_;
 	g_signal_emit_by_name (self, "file-uploaded", _tmp3_);
@@ -338,13 +338,13 @@ static gboolean ____lambda8__gsource_func (gpointer self) {
 }
 
 
-static gint ____lambda7_ (Block20Data* _data20_) {
+static gint ____lambda7_ (Block19Data* _data19_) {
 	DragFile* self;
 	gint result = 0;
 	GError * _inner_error_ = NULL;
-	self = _data20_->self;
+	self = _data19_->self;
 	{
-		Block21Data* _data21_;
+		Block20Data* _data20_;
 		gchar* contents = NULL;
 		gchar* _tmp0_ = NULL;
 		GFile* path = NULL;
@@ -424,12 +424,12 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 		gboolean _tmp94_ = FALSE;
 		gchar** _tmp95_ = NULL;
 		gint _tmp95__length1 = 0;
-		_data21_ = g_slice_new0 (Block21Data);
-		_data21_->_ref_count_ = 1;
-		_data21_->_data20_ = block20_data_ref (_data20_);
+		_data20_ = g_slice_new0 (Block20Data);
+		_data20_->_ref_count_ = 1;
+		_data20_->_data19_ = block19_data_ref (_data19_);
 		_tmp0_ = g_strdup ("");
 		contents = _tmp0_;
-		_tmp1_ = _data20_->uri;
+		_tmp1_ = _data19_->uri;
 		_tmp2_ = g_file_new_for_uri (_tmp1_);
 		path = _tmp2_;
 		_tmp4_ = path;
@@ -438,8 +438,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 		if (G_UNLIKELY (_inner_error_ != NULL)) {
 			_g_object_unref0 (path);
 			_g_free0 (contents);
-			block21_data_unref (_data21_);
-			_data21_ = NULL;
+			block20_data_unref (_data20_);
+			_data20_ = NULL;
 			goto __catch15_g_error;
 		}
 		_tmp6_ = _tmp3_;
@@ -457,7 +457,7 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			gchar* _tmp14_ = NULL;
 			gchar* _tmp15_ = NULL;
 			const gchar* _tmp16_ = NULL;
-			_tmp11_ = _data20_->uri;
+			_tmp11_ = _data19_->uri;
 			_tmp12_ = g_strconcat ("The file ", _tmp11_, NULL);
 			_tmp13_ = _tmp12_;
 			_tmp14_ = g_strconcat (_tmp13_, " is too large", NULL);
@@ -470,8 +470,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			_g_object_unref0 (_tmp3_);
 			_g_object_unref0 (path);
 			_g_free0 (contents);
-			block21_data_unref (_data21_);
-			_data21_ = NULL;
+			block20_data_unref (_data20_);
+			_data20_ = NULL;
 			return result;
 		}
 		_tmp18_ = path;
@@ -481,8 +481,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			_g_object_unref0 (_tmp3_);
 			_g_object_unref0 (path);
 			_g_free0 (contents);
-			block21_data_unref (_data21_);
-			_data21_ = NULL;
+			block20_data_unref (_data20_);
+			_data20_ = NULL;
 			goto __catch15_g_error;
 		}
 		_tmp20_ = g_data_input_stream_new ((GInputStream*) _tmp17_);
@@ -508,8 +508,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 				_g_object_unref0 (_tmp3_);
 				_g_object_unref0 (path);
 				_g_free0 (contents);
-				block21_data_unref (_data21_);
-				_data21_ = NULL;
+				block20_data_unref (_data20_);
+				_data20_ = NULL;
 				goto __catch15_g_error;
 			}
 			_tmp24_ = _tmp21_;
@@ -547,8 +547,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			_g_object_unref0 (_tmp3_);
 			_g_object_unref0 (path);
 			_g_free0 (contents);
-			block21_data_unref (_data21_);
-			_data21_ = NULL;
+			block20_data_unref (_data20_);
+			_data20_ = NULL;
 			goto __catch15_g_error;
 		}
 		_tmp35_ = addresses;
@@ -574,8 +574,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			_g_object_unref0 (_tmp3_);
 			_g_object_unref0 (path);
 			_g_free0 (contents);
-			block21_data_unref (_data21_);
-			_data21_ = NULL;
+			block20_data_unref (_data20_);
+			_data20_ = NULL;
 			goto __catch15_g_error;
 		}
 		_tmp44_ = conn;
@@ -604,8 +604,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			_g_object_unref0 (_tmp3_);
 			_g_object_unref0 (path);
 			_g_free0 (contents);
-			block21_data_unref (_data21_);
-			_data21_ = NULL;
+			block20_data_unref (_data20_);
+			_data20_ = NULL;
 			goto __catch15_g_error;
 		}
 		_tmp53_ = output_stream;
@@ -624,8 +624,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			_g_object_unref0 (_tmp3_);
 			_g_object_unref0 (path);
 			_g_free0 (contents);
-			block21_data_unref (_data21_);
-			_data21_ = NULL;
+			block20_data_unref (_data20_);
+			_data20_ = NULL;
 			goto __catch15_g_error;
 		}
 		_tmp54_ = output_stream;
@@ -644,8 +644,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			_g_object_unref0 (_tmp3_);
 			_g_object_unref0 (path);
 			_g_free0 (contents);
-			block21_data_unref (_data21_);
-			_data21_ = NULL;
+			block20_data_unref (_data20_);
+			_data20_ = NULL;
 			goto __catch15_g_error;
 		}
 		_tmp55_ = output_stream;
@@ -676,8 +676,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			_g_object_unref0 (_tmp3_);
 			_g_object_unref0 (path);
 			_g_free0 (contents);
-			block21_data_unref (_data21_);
-			_data21_ = NULL;
+			block20_data_unref (_data20_);
+			_data20_ = NULL;
 			goto __catch15_g_error;
 		}
 		_tmp65_ = output_stream;
@@ -696,8 +696,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			_g_object_unref0 (_tmp3_);
 			_g_object_unref0 (path);
 			_g_free0 (contents);
-			block21_data_unref (_data21_);
-			_data21_ = NULL;
+			block20_data_unref (_data20_);
+			_data20_ = NULL;
 			goto __catch15_g_error;
 		}
 		_tmp66_ = output_stream;
@@ -716,8 +716,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			_g_object_unref0 (_tmp3_);
 			_g_object_unref0 (path);
 			_g_free0 (contents);
-			block21_data_unref (_data21_);
-			_data21_ = NULL;
+			block20_data_unref (_data20_);
+			_data20_ = NULL;
 			goto __catch15_g_error;
 		}
 		_tmp67_ = output_stream;
@@ -737,8 +737,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			_g_object_unref0 (_tmp3_);
 			_g_object_unref0 (path);
 			_g_free0 (contents);
-			block21_data_unref (_data21_);
-			_data21_ = NULL;
+			block20_data_unref (_data20_);
+			_data20_ = NULL;
 			goto __catch15_g_error;
 		}
 		_tmp69_ = output_stream;
@@ -757,14 +757,14 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			_g_object_unref0 (_tmp3_);
 			_g_object_unref0 (path);
 			_g_free0 (contents);
-			block21_data_unref (_data21_);
-			_data21_ = NULL;
+			block20_data_unref (_data20_);
+			_data20_ = NULL;
 			goto __catch15_g_error;
 		}
 		_tmp70_ = g_strdup ("");
 		output = _tmp70_;
 		_tmp71_ = g_strdup ("");
-		_data21_->json = _tmp71_;
+		_data20_->json = _tmp71_;
 		{
 			gboolean _tmp72_ = FALSE;
 			_tmp72_ = TRUE;
@@ -804,8 +804,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 					_g_object_unref0 (_tmp3_);
 					_g_object_unref0 (path);
 					_g_free0 (contents);
-					block21_data_unref (_data21_);
-					_data21_ = NULL;
+					block20_data_unref (_data20_);
+					_data20_ = NULL;
 					goto __catch15_g_error;
 				}
 				_tmp78_ = _tmp74_;
@@ -842,13 +842,13 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 					gchar* _tmp90_ = NULL;
 					_tmp89_ = output;
 					_tmp90_ = g_strdup (_tmp89_);
-					_g_free0 (_data21_->json);
-					_data21_->json = _tmp90_;
+					_g_free0 (_data20_->json);
+					_data20_->json = _tmp90_;
 				}
 				_g_free0 (_tmp74_);
 			}
 		}
-		_tmp91_ = _data21_->json;
+		_tmp91_ = _data20_->json;
 		_tmp93_ = _tmp92_ = g_strsplit (_tmp91_, ":", 0);
 		parts = _tmp93_;
 		parts_length1 = _vala_array_length (_tmp92_);
@@ -883,8 +883,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			_tmp101_ = strlen (_tmp100_);
 			_tmp102_ = _tmp101_;
 			_tmp103_ = string_slice (_tmp98_, (glong) 1, (glong) (_tmp102_ - 2));
-			_g_free0 (_data21_->json);
-			_data21_->json = _tmp103_;
+			_g_free0 (_data20_->json);
+			_data20_->json = _tmp103_;
 		} else {
 			const gchar* _tmp104_ = NULL;
 			_tmp104_ = _ ("The message returned was not formed correctly.");
@@ -905,11 +905,11 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 			_g_object_unref0 (_tmp3_);
 			_g_object_unref0 (path);
 			_g_free0 (contents);
-			block21_data_unref (_data21_);
-			_data21_ = NULL;
+			block20_data_unref (_data20_);
+			_data20_ = NULL;
 			return result;
 		}
-		g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ____lambda8__gsource_func, block21_data_ref (_data21_), block21_data_unref);
+		g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ____lambda8__gsource_func, block20_data_ref (_data20_), block20_data_unref);
 		parts = (_vala_array_free (parts, parts_length1, (GDestroyNotify) g_free), NULL);
 		_g_free0 (output);
 		_g_object_unref0 (output_stream);
@@ -925,8 +925,8 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 		_g_object_unref0 (_tmp3_);
 		_g_object_unref0 (path);
 		_g_free0 (contents);
-		block21_data_unref (_data21_);
-		_data21_ = NULL;
+		block20_data_unref (_data20_);
+		_data20_ = NULL;
 	}
 	goto __finally15;
 	__catch15_g_error:
@@ -966,7 +966,7 @@ static gint ____lambda7_ (Block20Data* _data20_) {
 static gpointer _____lambda7__gthread_func (gpointer self) {
 	gpointer result;
 	result = (gpointer) ((gintptr) ____lambda7_ (self));
-	block20_data_unref (self);
+	block19_data_unref (self);
 	return result;
 }
 
@@ -999,18 +999,18 @@ void drag_file_drop_file (DragFile* self, GdkDragContext* context, gint x, gint 
 			_tmp5_ = g_strdup (uri_collection[uri_it]);
 			uri = _tmp5_;
 			{
-				Block20Data* _data20_;
+				Block19Data* _data19_;
 				GThread* _tmp6_ = NULL;
 				GThread* _tmp7_ = NULL;
-				_data20_ = g_slice_new0 (Block20Data);
-				_data20_->_ref_count_ = 1;
-				_data20_->self = g_object_ref (self);
-				_data20_->uri = uri;
-				_tmp6_ = g_thread_new ("Pastebin post", _____lambda7__gthread_func, block20_data_ref (_data20_));
+				_data19_ = g_slice_new0 (Block19Data);
+				_data19_->_ref_count_ = 1;
+				_data19_->self = g_object_ref (self);
+				_data19_->uri = uri;
+				_tmp6_ = g_thread_new ("Pastebin post", _____lambda7__gthread_func, block19_data_ref (_data19_));
 				_tmp7_ = _tmp6_;
 				_g_thread_unref0 (_tmp7_);
-				block20_data_unref (_data20_);
-				_data20_ = NULL;
+				block19_data_unref (_data19_);
+				_data19_ = NULL;
 			}
 		}
 		uri_collection = (_vala_array_free (uri_collection, uri_collection_length1, (GDestroyNotify) g_free), NULL);

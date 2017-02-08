@@ -100,7 +100,7 @@ typedef struct _Settings Settings;
 typedef struct _SettingsClass SettingsClass;
 typedef struct _MessagePrivate MessagePrivate;
 #define _g_date_time_unref0(var) ((var == NULL) ? NULL : (var = (g_date_time_unref (var), NULL)))
-typedef struct _Block13Data Block13Data;
+typedef struct _Block12Data Block12Data;
 
 #define TYPE_RICH_TEXT (rich_text_get_type ())
 #define RICH_TEXT(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TYPE_RICH_TEXT, RichText))
@@ -111,7 +111,7 @@ typedef struct _Block13Data Block13Data;
 
 typedef struct _RichText RichText;
 typedef struct _RichTextClass RichTextClass;
-typedef struct _Block14Data Block14Data;
+typedef struct _Block13Data Block13Data;
 typedef struct _RichTextPrivate RichTextPrivate;
 #define _g_slist_free0(var) ((var == NULL) ? NULL : (var = (g_slist_free (var), NULL)))
 
@@ -215,14 +215,14 @@ struct _MessageClass {
 	GObjectClass parent_class;
 };
 
-struct _Block13Data {
+struct _Block12Data {
 	int _ref_count_;
 	ChannelTab* self;
 	GtkScrolledWindow* sw;
 	GtkAdjustment* position;
 };
 
-struct _Block14Data {
+struct _Block13Data {
 	int _ref_count_;
 	ChannelTab* self;
 	RichText* rich_text;
@@ -334,18 +334,17 @@ const gchar* message_get_command (Message* self);
 void channel_tab_handle_private_message (ChannelTab* self, Message* message);
 gchar* message_user_name_get (Message* self);
 static gboolean channel_tab_make_timestamp (ChannelTab* self);
-static Block13Data* block13_data_ref (Block13Data* _data13_);
-static void block13_data_unref (void * _userdata_);
-static gboolean ___lambda18_ (Block13Data* _data13_);
+static Block12Data* block12_data_ref (Block12Data* _data12_);
+static void block12_data_unref (void * _userdata_);
+static gboolean ___lambda18_ (Block12Data* _data12_);
 static gboolean ____lambda18__gsource_func (gpointer self);
 GType rich_text_get_type (void) G_GNUC_CONST;
-static Block14Data* block14_data_ref (Block14Data* _data14_);
-static void block14_data_unref (void * _userdata_);
+static Block13Data* block13_data_ref (Block13Data* _data13_);
+static void block13_data_unref (void * _userdata_);
 RichText* rich_text_new (const gchar* _text);
 RichText* rich_text_construct (GType object_type, const gchar* _text);
 void rich_text_parse_links (RichText* self);
-void rich_text_parse_name (RichText* self, const gchar* name);
-static gboolean __lambda17_ (Block14Data* _data14_);
+static gboolean __lambda17_ (Block13Data* _data13_);
 static GtkTextIter* _gtk_text_iter_dup (GtkTextIter* self);
 static gboolean ___lambda17__gsource_func (gpointer self);
 gchar* settings_get_color (Settings* self, const gchar* color);
@@ -1400,69 +1399,71 @@ void channel_tab_set_output (ChannelTab* self, GtkTextView* _output) {
 	GtkTextView* _tmp0_ = NULL;
 	GtkTextView* _tmp1_ = NULL;
 	GtkTextView* _tmp2_ = NULL;
-	GtkTextBuffer* _tmp3_ = NULL;
-	GtkTextBuffer* _tmp4_ = NULL;
-	GtkTextView* _tmp5_ = NULL;
+	GtkTextView* _tmp3_ = NULL;
+	GtkTextView* _tmp4_ = NULL;
+	GtkTextBuffer* _tmp5_ = NULL;
 	GtkTextBuffer* _tmp6_ = NULL;
-	GtkTextBuffer* _tmp7_ = NULL;
-	GtkTextTag* _tmp8_ = NULL;
-	GtkTextTag* _tmp9_ = NULL;
-	GtkTextView* _tmp10_ = NULL;
-	GtkTextBuffer* _tmp11_ = NULL;
-	GtkTextBuffer* _tmp12_ = NULL;
-	GtkTextTag* _tmp13_ = NULL;
-	GtkTextTag* _tmp14_ = NULL;
-	GtkTextView* _tmp15_ = NULL;
-	GtkTextBuffer* _tmp16_ = NULL;
-	GtkTextBuffer* _tmp17_ = NULL;
-	GtkTextTag* _tmp18_ = NULL;
-	GtkTextTag* _tmp19_ = NULL;
-	GtkTextView* _tmp20_ = NULL;
-	GtkTextBuffer* _tmp21_ = NULL;
-	GtkTextBuffer* _tmp22_ = NULL;
-	GtkTextTag* _tmp23_ = NULL;
-	GtkTextTag* _tmp24_ = NULL;
-	GtkTextView* _tmp25_ = NULL;
-	GtkTextBuffer* _tmp26_ = NULL;
-	GtkTextBuffer* _tmp27_ = NULL;
-	GtkTextTag* _tmp28_ = NULL;
-	GtkTextTag* _tmp29_ = NULL;
-	GtkTextView* _tmp30_ = NULL;
-	GtkTextBuffer* _tmp31_ = NULL;
-	GtkTextBuffer* _tmp32_ = NULL;
-	GtkTextTag* _tmp33_ = NULL;
-	GtkTextTag* _tmp34_ = NULL;
-	GtkTextView* _tmp35_ = NULL;
-	GtkTextBuffer* _tmp36_ = NULL;
-	GtkTextBuffer* _tmp37_ = NULL;
-	GtkTextTag* _tmp38_ = NULL;
-	GtkTextTag* _tmp39_ = NULL;
-	GtkTextView* _tmp40_ = NULL;
-	GtkTextBuffer* _tmp41_ = NULL;
-	GtkTextBuffer* _tmp42_ = NULL;
-	GtkTextTag* _tmp43_ = NULL;
-	GtkTextTag* _tmp44_ = NULL;
-	GtkTextView* _tmp45_ = NULL;
-	GtkTextBuffer* _tmp46_ = NULL;
-	GtkTextBuffer* _tmp47_ = NULL;
-	GtkTextTag* _tmp48_ = NULL;
-	GtkTextTag* _tmp49_ = NULL;
-	GtkTextView* _tmp50_ = NULL;
-	GtkTextBuffer* _tmp51_ = NULL;
-	GtkTextBuffer* _tmp52_ = NULL;
-	GtkTextTag* _tmp53_ = NULL;
-	GtkTextTag* _tmp54_ = NULL;
-	GtkTextView* _tmp55_ = NULL;
-	GtkTextBuffer* _tmp56_ = NULL;
-	GtkTextBuffer* _tmp57_ = NULL;
-	GtkTextTag* _tmp58_ = NULL;
-	GtkTextTag* _tmp59_ = NULL;
+	GtkTextView* _tmp7_ = NULL;
+	GtkTextBuffer* _tmp8_ = NULL;
+	GtkTextBuffer* _tmp9_ = NULL;
+	GtkTextTag* _tmp10_ = NULL;
+	GtkTextTag* _tmp11_ = NULL;
+	GtkTextView* _tmp12_ = NULL;
+	GtkTextBuffer* _tmp13_ = NULL;
+	GtkTextBuffer* _tmp14_ = NULL;
+	GtkTextTag* _tmp15_ = NULL;
+	GtkTextTag* _tmp16_ = NULL;
+	GtkTextView* _tmp17_ = NULL;
+	GtkTextBuffer* _tmp18_ = NULL;
+	GtkTextBuffer* _tmp19_ = NULL;
+	GtkTextTag* _tmp20_ = NULL;
+	GtkTextTag* _tmp21_ = NULL;
+	GtkTextView* _tmp22_ = NULL;
+	GtkTextBuffer* _tmp23_ = NULL;
+	GtkTextBuffer* _tmp24_ = NULL;
+	GtkTextTag* _tmp25_ = NULL;
+	GtkTextTag* _tmp26_ = NULL;
+	GtkTextView* _tmp27_ = NULL;
+	GtkTextBuffer* _tmp28_ = NULL;
+	GtkTextBuffer* _tmp29_ = NULL;
+	GtkTextTag* _tmp30_ = NULL;
+	GtkTextTag* _tmp31_ = NULL;
+	GtkTextView* _tmp32_ = NULL;
+	GtkTextBuffer* _tmp33_ = NULL;
+	GtkTextBuffer* _tmp34_ = NULL;
+	GtkTextTag* _tmp35_ = NULL;
+	GtkTextTag* _tmp36_ = NULL;
+	GtkTextView* _tmp37_ = NULL;
+	GtkTextBuffer* _tmp38_ = NULL;
+	GtkTextBuffer* _tmp39_ = NULL;
+	GtkTextTag* _tmp40_ = NULL;
+	GtkTextTag* _tmp41_ = NULL;
+	GtkTextView* _tmp42_ = NULL;
+	GtkTextBuffer* _tmp43_ = NULL;
+	GtkTextBuffer* _tmp44_ = NULL;
+	GtkTextTag* _tmp45_ = NULL;
+	GtkTextTag* _tmp46_ = NULL;
+	GtkTextView* _tmp47_ = NULL;
+	GtkTextBuffer* _tmp48_ = NULL;
+	GtkTextBuffer* _tmp49_ = NULL;
+	GtkTextTag* _tmp50_ = NULL;
+	GtkTextTag* _tmp51_ = NULL;
+	GtkTextView* _tmp52_ = NULL;
+	GtkTextBuffer* _tmp53_ = NULL;
+	GtkTextBuffer* _tmp54_ = NULL;
+	GtkTextTag* _tmp55_ = NULL;
+	GtkTextTag* _tmp56_ = NULL;
+	GtkTextView* _tmp57_ = NULL;
+	GtkTextBuffer* _tmp58_ = NULL;
+	GtkTextBuffer* _tmp59_ = NULL;
+	GtkTextTag* _tmp60_ = NULL;
+	GtkTextTag* _tmp61_ = NULL;
 	GeeLinkedList* _pending_msg = NULL;
-	GeeLinkedList* _tmp60_ = NULL;
-	GeeLinkedList* _tmp61_ = NULL;
-	GeeLinkedList* _pending_err = NULL;
 	GeeLinkedList* _tmp62_ = NULL;
 	GeeLinkedList* _tmp63_ = NULL;
+	GeeLinkedList* _pending_err = NULL;
+	GeeLinkedList* _tmp64_ = NULL;
+	GeeLinkedList* _tmp65_ = NULL;
 	g_return_if_fail (self != NULL);
 	g_return_if_fail (_output != NULL);
 	_tmp0_ = _output;
@@ -1470,179 +1471,183 @@ void channel_tab_set_output (ChannelTab* self, GtkTextView* _output) {
 	_g_object_unref0 (self->priv->output);
 	self->priv->output = _tmp1_;
 	_tmp2_ = self->priv->output;
-	_tmp3_ = gtk_text_view_get_buffer (_tmp2_);
-	_tmp4_ = _tmp3_;
-	g_signal_connect_object (_tmp4_, "changed", (GCallback) _channel_tab_do_autoscroll_gtk_text_buffer_changed, self, 0);
-	_tmp5_ = self->priv->output;
-	_tmp6_ = gtk_text_view_get_buffer (_tmp5_);
-	_tmp7_ = _tmp6_;
-	_tmp8_ = gtk_text_buffer_create_tag (_tmp7_, "user_other", NULL);
-	_tmp9_ = _g_object_ref0 (_tmp8_);
+	gtk_text_view_set_top_margin (_tmp2_, 30);
+	_tmp3_ = self->priv->output;
+	gtk_text_view_set_bottom_margin (_tmp3_, 30);
+	_tmp4_ = self->priv->output;
+	_tmp5_ = gtk_text_view_get_buffer (_tmp4_);
+	_tmp6_ = _tmp5_;
+	g_signal_connect_object (_tmp6_, "changed", (GCallback) _channel_tab_do_autoscroll_gtk_text_buffer_changed, self, 0);
+	_tmp7_ = self->priv->output;
+	_tmp8_ = gtk_text_view_get_buffer (_tmp7_);
+	_tmp9_ = _tmp8_;
+	_tmp10_ = gtk_text_buffer_create_tag (_tmp9_, "user_other", NULL);
+	_tmp11_ = _g_object_ref0 (_tmp10_);
 	_g_object_unref0 (self->priv->user_other_tag);
-	self->priv->user_other_tag = _tmp9_;
-	_tmp10_ = self->priv->output;
-	_tmp11_ = gtk_text_view_get_buffer (_tmp10_);
-	_tmp12_ = _tmp11_;
-	_tmp13_ = gtk_text_buffer_create_tag (_tmp12_, "user_self", NULL);
-	_tmp14_ = _g_object_ref0 (_tmp13_);
+	self->priv->user_other_tag = _tmp11_;
+	_tmp12_ = self->priv->output;
+	_tmp13_ = gtk_text_view_get_buffer (_tmp12_);
+	_tmp14_ = _tmp13_;
+	_tmp15_ = gtk_text_buffer_create_tag (_tmp14_, "user_self", NULL);
+	_tmp16_ = _g_object_ref0 (_tmp15_);
 	_g_object_unref0 (self->priv->user_self_tag);
-	self->priv->user_self_tag = _tmp14_;
-	_tmp15_ = self->priv->output;
-	_tmp16_ = gtk_text_view_get_buffer (_tmp15_);
-	_tmp17_ = _tmp16_;
-	_tmp18_ = gtk_text_buffer_create_tag (_tmp17_, "std_message", NULL);
-	_tmp19_ = _g_object_ref0 (_tmp18_);
+	self->priv->user_self_tag = _tmp16_;
+	_tmp17_ = self->priv->output;
+	_tmp18_ = gtk_text_view_get_buffer (_tmp17_);
+	_tmp19_ = _tmp18_;
+	_tmp20_ = gtk_text_buffer_create_tag (_tmp19_, "std_message", NULL);
+	_tmp21_ = _g_object_ref0 (_tmp20_);
 	_g_object_unref0 (self->priv->std_message_tag);
-	self->priv->std_message_tag = _tmp19_;
-	_tmp20_ = self->priv->output;
-	_tmp21_ = gtk_text_view_get_buffer (_tmp20_);
-	_tmp22_ = _tmp21_;
-	_tmp23_ = gtk_text_buffer_create_tag (_tmp22_, "full_width", NULL);
-	_tmp24_ = _g_object_ref0 (_tmp23_);
+	self->priv->std_message_tag = _tmp21_;
+	_tmp22_ = self->priv->output;
+	_tmp23_ = gtk_text_view_get_buffer (_tmp22_);
+	_tmp24_ = _tmp23_;
+	_tmp25_ = gtk_text_buffer_create_tag (_tmp24_, "full_width", NULL);
+	_tmp26_ = _g_object_ref0 (_tmp25_);
 	_g_object_unref0 (self->priv->full_width_tag);
-	self->priv->full_width_tag = _tmp24_;
-	_tmp25_ = self->priv->output;
-	_tmp26_ = gtk_text_view_get_buffer (_tmp25_);
-	_tmp27_ = _tmp26_;
-	_tmp28_ = gtk_text_buffer_create_tag (_tmp27_, "error", NULL);
-	_tmp29_ = _g_object_ref0 (_tmp28_);
+	self->priv->full_width_tag = _tmp26_;
+	_tmp27_ = self->priv->output;
+	_tmp28_ = gtk_text_view_get_buffer (_tmp27_);
+	_tmp29_ = _tmp28_;
+	_tmp30_ = gtk_text_buffer_create_tag (_tmp29_, "error", NULL);
+	_tmp31_ = _g_object_ref0 (_tmp30_);
 	_g_object_unref0 (self->priv->error_tag);
-	self->priv->error_tag = _tmp29_;
-	_tmp30_ = self->priv->output;
-	_tmp31_ = gtk_text_view_get_buffer (_tmp30_);
-	_tmp32_ = _tmp31_;
-	_tmp33_ = gtk_text_buffer_create_tag (_tmp32_, "link", NULL);
-	_tmp34_ = _g_object_ref0 (_tmp33_);
+	self->priv->error_tag = _tmp31_;
+	_tmp32_ = self->priv->output;
+	_tmp33_ = gtk_text_view_get_buffer (_tmp32_);
+	_tmp34_ = _tmp33_;
+	_tmp35_ = gtk_text_buffer_create_tag (_tmp34_, "link", NULL);
+	_tmp36_ = _g_object_ref0 (_tmp35_);
 	_g_object_unref0 (self->priv->link_tag);
-	self->priv->link_tag = _tmp34_;
-	_tmp35_ = self->priv->output;
-	_tmp36_ = gtk_text_view_get_buffer (_tmp35_);
-	_tmp37_ = _tmp36_;
-	_tmp38_ = gtk_text_buffer_create_tag (_tmp37_, "name_hilight", NULL);
-	_tmp39_ = _g_object_ref0 (_tmp38_);
+	self->priv->link_tag = _tmp36_;
+	_tmp37_ = self->priv->output;
+	_tmp38_ = gtk_text_view_get_buffer (_tmp37_);
+	_tmp39_ = _tmp38_;
+	_tmp40_ = gtk_text_buffer_create_tag (_tmp39_, "name_hilight", NULL);
+	_tmp41_ = _g_object_ref0 (_tmp40_);
 	_g_object_unref0 (self->priv->name_hilight_tag);
-	self->priv->name_hilight_tag = _tmp39_;
-	_tmp40_ = self->priv->output;
-	_tmp41_ = gtk_text_view_get_buffer (_tmp40_);
-	_tmp42_ = _tmp41_;
-	_tmp43_ = gtk_text_buffer_create_tag (_tmp42_, "timestamp", NULL);
-	_tmp44_ = _g_object_ref0 (_tmp43_);
+	self->priv->name_hilight_tag = _tmp41_;
+	_tmp42_ = self->priv->output;
+	_tmp43_ = gtk_text_view_get_buffer (_tmp42_);
+	_tmp44_ = _tmp43_;
+	_tmp45_ = gtk_text_buffer_create_tag (_tmp44_, "timestamp", NULL);
+	_tmp46_ = _g_object_ref0 (_tmp45_);
 	_g_object_unref0 (self->priv->timestamp_tag);
-	self->priv->timestamp_tag = _tmp44_;
-	_tmp45_ = self->priv->output;
-	_tmp46_ = gtk_text_view_get_buffer (_tmp45_);
-	_tmp47_ = _tmp46_;
-	_tmp48_ = gtk_text_buffer_create_tag (_tmp47_, "spacing", NULL);
-	_tmp49_ = _g_object_ref0 (_tmp48_);
+	self->priv->timestamp_tag = _tmp46_;
+	_tmp47_ = self->priv->output;
+	_tmp48_ = gtk_text_view_get_buffer (_tmp47_);
+	_tmp49_ = _tmp48_;
+	_tmp50_ = gtk_text_buffer_create_tag (_tmp49_, "spacing", NULL);
+	_tmp51_ = _g_object_ref0 (_tmp50_);
 	_g_object_unref0 (self->priv->spacing_tag);
-	self->priv->spacing_tag = _tmp49_;
-	_tmp50_ = self->priv->output;
-	_tmp51_ = gtk_text_view_get_buffer (_tmp50_);
-	_tmp52_ = _tmp51_;
-	_tmp53_ = gtk_text_buffer_create_tag (_tmp52_, "other_name", NULL);
-	_tmp54_ = _g_object_ref0 (_tmp53_);
+	self->priv->spacing_tag = _tmp51_;
+	_tmp52_ = self->priv->output;
+	_tmp53_ = gtk_text_view_get_buffer (_tmp52_);
+	_tmp54_ = _tmp53_;
+	_tmp55_ = gtk_text_buffer_create_tag (_tmp54_, "other_name", NULL);
+	_tmp56_ = _g_object_ref0 (_tmp55_);
 	_g_object_unref0 (self->priv->other_name_hilight_tag);
-	self->priv->other_name_hilight_tag = _tmp54_;
-	_tmp55_ = self->priv->output;
-	_tmp56_ = gtk_text_view_get_buffer (_tmp55_);
-	_tmp57_ = _tmp56_;
-	_tmp58_ = gtk_text_buffer_create_tag (_tmp57_, "spacer_line", NULL);
-	_tmp59_ = _g_object_ref0 (_tmp58_);
-	_g_object_unref0 (self->priv->spacer_line_tag);
-	self->priv->spacer_line_tag = _tmp59_;
-	channel_tab_update_tag_table (self);
-	_tmp60_ = self->priv->pending_msg;
+	self->priv->other_name_hilight_tag = _tmp56_;
+	_tmp57_ = self->priv->output;
+	_tmp58_ = gtk_text_view_get_buffer (_tmp57_);
+	_tmp59_ = _tmp58_;
+	_tmp60_ = gtk_text_buffer_create_tag (_tmp59_, "spacer_line", NULL);
 	_tmp61_ = _g_object_ref0 (_tmp60_);
-	_pending_msg = _tmp61_;
-	_tmp62_ = self->priv->pending_err;
+	_g_object_unref0 (self->priv->spacer_line_tag);
+	self->priv->spacer_line_tag = _tmp61_;
+	channel_tab_update_tag_table (self);
+	_tmp62_ = self->priv->pending_msg;
 	_tmp63_ = _g_object_ref0 (_tmp62_);
-	_pending_err = _tmp63_;
+	_pending_msg = _tmp63_;
+	_tmp64_ = self->priv->pending_err;
+	_tmp65_ = _g_object_ref0 (_tmp64_);
+	_pending_err = _tmp65_;
 	_g_object_unref0 (self->priv->pending_msg);
 	self->priv->pending_msg = NULL;
 	_g_object_unref0 (self->priv->pending_err);
 	self->priv->pending_err = NULL;
 	{
 		GeeLinkedList* _msg_list = NULL;
-		GeeLinkedList* _tmp64_ = NULL;
-		GeeLinkedList* _tmp65_ = NULL;
-		gint _msg_size = 0;
 		GeeLinkedList* _tmp66_ = NULL;
-		gint _tmp67_ = 0;
-		gint _tmp68_ = 0;
+		GeeLinkedList* _tmp67_ = NULL;
+		gint _msg_size = 0;
+		GeeLinkedList* _tmp68_ = NULL;
+		gint _tmp69_ = 0;
+		gint _tmp70_ = 0;
 		gint _msg_index = 0;
-		_tmp64_ = _pending_msg;
-		_tmp65_ = _g_object_ref0 (_tmp64_);
-		_msg_list = _tmp65_;
-		_tmp66_ = _msg_list;
-		_tmp67_ = gee_abstract_collection_get_size ((GeeCollection*) _tmp66_);
-		_tmp68_ = _tmp67_;
-		_msg_size = _tmp68_;
+		_tmp66_ = _pending_msg;
+		_tmp67_ = _g_object_ref0 (_tmp66_);
+		_msg_list = _tmp67_;
+		_tmp68_ = _msg_list;
+		_tmp69_ = gee_abstract_collection_get_size ((GeeCollection*) _tmp68_);
+		_tmp70_ = _tmp69_;
+		_msg_size = _tmp70_;
 		_msg_index = -1;
 		while (TRUE) {
-			gint _tmp69_ = 0;
-			gint _tmp70_ = 0;
 			gint _tmp71_ = 0;
-			Message* msg = NULL;
-			GeeLinkedList* _tmp72_ = NULL;
+			gint _tmp72_ = 0;
 			gint _tmp73_ = 0;
-			gpointer _tmp74_ = NULL;
-			Message* _tmp75_ = NULL;
-			_tmp69_ = _msg_index;
-			_msg_index = _tmp69_ + 1;
-			_tmp70_ = _msg_index;
-			_tmp71_ = _msg_size;
-			if (!(_tmp70_ < _tmp71_)) {
+			Message* msg = NULL;
+			GeeLinkedList* _tmp74_ = NULL;
+			gint _tmp75_ = 0;
+			gpointer _tmp76_ = NULL;
+			Message* _tmp77_ = NULL;
+			_tmp71_ = _msg_index;
+			_msg_index = _tmp71_ + 1;
+			_tmp72_ = _msg_index;
+			_tmp73_ = _msg_size;
+			if (!(_tmp72_ < _tmp73_)) {
 				break;
 			}
-			_tmp72_ = _msg_list;
-			_tmp73_ = _msg_index;
-			_tmp74_ = gee_abstract_list_get ((GeeAbstractList*) _tmp72_, _tmp73_);
-			msg = (Message*) _tmp74_;
-			_tmp75_ = msg;
-			channel_tab_display_message (self, _tmp75_);
+			_tmp74_ = _msg_list;
+			_tmp75_ = _msg_index;
+			_tmp76_ = gee_abstract_list_get ((GeeAbstractList*) _tmp74_, _tmp75_);
+			msg = (Message*) _tmp76_;
+			_tmp77_ = msg;
+			channel_tab_display_message (self, _tmp77_);
 			_g_object_unref0 (msg);
 		}
 		_g_object_unref0 (_msg_list);
 	}
 	{
 		GeeLinkedList* _msg_list = NULL;
-		GeeLinkedList* _tmp76_ = NULL;
-		GeeLinkedList* _tmp77_ = NULL;
-		gint _msg_size = 0;
 		GeeLinkedList* _tmp78_ = NULL;
-		gint _tmp79_ = 0;
-		gint _tmp80_ = 0;
+		GeeLinkedList* _tmp79_ = NULL;
+		gint _msg_size = 0;
+		GeeLinkedList* _tmp80_ = NULL;
+		gint _tmp81_ = 0;
+		gint _tmp82_ = 0;
 		gint _msg_index = 0;
-		_tmp76_ = _pending_err;
-		_tmp77_ = _g_object_ref0 (_tmp76_);
-		_msg_list = _tmp77_;
-		_tmp78_ = _msg_list;
-		_tmp79_ = gee_abstract_collection_get_size ((GeeCollection*) _tmp78_);
-		_tmp80_ = _tmp79_;
-		_msg_size = _tmp80_;
+		_tmp78_ = _pending_err;
+		_tmp79_ = _g_object_ref0 (_tmp78_);
+		_msg_list = _tmp79_;
+		_tmp80_ = _msg_list;
+		_tmp81_ = gee_abstract_collection_get_size ((GeeCollection*) _tmp80_);
+		_tmp82_ = _tmp81_;
+		_msg_size = _tmp82_;
 		_msg_index = -1;
 		while (TRUE) {
-			gint _tmp81_ = 0;
-			gint _tmp82_ = 0;
 			gint _tmp83_ = 0;
-			Message* msg = NULL;
-			GeeLinkedList* _tmp84_ = NULL;
+			gint _tmp84_ = 0;
 			gint _tmp85_ = 0;
-			gpointer _tmp86_ = NULL;
-			Message* _tmp87_ = NULL;
-			_tmp81_ = _msg_index;
-			_msg_index = _tmp81_ + 1;
-			_tmp82_ = _msg_index;
-			_tmp83_ = _msg_size;
-			if (!(_tmp82_ < _tmp83_)) {
+			Message* msg = NULL;
+			GeeLinkedList* _tmp86_ = NULL;
+			gint _tmp87_ = 0;
+			gpointer _tmp88_ = NULL;
+			Message* _tmp89_ = NULL;
+			_tmp83_ = _msg_index;
+			_msg_index = _tmp83_ + 1;
+			_tmp84_ = _msg_index;
+			_tmp85_ = _msg_size;
+			if (!(_tmp84_ < _tmp85_)) {
 				break;
 			}
-			_tmp84_ = _msg_list;
-			_tmp85_ = _msg_index;
-			_tmp86_ = gee_abstract_list_get ((GeeAbstractList*) _tmp84_, _tmp85_);
-			msg = (Message*) _tmp86_;
-			_tmp87_ = msg;
-			channel_tab_display_error (self, _tmp87_);
+			_tmp86_ = _msg_list;
+			_tmp87_ = _msg_index;
+			_tmp88_ = gee_abstract_list_get ((GeeAbstractList*) _tmp86_, _tmp87_);
+			msg = (Message*) _tmp88_;
+			_tmp89_ = msg;
+			channel_tab_display_error (self, _tmp89_);
 			_g_object_unref0 (msg);
 		}
 		_g_object_unref0 (_msg_list);
@@ -2310,27 +2315,27 @@ static gboolean channel_tab_make_timestamp (ChannelTab* self) {
 }
 
 
-static Block13Data* block13_data_ref (Block13Data* _data13_) {
-	g_atomic_int_inc (&_data13_->_ref_count_);
-	return _data13_;
+static Block12Data* block12_data_ref (Block12Data* _data12_) {
+	g_atomic_int_inc (&_data12_->_ref_count_);
+	return _data12_;
 }
 
 
-static void block13_data_unref (void * _userdata_) {
-	Block13Data* _data13_;
-	_data13_ = (Block13Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data13_->_ref_count_)) {
+static void block12_data_unref (void * _userdata_) {
+	Block12Data* _data12_;
+	_data12_ = (Block12Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data12_->_ref_count_)) {
 		ChannelTab* self;
-		self = _data13_->self;
-		_g_object_unref0 (_data13_->position);
-		_g_object_unref0 (_data13_->sw);
+		self = _data12_->self;
+		_g_object_unref0 (_data12_->position);
+		_g_object_unref0 (_data12_->sw);
 		_g_object_unref0 (self);
-		g_slice_free (Block13Data, _data13_);
+		g_slice_free (Block12Data, _data12_);
 	}
 }
 
 
-static gboolean ___lambda18_ (Block13Data* _data13_) {
+static gboolean ___lambda18_ (Block12Data* _data12_) {
 	ChannelTab* self;
 	gboolean result = FALSE;
 	GtkAdjustment* _tmp0_ = NULL;
@@ -2342,17 +2347,17 @@ static gboolean ___lambda18_ (Block13Data* _data13_) {
 	gdouble _tmp6_ = 0.0;
 	GtkScrolledWindow* _tmp7_ = NULL;
 	GtkAdjustment* _tmp8_ = NULL;
-	self = _data13_->self;
-	_tmp0_ = _data13_->position;
-	_tmp1_ = _data13_->position;
+	self = _data12_->self;
+	_tmp0_ = _data12_->position;
+	_tmp1_ = _data12_->position;
 	_tmp2_ = gtk_adjustment_get_upper (_tmp1_);
 	_tmp3_ = _tmp2_;
-	_tmp4_ = _data13_->position;
+	_tmp4_ = _data12_->position;
 	_tmp5_ = gtk_adjustment_get_page_size (_tmp4_);
 	_tmp6_ = _tmp5_;
 	gtk_adjustment_set_value (_tmp0_, _tmp3_ - _tmp6_);
-	_tmp7_ = _data13_->sw;
-	_tmp8_ = _data13_->position;
+	_tmp7_ = _data12_->sw;
+	_tmp8_ = _data12_->position;
 	gtk_scrolled_window_set_vadjustment (_tmp7_, _tmp8_);
 	result = FALSE;
 	return result;
@@ -2367,7 +2372,7 @@ static gboolean ____lambda18__gsource_func (gpointer self) {
 
 
 void channel_tab_do_autoscroll (ChannelTab* self) {
-	Block13Data* _data13_;
+	Block12Data* _data12_;
 	GtkTextView* _tmp0_ = NULL;
 	GtkContainer* _tmp1_ = NULL;
 	GtkScrolledWindow* _tmp2_ = NULL;
@@ -2385,57 +2390,57 @@ void channel_tab_do_autoscroll (ChannelTab* self) {
 	gdouble _tmp14_ = 0.0;
 	gdouble _tmp15_ = 0.0;
 	g_return_if_fail (self != NULL);
-	_data13_ = g_slice_new0 (Block13Data);
-	_data13_->_ref_count_ = 1;
-	_data13_->self = g_object_ref (self);
+	_data12_ = g_slice_new0 (Block12Data);
+	_data12_->_ref_count_ = 1;
+	_data12_->self = g_object_ref (self);
 	_tmp0_ = self->priv->output;
 	_tmp1_ = (GtkContainer*) gtk_widget_get_parent ((GtkWidget*) _tmp0_);
 	_tmp2_ = _g_object_ref0 (G_TYPE_CHECK_INSTANCE_CAST (_tmp1_, gtk_scrolled_window_get_type (), GtkScrolledWindow));
-	_data13_->sw = _tmp2_;
-	_tmp3_ = _data13_->sw;
+	_data12_->sw = _tmp2_;
+	_tmp3_ = _data12_->sw;
 	_tmp4_ = gtk_scrolled_window_get_vadjustment (_tmp3_);
 	_tmp5_ = _g_object_ref0 (_tmp4_);
-	_data13_->position = _tmp5_;
-	_tmp6_ = _data13_->position;
+	_data12_->position = _tmp5_;
+	_tmp6_ = _data12_->position;
 	if (!G_TYPE_CHECK_INSTANCE_TYPE (_tmp6_, gtk_adjustment_get_type ())) {
-		block13_data_unref (_data13_);
-		_data13_ = NULL;
+		block12_data_unref (_data12_);
+		_data12_ = NULL;
 		return;
 	}
-	_tmp7_ = _data13_->position;
+	_tmp7_ = _data12_->position;
 	_tmp8_ = gtk_adjustment_get_value (_tmp7_);
 	_tmp9_ = _tmp8_;
-	_tmp10_ = _data13_->position;
+	_tmp10_ = _data12_->position;
 	_tmp11_ = gtk_adjustment_get_upper (_tmp10_);
 	_tmp12_ = _tmp11_;
-	_tmp13_ = _data13_->position;
+	_tmp13_ = _data12_->position;
 	_tmp14_ = gtk_adjustment_get_page_size (_tmp13_);
 	_tmp15_ = _tmp14_;
 	if (_tmp9_ > ((_tmp12_ - _tmp15_) - 75)) {
-		g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ____lambda18__gsource_func, block13_data_ref (_data13_), block13_data_unref);
+		g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ____lambda18__gsource_func, block12_data_ref (_data12_), block12_data_unref);
 	}
-	block13_data_unref (_data13_);
-	_data13_ = NULL;
+	block12_data_unref (_data12_);
+	_data12_ = NULL;
 }
 
 
-static Block14Data* block14_data_ref (Block14Data* _data14_) {
-	g_atomic_int_inc (&_data14_->_ref_count_);
-	return _data14_;
+static Block13Data* block13_data_ref (Block13Data* _data13_) {
+	g_atomic_int_inc (&_data13_->_ref_count_);
+	return _data13_;
 }
 
 
-static void block14_data_unref (void * _userdata_) {
-	Block14Data* _data14_;
-	_data14_ = (Block14Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data14_->_ref_count_)) {
+static void block13_data_unref (void * _userdata_) {
+	Block13Data* _data13_;
+	_data13_ = (Block13Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data13_->_ref_count_)) {
 		ChannelTab* self;
-		self = _data14_->self;
-		_g_object_unref0 (_data14_->rich_text);
-		_g_free0 (_data14_->text);
-		_g_object_unref0 (_data14_->tag);
+		self = _data13_->self;
+		_g_object_unref0 (_data13_->rich_text);
+		_g_free0 (_data13_->text);
+		_g_object_unref0 (_data13_->tag);
 		_g_object_unref0 (self);
-		g_slice_free (Block14Data, _data14_);
+		g_slice_free (Block13Data, _data13_);
 	}
 }
 
@@ -2453,7 +2458,7 @@ static gpointer __gtk_text_iter_dup0 (gpointer self) {
 }
 
 
-static gboolean __lambda17_ (Block14Data* _data14_) {
+static gboolean __lambda17_ (Block13Data* _data13_) {
 	ChannelTab* self;
 	gboolean result = FALSE;
 	GtkTextIter* end = NULL;
@@ -2485,9 +2490,7 @@ static gboolean __lambda17_ (Block14Data* _data14_) {
 	GtkTextIter _tmp27_ = {0};
 	RichText* _tmp28_ = NULL;
 	gboolean _tmp29_ = FALSE;
-	RichText* _tmp63_ = NULL;
-	gboolean _tmp64_ = FALSE;
-	self = _data14_->self;
+	self = _data13_->self;
 	self->is_locked = TRUE;
 	_tmp0_ = self->priv->output;
 	_tmp1_ = gtk_text_view_get_buffer (_tmp0_);
@@ -2502,10 +2505,10 @@ static gboolean __lambda17_ (Block14Data* _data14_) {
 		const gchar* _tmp7_ = NULL;
 		GtkTextTag* _tmp8_ = NULL;
 		gint _tmp9_ = 0;
-		_tmp7_ = _data14_->text;
-		_tmp8_ = _data14_->tag;
-		_tmp9_ = _data14_->retry_count;
-		_data14_->retry_count = _tmp9_ + 1;
+		_tmp7_ = _data13_->text;
+		_tmp8_ = _data13_->tag;
+		_tmp9_ = _data13_->retry_count;
+		_data13_->retry_count = _tmp9_ + 1;
 		channel_tab_add_with_tag (self, _tmp7_, _tmp8_, _tmp9_);
 		result = FALSE;
 		_g_free0 (end);
@@ -2514,26 +2517,26 @@ static gboolean __lambda17_ (Block14Data* _data14_) {
 	_tmp10_ = self->priv->output;
 	_tmp11_ = gtk_text_view_get_buffer (_tmp10_);
 	_tmp12_ = _tmp11_;
-	_tmp13_ = _data14_->text;
-	_tmp14_ = _data14_->text;
+	_tmp13_ = _data13_->text;
+	_tmp14_ = _data13_->text;
 	_tmp15_ = strlen (_tmp14_);
 	_tmp16_ = _tmp15_;
 	g_signal_emit_by_name (_tmp12_, "insert-text", end, _tmp13_, _tmp16_);
 	_tmp17_ = end;
 	start = *_tmp17_;
-	_tmp18_ = _data14_->text;
+	_tmp18_ = _data13_->text;
 	_tmp19_ = strlen (_tmp18_);
 	_tmp20_ = _tmp19_;
 	gtk_text_iter_backward_chars (&start, _tmp20_);
 	_tmp21_ = self->priv->output;
 	_tmp22_ = gtk_text_view_get_buffer (_tmp21_);
 	_tmp23_ = _tmp22_;
-	_tmp24_ = _data14_->tag;
+	_tmp24_ = _data13_->tag;
 	_tmp25_ = start;
 	_tmp26_ = end;
 	_tmp27_ = *_tmp26_;
 	gtk_text_buffer_apply_tag (_tmp23_, _tmp24_, &_tmp25_, &_tmp27_);
-	_tmp28_ = _data14_->rich_text;
+	_tmp28_ = _data13_->rich_text;
 	_tmp29_ = _tmp28_->has_links;
 	if (_tmp29_) {
 		{
@@ -2581,7 +2584,7 @@ static gboolean __lambda17_ (Block14Data* _data14_) {
 					}
 					_tmp30_ = FALSE;
 					_tmp32_ = i;
-					_tmp33_ = _data14_->rich_text;
+					_tmp33_ = _data13_->rich_text;
 					_tmp34_ = _tmp33_->link_locations_start;
 					_tmp35_ = gee_abstract_collection_get_size ((GeeCollection*) _tmp34_);
 					_tmp36_ = _tmp35_;
@@ -2599,7 +2602,7 @@ static gboolean __lambda17_ (Block14Data* _data14_) {
 					_tmp43_ = end;
 					start = *_tmp43_;
 					_tmp44_ = gtk_text_iter_get_offset (&start);
-					_tmp45_ = _data14_->rich_text;
+					_tmp45_ = _data13_->rich_text;
 					_tmp46_ = _tmp45_->link_locations_start;
 					_tmp47_ = i;
 					_tmp48_ = gee_abstract_list_get ((GeeAbstractList*) _tmp46_, _tmp47_);
@@ -2607,7 +2610,7 @@ static gboolean __lambda17_ (Block14Data* _data14_) {
 					_tmp49_ = end;
 					_tmp50_ = end;
 					_tmp51_ = gtk_text_iter_get_offset (_tmp50_);
-					_tmp52_ = _data14_->rich_text;
+					_tmp52_ = _data13_->rich_text;
 					_tmp53_ = _tmp52_->link_locations_end;
 					_tmp54_ = i;
 					_tmp55_ = gee_abstract_list_get ((GeeAbstractList*) _tmp53_, _tmp54_);
@@ -2620,148 +2623,6 @@ static gboolean __lambda17_ (Block14Data* _data14_) {
 					_tmp61_ = end;
 					_tmp62_ = *_tmp61_;
 					gtk_text_buffer_apply_tag (_tmp58_, _tmp59_, &_tmp60_, &_tmp62_);
-				}
-			}
-		}
-	}
-	_tmp63_ = _data14_->rich_text;
-	_tmp64_ = _tmp63_->has_names;
-	if (_tmp64_) {
-		{
-			gint i = 0;
-			i = 0;
-			{
-				gboolean _tmp65_ = FALSE;
-				_tmp65_ = TRUE;
-				while (TRUE) {
-					gint _tmp67_ = 0;
-					RichText* _tmp68_ = NULL;
-					GeeLinkedList* _tmp69_ = NULL;
-					gint _tmp70_ = 0;
-					gint _tmp71_ = 0;
-					GtkTextView* _tmp72_ = NULL;
-					GtkTextBuffer* _tmp73_ = NULL;
-					GtkTextBuffer* _tmp74_ = NULL;
-					GtkTextIter _tmp75_ = {0};
-					GtkTextIter _tmp76_ = {0};
-					GtkTextIter* _tmp77_ = NULL;
-					GtkTextIter* _tmp78_ = NULL;
-					gint _tmp79_ = 0;
-					RichText* _tmp80_ = NULL;
-					GeeLinkedList* _tmp81_ = NULL;
-					gint _tmp82_ = 0;
-					gpointer _tmp83_ = NULL;
-					GtkTextIter* _tmp84_ = NULL;
-					GtkTextIter* _tmp85_ = NULL;
-					gint _tmp86_ = 0;
-					RichText* _tmp87_ = NULL;
-					GeeLinkedList* _tmp88_ = NULL;
-					gint _tmp89_ = 0;
-					gpointer _tmp90_ = NULL;
-					GtkTextTag* _tmp91_ = NULL;
-					RichText* _tmp92_ = NULL;
-					GeeLinkedList* _tmp93_ = NULL;
-					gint _tmp94_ = 0;
-					gpointer _tmp95_ = NULL;
-					gchar* _tmp96_ = NULL;
-					Connection* _tmp97_ = NULL;
-					SqlClientServer* _tmp98_ = NULL;
-					const gchar* _tmp99_ = NULL;
-					gboolean _tmp100_ = FALSE;
-					GtkTextTag* utag = NULL;
-					GtkTextTag* _tmp103_ = NULL;
-					GtkTextTag* _tmp104_ = NULL;
-					GtkTextView* _tmp105_ = NULL;
-					GtkTextBuffer* _tmp106_ = NULL;
-					GtkTextBuffer* _tmp107_ = NULL;
-					GtkTextIter _tmp108_ = {0};
-					GtkTextIter* _tmp109_ = NULL;
-					GtkTextIter _tmp110_ = {0};
-					gchar* _tmp111_ = NULL;
-					GtkTextView* _tmp112_ = NULL;
-					GtkTextBuffer* _tmp113_ = NULL;
-					GtkTextBuffer* _tmp114_ = NULL;
-					GtkTextTag* _tmp115_ = NULL;
-					GtkTextIter _tmp116_ = {0};
-					GtkTextIter* _tmp117_ = NULL;
-					GtkTextIter _tmp118_ = {0};
-					if (!_tmp65_) {
-						gint _tmp66_ = 0;
-						_tmp66_ = i;
-						i = _tmp66_ + 1;
-					}
-					_tmp65_ = FALSE;
-					_tmp67_ = i;
-					_tmp68_ = _data14_->rich_text;
-					_tmp69_ = _tmp68_->names;
-					_tmp70_ = gee_abstract_collection_get_size ((GeeCollection*) _tmp69_);
-					_tmp71_ = _tmp70_;
-					if (!(_tmp67_ < _tmp71_)) {
-						break;
-					}
-					_tmp72_ = self->priv->output;
-					_tmp73_ = gtk_text_view_get_buffer (_tmp72_);
-					_tmp74_ = _tmp73_;
-					gtk_text_buffer_get_end_iter (_tmp74_, &_tmp75_);
-					_g_free0 (end);
-					_tmp76_ = _tmp75_;
-					_tmp77_ = __gtk_text_iter_dup0 (&_tmp76_);
-					end = _tmp77_;
-					_tmp78_ = end;
-					start = *_tmp78_;
-					_tmp79_ = gtk_text_iter_get_offset (&start);
-					_tmp80_ = _data14_->rich_text;
-					_tmp81_ = _tmp80_->name_location_start;
-					_tmp82_ = i;
-					_tmp83_ = gee_abstract_list_get ((GeeAbstractList*) _tmp81_, _tmp82_);
-					gtk_text_iter_set_offset (&start, _tmp79_ - ((gint) ((gintptr) _tmp83_)));
-					_tmp84_ = end;
-					_tmp85_ = end;
-					_tmp86_ = gtk_text_iter_get_offset (_tmp85_);
-					_tmp87_ = _data14_->rich_text;
-					_tmp88_ = _tmp87_->name_location_end;
-					_tmp89_ = i;
-					_tmp90_ = gee_abstract_list_get ((GeeAbstractList*) _tmp88_, _tmp89_);
-					gtk_text_iter_set_offset (_tmp84_, _tmp86_ - ((gint) ((gintptr) _tmp90_)));
-					_tmp92_ = _data14_->rich_text;
-					_tmp93_ = _tmp92_->names;
-					_tmp94_ = i;
-					_tmp95_ = gee_abstract_list_get ((GeeAbstractList*) _tmp93_, _tmp94_);
-					_tmp96_ = (gchar*) _tmp95_;
-					_tmp97_ = self->priv->_connection;
-					_tmp98_ = _tmp97_->server;
-					_tmp99_ = _tmp98_->nickname;
-					_tmp100_ = g_strcmp0 (_tmp96_, _tmp99_) == 0;
-					_g_free0 (_tmp96_);
-					if (_tmp100_) {
-						GtkTextTag* _tmp101_ = NULL;
-						_tmp101_ = self->priv->name_hilight_tag;
-						_tmp91_ = _tmp101_;
-					} else {
-						GtkTextTag* _tmp102_ = NULL;
-						_tmp102_ = self->priv->other_name_hilight_tag;
-						_tmp91_ = _tmp102_;
-					}
-					_tmp103_ = _g_object_ref0 (_tmp91_);
-					utag = _tmp103_;
-					_tmp104_ = utag;
-					_tmp105_ = self->priv->output;
-					_tmp106_ = gtk_text_view_get_buffer (_tmp105_);
-					_tmp107_ = _tmp106_;
-					_tmp108_ = start;
-					_tmp109_ = end;
-					_tmp110_ = *_tmp109_;
-					_tmp111_ = gtk_text_buffer_get_text (_tmp107_, &_tmp108_, &_tmp110_, FALSE);
-					g_object_set_data_full ((GObject*) _tmp104_, "uname", _tmp111_, g_free);
-					_tmp112_ = self->priv->output;
-					_tmp113_ = gtk_text_view_get_buffer (_tmp112_);
-					_tmp114_ = _tmp113_;
-					_tmp115_ = utag;
-					_tmp116_ = start;
-					_tmp117_ = end;
-					_tmp118_ = *_tmp117_;
-					gtk_text_buffer_apply_tag (_tmp114_, _tmp115_, &_tmp116_, &_tmp118_);
-					_g_object_unref0 (utag);
 				}
 			}
 		}
@@ -2781,7 +2642,7 @@ static gboolean ___lambda17__gsource_func (gpointer self) {
 
 
 static void channel_tab_add_with_tag (ChannelTab* self, const gchar* text, GtkTextTag* tag, gint retry_count) {
-	Block14Data* _data14_;
+	Block13Data* _data13_;
 	const gchar* _tmp0_ = NULL;
 	gchar* _tmp1_ = NULL;
 	GtkTextTag* _tmp2_ = NULL;
@@ -2797,32 +2658,32 @@ static void channel_tab_add_with_tag (ChannelTab* self, const gchar* text, GtkTe
 	GtkTextTag* _tmp21_ = NULL;
 	GtkTextTag* _tmp22_ = NULL;
 	g_return_if_fail (self != NULL);
-	_data14_ = g_slice_new0 (Block14Data);
-	_data14_->_ref_count_ = 1;
-	_data14_->self = g_object_ref (self);
+	_data13_ = g_slice_new0 (Block13Data);
+	_data13_->_ref_count_ = 1;
+	_data13_->self = g_object_ref (self);
 	_tmp0_ = text;
 	_tmp1_ = g_strdup (_tmp0_);
-	_g_free0 (_data14_->text);
-	_data14_->text = _tmp1_;
+	_g_free0 (_data13_->text);
+	_data13_->text = _tmp1_;
 	_tmp2_ = tag;
 	_tmp3_ = _g_object_ref0 (_tmp2_);
-	_g_object_unref0 (_data14_->tag);
-	_data14_->tag = _tmp3_;
+	_g_object_unref0 (_data13_->tag);
+	_data13_->tag = _tmp3_;
 	_tmp4_ = retry_count;
-	_data14_->retry_count = _tmp4_;
-	_tmp8_ = _data14_->text;
+	_data13_->retry_count = _tmp4_;
+	_tmp8_ = _data13_->text;
 	if (_tmp8_ == NULL) {
 		_tmp7_ = TRUE;
 	} else {
 		GtkTextTag* _tmp9_ = NULL;
-		_tmp9_ = _data14_->tag;
+		_tmp9_ = _data13_->tag;
 		_tmp7_ = _tmp9_ == NULL;
 	}
 	if (_tmp7_) {
 		_tmp6_ = TRUE;
 	} else {
 		gint _tmp10_ = 0;
-		_tmp10_ = _data14_->retry_count;
+		_tmp10_ = _data13_->retry_count;
 		_tmp6_ = _tmp10_ > 4;
 	}
 	if (_tmp6_) {
@@ -2833,7 +2694,7 @@ static void channel_tab_add_with_tag (ChannelTab* self, const gchar* text, GtkTe
 		gchar* _tmp13_ = NULL;
 		gchar* _tmp14_ = NULL;
 		gboolean _tmp15_ = FALSE;
-		_tmp12_ = _data14_->text;
+		_tmp12_ = _data13_->text;
 		_tmp13_ = string_strip (_tmp12_);
 		_tmp14_ = _tmp13_;
 		_tmp15_ = g_strcmp0 (_tmp14_, "") == 0;
@@ -2841,7 +2702,7 @@ static void channel_tab_add_with_tag (ChannelTab* self, const gchar* text, GtkTe
 		if (_tmp15_) {
 			GtkTextTag* _tmp16_ = NULL;
 			GtkTextTag* _tmp17_ = NULL;
-			_tmp16_ = _data14_->tag;
+			_tmp16_ = _data13_->tag;
 			_tmp17_ = self->priv->spacing_tag;
 			_tmp11_ = _tmp16_ != _tmp17_;
 		} else {
@@ -2850,92 +2711,41 @@ static void channel_tab_add_with_tag (ChannelTab* self, const gchar* text, GtkTe
 		_tmp5_ = _tmp11_;
 	}
 	if (_tmp5_) {
-		block14_data_unref (_data14_);
-		_data14_ = NULL;
+		block13_data_unref (_data13_);
+		_data13_ = NULL;
 		return;
 	}
-	_tmp18_ = _data14_->text;
+	_tmp18_ = _data13_->text;
 	_tmp19_ = rich_text_new (_tmp18_);
-	_data14_->rich_text = _tmp19_;
-	_tmp21_ = _data14_->tag;
+	_data13_->rich_text = _tmp19_;
+	_tmp21_ = _data13_->tag;
 	_tmp22_ = self->priv->full_width_tag;
 	if (_tmp21_ == _tmp22_) {
 		_tmp20_ = TRUE;
 	} else {
 		GtkTextTag* _tmp23_ = NULL;
 		GtkTextTag* _tmp24_ = NULL;
-		_tmp23_ = _data14_->tag;
+		_tmp23_ = _data13_->tag;
 		_tmp24_ = self->priv->std_message_tag;
 		_tmp20_ = _tmp23_ == _tmp24_;
 	}
 	if (_tmp20_) {
 		RichText* _tmp25_ = NULL;
-		GtkTextTag* _tmp26_ = NULL;
-		GtkTextTag* _tmp27_ = NULL;
-		_tmp25_ = _data14_->rich_text;
+		_tmp25_ = _data13_->rich_text;
 		rich_text_parse_links (_tmp25_);
-		_tmp26_ = _data14_->tag;
-		_tmp27_ = self->priv->std_message_tag;
-		if (_tmp26_ == _tmp27_) {
-			{
-				GeeLinkedList* _usr_list = NULL;
-				GeeLinkedList* _tmp28_ = NULL;
-				GeeLinkedList* _tmp29_ = NULL;
-				gint _usr_size = 0;
-				GeeLinkedList* _tmp30_ = NULL;
-				gint _tmp31_ = 0;
-				gint _tmp32_ = 0;
-				gint _usr_index = 0;
-				_tmp28_ = self->users;
-				_tmp29_ = _g_object_ref0 (_tmp28_);
-				_usr_list = _tmp29_;
-				_tmp30_ = _usr_list;
-				_tmp31_ = gee_abstract_collection_get_size ((GeeCollection*) _tmp30_);
-				_tmp32_ = _tmp31_;
-				_usr_size = _tmp32_;
-				_usr_index = -1;
-				while (TRUE) {
-					gint _tmp33_ = 0;
-					gint _tmp34_ = 0;
-					gint _tmp35_ = 0;
-					gchar* usr = NULL;
-					GeeLinkedList* _tmp36_ = NULL;
-					gint _tmp37_ = 0;
-					gpointer _tmp38_ = NULL;
-					RichText* _tmp39_ = NULL;
-					const gchar* _tmp40_ = NULL;
-					_tmp33_ = _usr_index;
-					_usr_index = _tmp33_ + 1;
-					_tmp34_ = _usr_index;
-					_tmp35_ = _usr_size;
-					if (!(_tmp34_ < _tmp35_)) {
-						break;
-					}
-					_tmp36_ = _usr_list;
-					_tmp37_ = _usr_index;
-					_tmp38_ = gee_abstract_list_get ((GeeAbstractList*) _tmp36_, _tmp37_);
-					usr = (gchar*) _tmp38_;
-					_tmp39_ = _data14_->rich_text;
-					_tmp40_ = usr;
-					rich_text_parse_name (_tmp39_, _tmp40_);
-					_g_free0 (usr);
-				}
-				_g_object_unref0 (_usr_list);
-			}
-		}
 	}
 	while (TRUE) {
-		gboolean _tmp41_ = FALSE;
-		_tmp41_ = self->is_locked;
-		if (!_tmp41_) {
+		gboolean _tmp26_ = FALSE;
+		_tmp26_ = self->is_locked;
+		if (!_tmp26_) {
 			break;
 		}
 		g_usleep ((gulong) 111);
 	}
-	g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ___lambda17__gsource_func, block14_data_ref (_data14_), block14_data_unref);
+	g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ___lambda17__gsource_func, block13_data_ref (_data13_), block13_data_unref);
 	self->is_locked = FALSE;
-	block14_data_unref (_data14_);
-	_data14_ = NULL;
+	block13_data_unref (_data13_);
+	_data13_ = NULL;
 }
 
 
@@ -2963,66 +2773,73 @@ void channel_tab_update_tag_table (ChannelTab* self) {
 	GtkTextTag* _tmp5_ = NULL;
 	GtkTextTag* _tmp6_ = NULL;
 	GtkTextTag* _tmp7_ = NULL;
-	Settings* _tmp8_ = NULL;
-	gchar* _tmp9_ = NULL;
+	GtkTextTag* _tmp8_ = NULL;
+	Settings* _tmp9_ = NULL;
 	gchar* _tmp10_ = NULL;
-	GtkTextTag* _tmp11_ = NULL;
-	GdkRGBA _tmp12_ = {0};
-	GtkTextTag* _tmp13_ = NULL;
+	gchar* _tmp11_ = NULL;
+	GtkTextTag* _tmp12_ = NULL;
+	GdkRGBA _tmp13_ = {0};
 	GtkTextTag* _tmp14_ = NULL;
-	Settings* _tmp15_ = NULL;
-	gchar* _tmp16_ = NULL;
-	gchar* _tmp17_ = NULL;
-	GtkTextTag* _tmp18_ = NULL;
-	GdkRGBA _tmp19_ = {0};
+	GtkTextTag* _tmp15_ = NULL;
+	GtkTextTag* _tmp16_ = NULL;
+	Settings* _tmp17_ = NULL;
+	gchar* _tmp18_ = NULL;
+	gchar* _tmp19_ = NULL;
 	GtkTextTag* _tmp20_ = NULL;
-	GtkTextTag* _tmp21_ = NULL;
-	const gchar* _tmp22_ = NULL;
-	gboolean _tmp23_ = FALSE;
+	GdkRGBA _tmp21_ = {0};
+	GtkTextTag* _tmp22_ = NULL;
+	GtkTextTag* _tmp23_ = NULL;
 	GtkTextTag* _tmp24_ = NULL;
-	GdkRGBA _tmp25_ = {0};
+	GtkTextTag* _tmp25_ = NULL;
 	GtkTextTag* _tmp26_ = NULL;
-	Settings* _tmp27_ = NULL;
-	gchar* _tmp28_ = NULL;
-	gchar* _tmp29_ = NULL;
-	GtkTextTag* _tmp30_ = NULL;
-	GdkRGBA _tmp31_ = {0};
+	const gchar* _tmp27_ = NULL;
+	gboolean _tmp28_ = FALSE;
+	GtkTextTag* _tmp29_ = NULL;
+	GdkRGBA _tmp30_ = {0};
+	GtkTextTag* _tmp31_ = NULL;
 	GtkTextTag* _tmp32_ = NULL;
-	GtkTextTag* _tmp33_ = NULL;
-	const gchar* _tmp34_ = NULL;
-	gboolean _tmp35_ = FALSE;
+	Settings* _tmp33_ = NULL;
+	gchar* _tmp34_ = NULL;
+	gchar* _tmp35_ = NULL;
 	GtkTextTag* _tmp36_ = NULL;
 	GdkRGBA _tmp37_ = {0};
 	GtkTextTag* _tmp38_ = NULL;
-	const gchar* _tmp39_ = NULL;
-	gboolean _tmp40_ = FALSE;
-	GtkTextTag* _tmp41_ = NULL;
-	GdkRGBA _tmp42_ = {0};
-	GtkTextTag* _tmp43_ = NULL;
-	Settings* _tmp44_ = NULL;
-	gchar* _tmp45_ = NULL;
-	gchar* _tmp46_ = NULL;
+	GtkTextTag* _tmp39_ = NULL;
+	const gchar* _tmp40_ = NULL;
+	gboolean _tmp41_ = FALSE;
+	GtkTextTag* _tmp42_ = NULL;
+	GdkRGBA _tmp43_ = {0};
+	GtkTextTag* _tmp44_ = NULL;
+	const gchar* _tmp45_ = NULL;
+	gboolean _tmp46_ = FALSE;
 	GtkTextTag* _tmp47_ = NULL;
 	GdkRGBA _tmp48_ = {0};
 	GtkTextTag* _tmp49_ = NULL;
-	GtkTextTag* _tmp50_ = NULL;
-	GtkTextTag* _tmp51_ = NULL;
-	GtkTextTag* _tmp52_ = NULL;
+	Settings* _tmp50_ = NULL;
+	gchar* _tmp51_ = NULL;
+	gchar* _tmp52_ = NULL;
 	GtkTextTag* _tmp53_ = NULL;
-	GtkTextTag* _tmp54_ = NULL;
+	GdkRGBA _tmp54_ = {0};
 	GtkTextTag* _tmp55_ = NULL;
 	GtkTextTag* _tmp56_ = NULL;
 	GtkTextTag* _tmp57_ = NULL;
 	GtkTextTag* _tmp58_ = NULL;
 	GtkTextTag* _tmp59_ = NULL;
-	GtkTextView* _tmp60_ = NULL;
-	GtkStyleContext* _tmp61_ = NULL;
-	GdkRGBA _tmp62_ = {0};
-	const gchar* _tmp63_ = NULL;
-	gboolean _tmp64_ = FALSE;
+	GtkTextTag* _tmp60_ = NULL;
+	GtkTextTag* _tmp61_ = NULL;
+	GtkTextTag* _tmp62_ = NULL;
+	GtkTextTag* _tmp63_ = NULL;
+	GtkTextTag* _tmp64_ = NULL;
 	GtkTextTag* _tmp65_ = NULL;
-	GdkRGBA _tmp66_ = {0};
-	GtkTextTag* _tmp67_ = NULL;
+	GtkTextTag* _tmp66_ = NULL;
+	GtkTextView* _tmp67_ = NULL;
+	GtkStyleContext* _tmp68_ = NULL;
+	GdkRGBA _tmp69_ = {0};
+	const gchar* _tmp70_ = NULL;
+	gboolean _tmp71_ = FALSE;
+	GtkTextTag* _tmp72_ = NULL;
+	GdkRGBA _tmp73_ = {0};
+	GtkTextTag* _tmp74_ = NULL;
 	g_return_if_fail (self != NULL);
 	memset (&color, 0, sizeof (GdkRGBA));
 	_tmp0_ = main_window_settings;
@@ -3034,128 +2851,142 @@ void channel_tab_update_tag_table (ChannelTab* self) {
 	_tmp4_ = color;
 	g_object_set (_tmp3_, "foreground-rgba", &_tmp4_, NULL);
 	_tmp5_ = self->priv->user_other_tag;
-	g_object_set (_tmp5_, "left-margin", 0, NULL);
+	g_object_set (_tmp5_, "left-margin", 30, NULL);
 	_tmp6_ = self->priv->user_other_tag;
-	g_object_set (_tmp6_, "weight", (gint) PANGO_WEIGHT_SEMIBOLD, NULL);
+	g_object_set (_tmp6_, "right-margin", 30, NULL);
 	_tmp7_ = self->priv->user_other_tag;
-	g_signal_connect_object (_tmp7_, "event", (GCallback) _channel_tab_user_name_clicked_gtk_text_tag_event, self, 0);
-	_tmp8_ = main_window_settings;
-	_tmp9_ = settings_get_color (_tmp8_, "user-self-color");
-	_tmp10_ = _tmp9_;
-	gdk_rgba_parse (&color, _tmp10_);
-	_g_free0 (_tmp10_);
-	_tmp11_ = self->priv->user_self_tag;
-	_tmp12_ = color;
-	g_object_set (_tmp11_, "foreground-rgba", &_tmp12_, NULL);
-	_tmp13_ = self->priv->user_self_tag;
-	g_object_set (_tmp13_, "left-margin", 0, NULL);
+	g_object_set (_tmp7_, "weight", (gint) PANGO_WEIGHT_SEMIBOLD, NULL);
+	_tmp8_ = self->priv->user_other_tag;
+	g_signal_connect_object (_tmp8_, "event", (GCallback) _channel_tab_user_name_clicked_gtk_text_tag_event, self, 0);
+	_tmp9_ = main_window_settings;
+	_tmp10_ = settings_get_color (_tmp9_, "user-self-color");
+	_tmp11_ = _tmp10_;
+	gdk_rgba_parse (&color, _tmp11_);
+	_g_free0 (_tmp11_);
+	_tmp12_ = self->priv->user_self_tag;
+	_tmp13_ = color;
+	g_object_set (_tmp12_, "foreground-rgba", &_tmp13_, NULL);
 	_tmp14_ = self->priv->user_self_tag;
-	g_object_set (_tmp14_, "weight", (gint) PANGO_WEIGHT_SEMIBOLD, NULL);
-	_tmp15_ = main_window_settings;
-	_tmp16_ = settings_get_color (_tmp15_, "message-color");
-	_tmp17_ = _tmp16_;
-	gdk_rgba_parse (&color, _tmp17_);
-	_g_free0 (_tmp17_);
-	_tmp18_ = self->priv->std_message_tag;
-	_tmp19_ = color;
-	g_object_set (_tmp18_, "foreground-rgba", &_tmp19_, NULL);
+	g_object_set (_tmp14_, "left-margin", 30, NULL);
+	_tmp15_ = self->priv->user_self_tag;
+	g_object_set (_tmp15_, "right-margin", 30, NULL);
+	_tmp16_ = self->priv->user_self_tag;
+	g_object_set (_tmp16_, "weight", (gint) PANGO_WEIGHT_SEMIBOLD, NULL);
+	_tmp17_ = main_window_settings;
+	_tmp18_ = settings_get_color (_tmp17_, "message-color");
+	_tmp19_ = _tmp18_;
+	gdk_rgba_parse (&color, _tmp19_);
+	_g_free0 (_tmp19_);
 	_tmp20_ = self->priv->std_message_tag;
-	g_object_set (_tmp20_, "indent", 0, NULL);
-	_tmp21_ = self->priv->full_width_tag;
-	g_object_set (_tmp21_, "left-margin", 0, NULL);
-	_tmp23_ = relay_is_light_theme;
-	if (_tmp23_) {
-		_tmp22_ = "#752712";
+	_tmp21_ = color;
+	g_object_set (_tmp20_, "foreground-rgba", &_tmp21_, NULL);
+	_tmp22_ = self->priv->std_message_tag;
+	g_object_set (_tmp22_, "indent", 0, NULL);
+	_tmp23_ = self->priv->std_message_tag;
+	g_object_set (_tmp23_, "left-margin", 156, NULL);
+	_tmp24_ = self->priv->std_message_tag;
+	g_object_set (_tmp24_, "right-margin", 30, NULL);
+	_tmp25_ = self->priv->full_width_tag;
+	g_object_set (_tmp25_, "left-margin", 30, NULL);
+	_tmp26_ = self->priv->full_width_tag;
+	g_object_set (_tmp26_, "right-margin", 30, NULL);
+	_tmp28_ = relay_is_light_theme;
+	if (_tmp28_) {
+		_tmp27_ = "#752712";
 	} else {
-		_tmp22_ = "#C54725";
+		_tmp27_ = "#C54725";
 	}
-	gdk_rgba_parse (&color, _tmp22_);
-	_tmp24_ = self->priv->error_tag;
-	_tmp25_ = color;
-	g_object_set (_tmp24_, "foreground-rgba", &_tmp25_, NULL);
-	_tmp26_ = self->priv->error_tag;
-	g_object_set (_tmp26_, "left-margin", 0, NULL);
-	_tmp27_ = main_window_settings;
-	_tmp28_ = settings_get_color (_tmp27_, "link-color");
-	_tmp29_ = _tmp28_;
-	gdk_rgba_parse (&color, _tmp29_);
-	_g_free0 (_tmp29_);
-	_tmp30_ = self->priv->link_tag;
-	_tmp31_ = color;
-	g_object_set (_tmp30_, "foreground-rgba", &_tmp31_, NULL);
-	_tmp32_ = self->priv->link_tag;
-	g_object_set (_tmp32_, "underline-set", TRUE, NULL);
-	_tmp33_ = self->priv->link_tag;
-	g_signal_connect_object (_tmp33_, "event", (GCallback) _channel_tab_link_clicked_gtk_text_tag_event, self, 0);
-	_tmp35_ = relay_is_light_theme;
-	if (_tmp35_) {
-		_tmp34_ = "#3E749B";
-	} else {
-		_tmp34_ = "#2B94E0";
-	}
-	gdk_rgba_parse (&color, _tmp34_);
-	_tmp36_ = self->priv->name_hilight_tag;
+	gdk_rgba_parse (&color, _tmp27_);
+	_tmp29_ = self->priv->error_tag;
+	_tmp30_ = color;
+	g_object_set (_tmp29_, "foreground-rgba", &_tmp30_, NULL);
+	_tmp31_ = self->priv->error_tag;
+	g_object_set (_tmp31_, "left-margin", 30, NULL);
+	_tmp32_ = self->priv->error_tag;
+	g_object_set (_tmp32_, "right-margin", 30, NULL);
+	_tmp33_ = main_window_settings;
+	_tmp34_ = settings_get_color (_tmp33_, "link-color");
+	_tmp35_ = _tmp34_;
+	gdk_rgba_parse (&color, _tmp35_);
+	_g_free0 (_tmp35_);
+	_tmp36_ = self->priv->link_tag;
 	_tmp37_ = color;
 	g_object_set (_tmp36_, "foreground-rgba", &_tmp37_, NULL);
-	_tmp38_ = self->priv->name_hilight_tag;
-	g_object_set (_tmp38_, "weight", (gint) PANGO_WEIGHT_SEMIBOLD, NULL);
-	_tmp40_ = relay_is_light_theme;
-	if (_tmp40_) {
-		_tmp39_ = "#748E16";
+	_tmp38_ = self->priv->link_tag;
+	g_object_set (_tmp38_, "underline-set", TRUE, NULL);
+	_tmp39_ = self->priv->link_tag;
+	g_signal_connect_object (_tmp39_, "event", (GCallback) _channel_tab_link_clicked_gtk_text_tag_event, self, 0);
+	_tmp41_ = relay_is_light_theme;
+	if (_tmp41_) {
+		_tmp40_ = "#3E749B";
 	} else {
-		_tmp39_ = "#DEFF67";
+		_tmp40_ = "#2B94E0";
 	}
-	gdk_rgba_parse (&color, _tmp39_);
-	_tmp41_ = self->priv->other_name_hilight_tag;
-	_tmp42_ = color;
-	g_object_set (_tmp41_, "foreground-rgba", &_tmp42_, NULL);
-	_tmp43_ = self->priv->other_name_hilight_tag;
-	g_signal_connect_object (_tmp43_, "event", (GCallback) _channel_tab_user_name_clicked_gtk_text_tag_event, self, 0);
-	_tmp44_ = main_window_settings;
-	_tmp45_ = settings_get_color (_tmp44_, "timestamp-color");
-	_tmp46_ = _tmp45_;
-	gdk_rgba_parse (&color, _tmp46_);
-	_g_free0 (_tmp46_);
-	_tmp47_ = self->priv->timestamp_tag;
+	gdk_rgba_parse (&color, _tmp40_);
+	_tmp42_ = self->priv->name_hilight_tag;
+	_tmp43_ = color;
+	g_object_set (_tmp42_, "foreground-rgba", &_tmp43_, NULL);
+	_tmp44_ = self->priv->name_hilight_tag;
+	g_object_set (_tmp44_, "weight", (gint) PANGO_WEIGHT_SEMIBOLD, NULL);
+	_tmp46_ = relay_is_light_theme;
+	if (_tmp46_) {
+		_tmp45_ = "#748E16";
+	} else {
+		_tmp45_ = "#DEFF67";
+	}
+	gdk_rgba_parse (&color, _tmp45_);
+	_tmp47_ = self->priv->other_name_hilight_tag;
 	_tmp48_ = color;
 	g_object_set (_tmp47_, "foreground-rgba", &_tmp48_, NULL);
-	_tmp49_ = self->priv->timestamp_tag;
-	g_object_set (_tmp49_, "justification", GTK_JUSTIFY_RIGHT, NULL);
-	_tmp50_ = self->priv->timestamp_tag;
-	g_object_set (_tmp50_, "size-points", (gdouble) 8, NULL);
-	_tmp51_ = self->priv->timestamp_tag;
-	g_object_set (_tmp51_, "family", "Liberation Sans", NULL);
-	_tmp52_ = self->priv->timestamp_tag;
-	g_object_set (_tmp52_, "pixels-above-lines", 7, NULL);
+	_tmp49_ = self->priv->other_name_hilight_tag;
+	g_signal_connect_object (_tmp49_, "event", (GCallback) _channel_tab_user_name_clicked_gtk_text_tag_event, self, 0);
+	_tmp50_ = main_window_settings;
+	_tmp51_ = settings_get_color (_tmp50_, "timestamp-color");
+	_tmp52_ = _tmp51_;
+	gdk_rgba_parse (&color, _tmp52_);
+	_g_free0 (_tmp52_);
 	_tmp53_ = self->priv->timestamp_tag;
-	g_object_set (_tmp53_, "pixels-below-lines", 3, NULL);
-	_tmp54_ = self->priv->spacing_tag;
-	g_object_set (_tmp54_, "size-points", (gdouble) 1, NULL);
-	_tmp55_ = self->priv->spacer_line_tag;
-	g_object_set (_tmp55_, "justification", GTK_JUSTIFY_FILL, NULL);
-	_tmp56_ = self->priv->spacer_line_tag;
-	g_object_set (_tmp56_, "underline", PANGO_UNDERLINE_SINGLE, NULL);
-	_tmp57_ = self->priv->spacer_line_tag;
-	g_object_set (_tmp57_, "left-margin", 15, NULL);
-	_tmp58_ = self->priv->spacer_line_tag;
-	g_object_set (_tmp58_, "right-margin", 15, NULL);
-	_tmp59_ = self->priv->spacer_line_tag;
-	_tmp60_ = self->priv->output;
-	_tmp61_ = gtk_widget_get_style_context ((GtkWidget*) _tmp60_);
-	gtk_style_context_get_background_color (_tmp61_, GTK_STATE_FLAG_NORMAL, &_tmp62_);
-	g_object_set (_tmp59_, "foreground-rgba", &_tmp62_, NULL);
-	_tmp64_ = relay_is_light_theme;
-	if (_tmp64_) {
-		_tmp63_ = "#C3C3C3";
-	} else {
-		_tmp63_ = "#505254";
-	}
-	gdk_rgba_parse (&color, _tmp63_);
+	_tmp54_ = color;
+	g_object_set (_tmp53_, "foreground-rgba", &_tmp54_, NULL);
+	_tmp55_ = self->priv->timestamp_tag;
+	g_object_set (_tmp55_, "justification", GTK_JUSTIFY_RIGHT, NULL);
+	_tmp56_ = self->priv->timestamp_tag;
+	g_object_set (_tmp56_, "right-margin", 30, NULL);
+	_tmp57_ = self->priv->timestamp_tag;
+	g_object_set (_tmp57_, "size-points", (gdouble) 8, NULL);
+	_tmp58_ = self->priv->timestamp_tag;
+	g_object_set (_tmp58_, "family", "Open Sans Regular", NULL);
+	_tmp59_ = self->priv->timestamp_tag;
+	g_object_set (_tmp59_, "pixels-above-lines", 7, NULL);
+	_tmp60_ = self->priv->timestamp_tag;
+	g_object_set (_tmp60_, "pixels-below-lines", 3, NULL);
+	_tmp61_ = self->priv->spacing_tag;
+	g_object_set (_tmp61_, "size-points", (gdouble) 1, NULL);
+	_tmp62_ = self->priv->spacer_line_tag;
+	g_object_set (_tmp62_, "justification", GTK_JUSTIFY_FILL, NULL);
+	_tmp63_ = self->priv->spacer_line_tag;
+	g_object_set (_tmp63_, "underline", PANGO_UNDERLINE_SINGLE, NULL);
+	_tmp64_ = self->priv->spacer_line_tag;
+	g_object_set (_tmp64_, "left-margin", 15, NULL);
 	_tmp65_ = self->priv->spacer_line_tag;
-	_tmp66_ = color;
-	g_object_set (_tmp65_, "paragraph-background-rgba", &_tmp66_, NULL);
-	_tmp67_ = self->priv->spacer_line_tag;
-	g_object_set (_tmp67_, "size-points", 0.5, NULL);
+	g_object_set (_tmp65_, "right-margin", 15, NULL);
+	_tmp66_ = self->priv->spacer_line_tag;
+	_tmp67_ = self->priv->output;
+	_tmp68_ = gtk_widget_get_style_context ((GtkWidget*) _tmp67_);
+	gtk_style_context_get_background_color (_tmp68_, GTK_STATE_FLAG_NORMAL, &_tmp69_);
+	g_object_set (_tmp66_, "foreground-rgba", &_tmp69_, NULL);
+	_tmp71_ = relay_is_light_theme;
+	if (_tmp71_) {
+		_tmp70_ = "#C3C3C3";
+	} else {
+		_tmp70_ = "#505254";
+	}
+	gdk_rgba_parse (&color, _tmp70_);
+	_tmp72_ = self->priv->spacer_line_tag;
+	_tmp73_ = color;
+	g_object_set (_tmp72_, "paragraph-background-rgba", &_tmp73_, NULL);
+	_tmp74_ = self->priv->spacer_line_tag;
+	g_object_set (_tmp74_, "size-points", 0.5, NULL);
 }
 
 
@@ -3408,7 +3239,7 @@ gchar* channel_tab_get_tag_selection (ChannelTab* self, GtkTextView* tv, GtkText
 				g_object_get (_tmp3_, "name", &_tmp4_, NULL);
 				_tmp5_ = _tmp4_;
 				_tmp6_ = _tmp5_;
-				g_debug ("channel_tab.vala:571: %s", _tmp6_);
+				g_debug ("channel_tab.vala:580: %s", _tmp6_);
 				_g_free0 (_tmp6_);
 				_tmp9_ = tag;
 				g_object_get (_tmp9_, "name", &_tmp10_, NULL);

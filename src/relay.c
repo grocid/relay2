@@ -98,8 +98,8 @@ typedef struct _MainWindowClass MainWindowClass;
 #define _g_free0(var) (var = (g_free (var), NULL))
 #define _g_error_free0(var) ((var == NULL) ? NULL : (var = (g_error_free (var), NULL)))
 #define _g_option_context_free0(var) ((var == NULL) ? NULL : (var = (g_option_context_free (var), NULL)))
+typedef struct _Block14Data Block14Data;
 typedef struct _Block15Data Block15Data;
-typedef struct _Block16Data Block16Data;
 
 struct _Relay {
 	GraniteApplication parent_instance;
@@ -116,14 +116,14 @@ struct _RelayPrivate {
 	MainWindow* window;
 };
 
-struct _Block15Data {
+struct _Block14Data {
 	int _ref_count_;
 	gchar* error_msg;
 };
 
-struct _Block16Data {
+struct _Block15Data {
 	int _ref_count_;
-	Block15Data * _data15_;
+	Block14Data * _data14_;
 	GtkMessageDialog* dialog;
 };
 
@@ -164,12 +164,12 @@ MainWindow* main_window_new (Relay* application);
 MainWindow* main_window_construct (GType object_type, Relay* application);
 gchar* relay_get_asset_file (const gchar* name);
 void relay_show_error_window (const gchar* error_msg);
+static Block14Data* block14_data_ref (Block14Data* _data14_);
+static void block14_data_unref (void * _userdata_);
+static gboolean __lambda4_ (Block14Data* _data14_);
 static Block15Data* block15_data_ref (Block15Data* _data15_);
 static void block15_data_unref (void * _userdata_);
-static gboolean __lambda4_ (Block15Data* _data15_);
-static Block16Data* block16_data_ref (Block16Data* _data16_);
-static void block16_data_unref (void * _userdata_);
-static void __lambda5_ (Block16Data* _data16_, gint response_id);
+static void __lambda5_ (Block15Data* _data15_, gint response_id);
 static void ___lambda5__gtk_dialog_response (GtkDialog* _sender, gint response_id, gpointer self);
 static gboolean ___lambda4__gsource_func (gpointer self);
 gboolean relay_set_color_mode (GdkRGBA* color);
@@ -311,7 +311,7 @@ static void relay_real_activate (GApplication* base) {
 		g_debug ("relay.vala:151: Not attempting to switch theme.");
 	}
 	_tmp11_ = gtk_settings_get_default ();
-	g_object_set (_tmp11_, "gtk-application-prefer-dark-theme", TRUE, NULL);
+	g_object_set (_tmp11_, "gtk-application-prefer-dark-theme", FALSE, NULL);
 	_tmp12_ = main_window_new (self);
 	_g_object_unref0 (self->priv->window);
 	self->priv->window = _tmp12_;
@@ -563,6 +563,22 @@ static void relay_check_env (Relay* self) {
 }
 
 
+static Block14Data* block14_data_ref (Block14Data* _data14_) {
+	g_atomic_int_inc (&_data14_->_ref_count_);
+	return _data14_;
+}
+
+
+static void block14_data_unref (void * _userdata_) {
+	Block14Data* _data14_;
+	_data14_ = (Block14Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data14_->_ref_count_)) {
+		_g_free0 (_data14_->error_msg);
+		g_slice_free (Block14Data, _data14_);
+	}
+}
+
+
 static Block15Data* block15_data_ref (Block15Data* _data15_) {
 	g_atomic_int_inc (&_data15_->_ref_count_);
 	return _data15_;
@@ -573,35 +589,19 @@ static void block15_data_unref (void * _userdata_) {
 	Block15Data* _data15_;
 	_data15_ = (Block15Data*) _userdata_;
 	if (g_atomic_int_dec_and_test (&_data15_->_ref_count_)) {
-		_g_free0 (_data15_->error_msg);
+		_g_object_unref0 (_data15_->dialog);
+		block14_data_unref (_data15_->_data14_);
+		_data15_->_data14_ = NULL;
 		g_slice_free (Block15Data, _data15_);
 	}
 }
 
 
-static Block16Data* block16_data_ref (Block16Data* _data16_) {
-	g_atomic_int_inc (&_data16_->_ref_count_);
-	return _data16_;
-}
-
-
-static void block16_data_unref (void * _userdata_) {
-	Block16Data* _data16_;
-	_data16_ = (Block16Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data16_->_ref_count_)) {
-		_g_object_unref0 (_data16_->dialog);
-		block15_data_unref (_data16_->_data15_);
-		_data16_->_data15_ = NULL;
-		g_slice_free (Block16Data, _data16_);
-	}
-}
-
-
-static void __lambda5_ (Block16Data* _data16_, gint response_id) {
-	Block15Data* _data15_;
-	_data15_ = _data16_->_data15_;
+static void __lambda5_ (Block15Data* _data15_, gint response_id) {
+	Block14Data* _data14_;
+	_data14_ = _data15_->_data14_;
 	relay_error_open = FALSE;
-	gtk_widget_destroy ((GtkWidget*) _data16_->dialog);
+	gtk_widget_destroy ((GtkWidget*) _data15_->dialog);
 }
 
 
@@ -610,28 +610,28 @@ static void ___lambda5__gtk_dialog_response (GtkDialog* _sender, gint response_i
 }
 
 
-static gboolean __lambda4_ (Block15Data* _data15_) {
+static gboolean __lambda4_ (Block14Data* _data14_) {
 	gboolean result = FALSE;
-	Block16Data* _data16_;
+	Block15Data* _data15_;
 	GtkWindow* _tmp0_ = NULL;
 	const gchar* _tmp1_ = NULL;
 	const gchar* _tmp2_ = NULL;
 	GtkMessageDialog* _tmp3_ = NULL;
-	_data16_ = g_slice_new0 (Block16Data);
-	_data16_->_ref_count_ = 1;
-	_data16_->_data15_ = block15_data_ref (_data15_);
+	_data15_ = g_slice_new0 (Block15Data);
+	_data15_->_ref_count_ = 1;
+	_data15_->_data14_ = block14_data_ref (_data14_);
 	_tmp0_ = main_window_window;
-	_tmp1_ = _data15_->error_msg;
+	_tmp1_ = _data14_->error_msg;
 	_tmp2_ = _ (_tmp1_);
 	_tmp3_ = (GtkMessageDialog*) gtk_message_dialog_new (_tmp0_, GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK, _tmp2_);
 	g_object_ref_sink (_tmp3_);
-	_data16_->dialog = _tmp3_;
-	g_signal_connect_data ((GtkDialog*) _data16_->dialog, "response", (GCallback) ___lambda5__gtk_dialog_response, block16_data_ref (_data16_), (GClosureNotify) block16_data_unref, 0);
-	gtk_widget_show ((GtkWidget*) _data16_->dialog);
+	_data15_->dialog = _tmp3_;
+	g_signal_connect_data ((GtkDialog*) _data15_->dialog, "response", (GCallback) ___lambda5__gtk_dialog_response, block15_data_ref (_data15_), (GClosureNotify) block15_data_unref, 0);
+	gtk_widget_show ((GtkWidget*) _data15_->dialog);
 	relay_error_open = TRUE;
 	result = FALSE;
-	block16_data_unref (_data16_);
-	_data16_ = NULL;
+	block15_data_unref (_data15_);
+	_data15_ = NULL;
 	return result;
 }
 
@@ -644,26 +644,26 @@ static gboolean ___lambda4__gsource_func (gpointer self) {
 
 
 void relay_show_error_window (const gchar* error_msg) {
-	Block15Data* _data15_;
+	Block14Data* _data14_;
 	const gchar* _tmp0_ = NULL;
 	gchar* _tmp1_ = NULL;
 	gboolean _tmp2_ = FALSE;
 	g_return_if_fail (error_msg != NULL);
-	_data15_ = g_slice_new0 (Block15Data);
-	_data15_->_ref_count_ = 1;
+	_data14_ = g_slice_new0 (Block14Data);
+	_data14_->_ref_count_ = 1;
 	_tmp0_ = error_msg;
 	_tmp1_ = g_strdup (_tmp0_);
-	_g_free0 (_data15_->error_msg);
-	_data15_->error_msg = _tmp1_;
+	_g_free0 (_data14_->error_msg);
+	_data14_->error_msg = _tmp1_;
 	_tmp2_ = relay_error_open;
 	if (_tmp2_) {
-		block15_data_unref (_data15_);
-		_data15_ = NULL;
+		block14_data_unref (_data14_);
+		_data14_ = NULL;
 		return;
 	}
-	g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ___lambda4__gsource_func, block15_data_ref (_data15_), block15_data_unref);
-	block15_data_unref (_data15_);
-	_data15_ = NULL;
+	g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ___lambda4__gsource_func, block14_data_ref (_data14_), block14_data_unref);
+	block14_data_unref (_data14_);
+	_data14_ = NULL;
 }
 
 

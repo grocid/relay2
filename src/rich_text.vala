@@ -63,6 +63,7 @@ public class RichText : GLib.Object {
     }
 
     public void parse_name (string? name) {
+        return;
         if (name == null || name.length == 0)
             return;
         int location = text.index_of(name);

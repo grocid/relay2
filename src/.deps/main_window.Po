@@ -660,9 +660,6 @@ main_window.o: main_window.c /usr/include/stdc-predef.h \
  /usr/include/libdbusmenu-glib-0.4/libdbusmenu-glib/types.h ../config.h \
  /usr/include/glib-2.0/glib/gi18n-lib.h /usr/include/libintl.h \
  /usr/include/locale.h /usr/include/x86_64-linux-gnu/bits/locale.h \
- /usr/include/libnotify/notify.h /usr/include/libnotify/notification.h \
- /usr/include/libnotify/notify-enum-types.h \
- /usr/include/libnotify/notify-features.h \
  /usr/include/glib-2.0/glib/gstdio.h /usr/include/glib-2.0/glib/gprintf.h \
  /usr/include/x86_64-linux-gnu/sys/stat.h \
  /usr/include/x86_64-linux-gnu/bits/stat.h
@@ -2112,14 +2109,6 @@ main_window.o: main_window.c /usr/include/stdc-predef.h \
 /usr/include/locale.h:
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
-
-/usr/include/libnotify/notify.h:
-
-/usr/include/libnotify/notification.h:
-
-/usr/include/libnotify/notify-enum-types.h:
-
-/usr/include/libnotify/notify-features.h:
 
 /usr/include/glib-2.0/glib/gstdio.h:
 

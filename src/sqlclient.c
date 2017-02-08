@@ -69,7 +69,7 @@ typedef struct _SqlClientChannelClass SqlClientChannelClass;
 typedef struct _SqlClientChannelPrivate SqlClientChannelPrivate;
 #define _sql_client_channel_unref0(var) ((var == NULL) ? NULL : (var = (sql_client_channel_unref (var), NULL)))
 #define _sql_client_server_unref0(var) ((var == NULL) ? NULL : (var = (sql_client_server_unref (var), NULL)))
-typedef struct _Block10Data Block10Data;
+typedef struct _Block9Data Block9Data;
 #define _sqlite3_finalize0(var) ((var == NULL) ? NULL : (var = (sqlite3_finalize (var), NULL)))
 typedef struct _SqlClientParamSpecServer SqlClientParamSpecServer;
 typedef struct _SqlClientParamSpecChannel SqlClientParamSpecChannel;
@@ -122,7 +122,7 @@ struct _SqlClientChannelClass {
 	void (*finalize) (SqlClientChannel *self);
 };
 
-struct _Block10Data {
+struct _Block9Data {
 	int _ref_count_;
 	SqlClientServer* self;
 	gboolean exists;
@@ -195,9 +195,9 @@ gint sql_client_server_add_server (SqlClientServer* self);
 gint sql_client_server_update (SqlClientServer* self);
 SqlClientChannel* sql_client_server_find_channel_by_name (SqlClientServer* self, const gchar* name);
 GeeLinkedList* sql_client_server_get_autoconnect_channels (SqlClientServer* self);
-static Block10Data* block10_data_ref (Block10Data* _data10_);
-static void block10_data_unref (void * _userdata_);
-static gint __lambda25_ (Block10Data* _data10_, gint n_columns, gchar** values, int values_length1, gchar** column_names, int column_names_length1);
+static Block9Data* block9_data_ref (Block9Data* _data9_);
+static void block9_data_unref (void * _userdata_);
+static gint __lambda25_ (Block9Data* _data9_, gint n_columns, gchar** values, int values_length1, gchar** column_names, int column_names_length1);
 static gint ___lambda25__sqlite3_callback (gpointer self, gint n_columns, gchar** values, gchar** column_names);
 void sql_client_server_remove_server (SqlClientServer* self);
 static void sql_client_server_finalize (SqlClientServer* obj);
@@ -1389,29 +1389,29 @@ GeeLinkedList* sql_client_server_get_autoconnect_channels (SqlClientServer* self
 }
 
 
-static Block10Data* block10_data_ref (Block10Data* _data10_) {
-	g_atomic_int_inc (&_data10_->_ref_count_);
-	return _data10_;
+static Block9Data* block9_data_ref (Block9Data* _data9_) {
+	g_atomic_int_inc (&_data9_->_ref_count_);
+	return _data9_;
 }
 
 
-static void block10_data_unref (void * _userdata_) {
-	Block10Data* _data10_;
-	_data10_ = (Block10Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data10_->_ref_count_)) {
+static void block9_data_unref (void * _userdata_) {
+	Block9Data* _data9_;
+	_data9_ = (Block9Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data9_->_ref_count_)) {
 		SqlClientServer* self;
-		self = _data10_->self;
+		self = _data9_->self;
 		_sql_client_server_unref0 (self);
-		g_slice_free (Block10Data, _data10_);
+		g_slice_free (Block9Data, _data9_);
 	}
 }
 
 
-static gint __lambda25_ (Block10Data* _data10_, gint n_columns, gchar** values, int values_length1, gchar** column_names, int column_names_length1) {
+static gint __lambda25_ (Block9Data* _data9_, gint n_columns, gchar** values, int values_length1, gchar** column_names, int column_names_length1) {
 	SqlClientServer* self;
 	gint result = 0;
-	self = _data10_->self;
-	_data10_->exists = TRUE;
+	self = _data9_->self;
+	_data9_->exists = TRUE;
 	result = 0;
 	return result;
 }
@@ -1497,7 +1497,7 @@ static gchar* string_slice (const gchar* self, glong start, glong end) {
 
 gint sql_client_server_update (SqlClientServer* self) {
 	gint result = 0;
-	Block10Data* _data10_;
+	Block9Data* _data9_;
 	SqlClientServer* svr = NULL;
 	SqlClientServer* _tmp0_ = NULL;
 	sqlite3_stmt* stmt = NULL;
@@ -1517,9 +1517,9 @@ gint sql_client_server_update (SqlClientServer* self) {
 	gchar* _tmp24_ = NULL;
 	gboolean _tmp25_ = FALSE;
 	g_return_val_if_fail (self != NULL, 0);
-	_data10_ = g_slice_new0 (Block10Data);
-	_data10_->_ref_count_ = 1;
-	_data10_->self = sql_client_server_ref (self);
+	_data9_ = g_slice_new0 (Block9Data);
+	_data9_->_ref_count_ = 1;
+	_data9_->self = sql_client_server_ref (self);
 	_tmp0_ = _sql_client_server_ref0 (self);
 	svr = _tmp0_;
 	_tmp1_ = svr;
@@ -1530,10 +1530,10 @@ gint sql_client_server_update (SqlClientServer* self) {
 	_tmp6_ = _tmp5_;
 	_g_free0 (_tmp4_);
 	sql = _tmp6_;
-	_data10_->exists = FALSE;
+	_data9_->exists = FALSE;
 	_tmp7_ = sql_client_db;
 	_tmp8_ = sql;
-	_sqlite3_exec (_tmp7_, _tmp8_, ___lambda25__sqlite3_callback, _data10_, NULL);
+	_sqlite3_exec (_tmp7_, _tmp8_, ___lambda25__sqlite3_callback, _data9_, NULL);
 	_tmp9_ = g_strdup ("");
 	keys = _tmp9_;
 	{
@@ -1590,7 +1590,7 @@ gint sql_client_server_update (SqlClientServer* self) {
 	_tmp24_ = string_slice (_tmp23_, (glong) 0, (glong) -2);
 	_g_free0 (keys);
 	keys = _tmp24_;
-	_tmp25_ = _data10_->exists;
+	_tmp25_ = _data9_->exists;
 	if (_tmp25_) {
 		const gchar* _tmp26_ = NULL;
 		gchar* _tmp27_ = NULL;
@@ -1701,8 +1701,8 @@ gint sql_client_server_update (SqlClientServer* self) {
 			_g_free0 (sql);
 			_sqlite3_finalize0 (stmt);
 			_sql_client_server_unref0 (svr);
-			block10_data_unref (_data10_);
-			_data10_ = NULL;
+			block9_data_unref (_data9_);
+			_data9_ = NULL;
 			return result;
 		}
 		_tmp46_ = stmt;
@@ -1779,8 +1779,8 @@ gint sql_client_server_update (SqlClientServer* self) {
 	_g_free0 (sql);
 	_sqlite3_finalize0 (stmt);
 	_sql_client_server_unref0 (svr);
-	block10_data_unref (_data10_);
-	_data10_ = NULL;
+	block9_data_unref (_data9_);
+	_data9_ = NULL;
 	return result;
 }
 

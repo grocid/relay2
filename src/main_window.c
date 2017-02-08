@@ -36,7 +36,6 @@
 #include <pango/pango.h>
 #include <math.h>
 #include <float.h>
-#include <libnotify/notify.h>
 #include <glib/gstdio.h>
 
 
@@ -122,7 +121,6 @@ typedef struct _SettingsClass SettingsClass;
 
 typedef struct _ServerManager ServerManager;
 typedef struct _ServerManagerClass ServerManagerClass;
-typedef struct _Block1Data Block1Data;
 
 #define TYPE_MAIN_ENTRY (main_entry_get_type ())
 #define MAIN_ENTRY(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TYPE_MAIN_ENTRY, MainEntry))
@@ -134,7 +132,6 @@ typedef struct _Block1Data Block1Data;
 typedef struct _MainEntry MainEntry;
 typedef struct _MainEntryClass MainEntryClass;
 typedef struct _ChannelTabPrivate ChannelTabPrivate;
-#define __vala_PangoFontDescription_free0(var) ((var == NULL) ? NULL : (var = (_vala_PangoFontDescription_free (var), NULL)))
 #define _g_error_free0(var) ((var == NULL) ? NULL : (var = (g_error_free (var), NULL)))
 
 #define TYPE_MESSAGE (message_get_type ())
@@ -146,9 +143,9 @@ typedef struct _ChannelTabPrivate ChannelTabPrivate;
 
 typedef struct _Message Message;
 typedef struct _MessageClass MessageClass;
+typedef struct _Block1Data Block1Data;
 typedef struct _Block2Data Block2Data;
 typedef struct _Block3Data Block3Data;
-typedef struct _Block4Data Block4Data;
 typedef struct _ConnectionPrivate ConnectionPrivate;
 
 #define SQL_CLIENT_TYPE_SERVER (sql_client_server_get_type ())
@@ -160,6 +157,7 @@ typedef struct _ConnectionPrivate ConnectionPrivate;
 
 typedef struct _SqlClientServer SqlClientServer;
 typedef struct _SqlClientServerClass SqlClientServerClass;
+#define __vala_PangoFontDescription_free0(var) ((var == NULL) ? NULL : (var = (_vala_PangoFontDescription_free (var), NULL)))
 #define __vala_PangoTabArray_free0(var) ((var == NULL) ? NULL : (var = (_vala_PangoTabArray_free (var), NULL)))
 typedef struct _SqlClientServerPrivate SqlClientServerPrivate;
 
@@ -172,16 +170,16 @@ typedef struct _SqlClientServerPrivate SqlClientServerPrivate;
 
 typedef struct _SqlClientChannel SqlClientChannel;
 typedef struct _SqlClientChannelClass SqlClientChannelClass;
-typedef struct _Block5Data Block5Data;
+typedef struct _Block4Data Block4Data;
 #define _sql_client_server_unref0(var) ((var == NULL) ? NULL : (var = (sql_client_server_unref (var), NULL)))
-typedef struct _Block6Data Block6Data;
+typedef struct _Block5Data Block5Data;
 #define _g_thread_unref0(var) ((var == NULL) ? NULL : (var = (g_thread_unref (var), NULL)))
-typedef struct _Block7Data Block7Data;
+typedef struct _Block6Data Block6Data;
 #define _g_list_free0(var) ((var == NULL) ? NULL : (var = (g_list_free (var), NULL)))
-typedef struct _Block8Data Block8Data;
+typedef struct _Block7Data Block7Data;
 typedef struct _SqlClientChannelPrivate SqlClientChannelPrivate;
 #define _sql_client_channel_unref0(var) ((var == NULL) ? NULL : (var = (sql_client_channel_unref (var), NULL)))
-typedef struct _Block9Data Block9Data;
+typedef struct _Block8Data Block8Data;
 typedef struct _MessagePrivate MessagePrivate;
 
 struct _MainWindow {
@@ -218,12 +216,6 @@ struct _MainWindowPrivate {
 	gint sliding;
 };
 
-struct _Block1Data {
-	int _ref_count_;
-	MainWindow* self;
-	GtkPopover* subject_popover;
-};
-
 struct _ChannelTab {
 	GObject parent_instance;
 	ChannelTabPrivate * priv;
@@ -246,22 +238,22 @@ struct _ChannelTabClass {
 	GObjectClass parent_class;
 };
 
-struct _Block2Data {
+struct _Block1Data {
 	int _ref_count_;
 	MainWindow* self;
 	GeeMapEntry* tab;
 };
 
-struct _Block3Data {
+struct _Block2Data {
 	int _ref_count_;
 	MainWindow* self;
 	ChannelTab* new_tab;
 	gchar* name;
 };
 
-struct _Block4Data {
+struct _Block3Data {
 	int _ref_count_;
-	Block3Data * _data3_;
+	Block2Data * _data2_;
 	GtkTextView* output;
 };
 
@@ -305,20 +297,20 @@ struct _SqlClientServerClass {
 	void (*finalize) (SqlClientServer *self);
 };
 
-struct _Block5Data {
+struct _Block4Data {
 	int _ref_count_;
 	MainWindow* self;
 	GtkDialog* dialog;
 	GtkEntry* server_name;
 };
 
-struct _Block6Data {
+struct _Block5Data {
 	int _ref_count_;
 	MainWindow* self;
 	gchar* search_str;
 };
 
-struct _Block7Data {
+struct _Block6Data {
 	int _ref_count_;
 	MainWindow* self;
 	gint PER_BOX;
@@ -328,7 +320,7 @@ struct _Block7Data {
 	gint i;
 };
 
-struct _Block8Data {
+struct _Block7Data {
 	int _ref_count_;
 	MainWindow* self;
 	GtkEventBox* eb;
@@ -350,7 +342,7 @@ struct _SqlClientChannelClass {
 	void (*finalize) (SqlClientChannel *self);
 };
 
-struct _Block9Data {
+struct _Block8Data {
 	int _ref_count_;
 	MainWindow* self;
 	ChannelTab* tab;
@@ -432,8 +424,6 @@ ServerManager* server_manager_construct (GType object_type);
 #define MAIN_WINDOW_UI_FILE_SETTINGS "ui/settings_window.ui"
 MainWindow* main_window_new (Relay* application);
 MainWindow* main_window_construct (GType object_type, Relay* application);
-static Block1Data* block1_data_ref (Block1Data* _data1_);
-static void block1_data_unref (void * _userdata_);
 gchar* relay_get_asset_file (const gchar* name);
 gboolean settings_show_window (Settings* self);
 static gboolean _settings_show_window_gtk_widget_button_release_event (GtkWidget* _sender, GdkEventButton* event, gpointer self);
@@ -448,74 +438,51 @@ gboolean relay_set_color_mode (GdkRGBA* color);
 void settings_set_colors_defaults (Settings* self);
 void main_window_relay_close_program (MainWindow* self);
 static void _main_window_relay_close_program_gtk_widget_destroy (GtkWidget* _sender, gpointer self);
-gboolean main_window_slide_panel (MainWindow* self);
-static gboolean _main_window_slide_panel_gtk_widget_button_release_event (GtkWidget* _sender, GdkEventButton* event, gpointer self);
 MainEntry* main_entry_new (void);
 MainEntry* main_entry_construct (GType object_type);
 GType main_entry_get_type (void) G_GNUC_CONST;
 static void ___lambda40_ (MainWindow* self);
 void main_window_send_text_out (MainWindow* self, const gchar* text);
 static void ____lambda40__gtk_entry_activate (GtkEntry* _sender, gpointer self);
-static void ___lambda41_ (Block1Data* _data1_);
-static void ____lambda41__gtk_button_clicked (GtkButton* _sender, gpointer self);
-static void ___lambda42_ (MainWindow* self);
-static void main_window_make_user_popover (MainWindow* self, const gchar* search_str, gboolean need_show);
-static void ____lambda42__gtk_button_clicked (GtkButton* _sender, gpointer self);
-static gboolean ___lambda48_ (MainWindow* self, GdkEventFocus* event);
-static gboolean ____lambda48__gtk_widget_focus_out_event (GtkWidget* _sender, GdkEventFocus* event, gpointer self);
-static gboolean ___lambda49_ (MainWindow* self);
-static gboolean ____lambda49__gtk_widget_button_press_event (GtkWidget* _sender, GdkEventButton* event, gpointer self);
-static void ___lambda50_ (MainWindow* self);
-static void ____lambda50__gtk_search_entry_search_changed (GtkSearchEntry* _sender, gpointer self);
-static gboolean main_window_click_private_message (MainWindow* self, GdkEventButton* event);
-static gboolean _main_window_click_private_message_gtk_widget_button_release_event (GtkWidget* _sender, GdkEventButton* event, gpointer self);
-static gboolean main_window_click_block (MainWindow* self, GdkEventButton* event);
-static gboolean _main_window_click_block_gtk_widget_button_release_event (GtkWidget* _sender, GdkEventButton* event, gpointer self);
 static void main_window_set_item_selected (MainWindow* self, GraniteWidgetsSourceListItem* item);
 static void _main_window_set_item_selected_granite_widgets_source_list_item_selected (GraniteWidgetsSourceList* _sender, GraniteWidgetsSourceListItem* item, gpointer self);
 void main_window_set_up_add_sever (MainWindow* self, GtkBuilder* builder);
-void drag_file_attach_spinner (DragFile* self, GtkBox* box);
-void drag_file_attach_button (DragFile* self, GtkButton* _paste);
-void main_window_file_uploaded (MainWindow* self, const gchar* url);
-static void _main_window_file_uploaded_drag_file_file_uploaded (DragFile* _sender, const gchar* url, gpointer self);
-void drag_file_drop_file (DragFile* self, GdkDragContext* context, gint x, gint y, GtkSelectionData* selection_data, guint info, guint time_);
-static void _drag_file_drop_file_gtk_widget_drag_data_received (GtkWidget* _sender, GdkDragContext* context, gint x, gint y, GtkSelectionData* selection_data, guint info, guint time_, gpointer self);
 static void main_window_tab_remove (MainWindow* self, GraniteWidgetsTab* tab);
 static void _main_window_tab_remove_granite_widgets_dynamic_notebook_tab_removed (GraniteWidgetsDynamicNotebook* _sender, GraniteWidgetsTab* tab, gpointer self);
 static void main_window_tab_switch (MainWindow* self, GraniteWidgetsTab* old_tab, GraniteWidgetsTab* new_tab);
 static void _main_window_tab_switch_granite_widgets_dynamic_notebook_tab_switched (GraniteWidgetsDynamicNotebook* _sender, GraniteWidgetsTab* old_tab, GraniteWidgetsTab* new_tab, gpointer self);
 void main_window_refresh_server_list (MainWindow* self);
 static void main_window_load_autoconnect (MainWindow* self);
-static void ___lambda53_ (MainWindow* self);
-static void ____lambda53__gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self);
+static void ___lambda43_ (MainWindow* self);
+static void ____lambda43__gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self);
 static void _main_window_new_tab_requested_gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self);
-static void ___lambda54_ (MainWindow* self);
-static void ____lambda54__server_manager_close (ServerManager* _sender, gpointer self);
-static void _vala_PangoFontDescription_free (PangoFontDescription* self);
-static void __lambda55_ (MainWindow* self, gboolean on);
-static gboolean ___lambda56_ (MainWindow* self, GeeMapEntry* output);
+static void ___lambda44_ (MainWindow* self);
+static void ____lambda44__server_manager_close (ServerManager* _sender, gpointer self);
+gboolean main_window_slide_panel (MainWindow* self);
+static void __lambda45_ (MainWindow* self, gboolean on);
+static gboolean ___lambda46_ (MainWindow* self, GeeMapEntry* output);
 GType message_get_type (void) G_GNUC_CONST;
 Message* message_new (const gchar* _message);
 Message* message_construct (GType object_type, const gchar* _message);
 void message_set_message (Message* self, const gchar* value);
 void main_window_add_text (MainWindow* self, ChannelTab* tab, Message* message, gboolean _error_);
-static gboolean ____lambda56__gee_forall_func (gpointer g, gpointer self);
-static void ___lambda55__g_network_monitor_network_changed (GNetworkMonitor* _sender, gboolean available, gpointer self);
+static gboolean ____lambda46__gee_forall_func (gpointer g, gpointer self);
+static void ___lambda45__g_network_monitor_network_changed (GNetworkMonitor* _sender, gboolean available, gpointer self);
 void main_window_rebuild_channel_list_menu (MainWindow* self);
 static void __lambda37_ (MainWindow* self, GtkWidget* widget);
 static void ___lambda37__gtk_callback (GtkWidget* widget, gpointer self);
-static Block2Data* block2_data_ref (Block2Data* _data2_);
-static void block2_data_unref (void * _userdata_);
-static void ____lambda38_ (Block2Data* _data2_);
+static Block1Data* block1_data_ref (Block1Data* _data1_);
+static void block1_data_unref (void * _userdata_);
+static void ____lambda38_ (Block1Data* _data1_);
 static void _____lambda38__gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self);
 GtkPopover* main_window_make_popover (MainWindow* self, GtkButton* parent);
 static void main_window_sidebar_item_activated (MainWindow* self);
 void main_window_add_tab (MainWindow* self, ChannelTab* new_tab, const gchar* name);
+static Block2Data* block2_data_ref (Block2Data* _data2_);
+static void block2_data_unref (void * _userdata_);
+static gboolean __lambda33_ (Block2Data* _data2_);
 static Block3Data* block3_data_ref (Block3Data* _data3_);
 static void block3_data_unref (void * _userdata_);
-static gboolean __lambda33_ (Block3Data* _data3_);
-static Block4Data* block4_data_ref (Block4Data* _data4_);
-static void block4_data_unref (void * _userdata_);
 Connection* channel_tab_get_connection (ChannelTab* self);
 gpointer sql_client_server_ref (gpointer instance);
 void sql_client_server_unref (gpointer instance);
@@ -525,11 +492,12 @@ void sql_client_value_take_server (GValue* value, gpointer v_object);
 gpointer sql_client_value_get_server (const GValue* value);
 GType sql_client_server_get_type (void) G_GNUC_CONST;
 #define IRC_USER_WIDTH 126
-static void __lambda34_ (Block4Data* _data4_, GtkMenu* menu);
-static void __lambda35_ (Block4Data* _data4_);
+static void _vala_PangoFontDescription_free (PangoFontDescription* self);
+static void __lambda34_ (Block3Data* _data3_, GtkMenu* menu);
+static void __lambda35_ (Block3Data* _data3_);
 static void main_window_save_output_to_file (MainWindow* self, const gchar* text);
 static void ___lambda35__gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self);
-static void __lambda36_ (Block4Data* _data4_);
+static void __lambda36_ (Block3Data* _data3_);
 static void ___lambda36__gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self);
 static void ___lambda34__gtk_text_view_populate_popup (GtkTextView* _sender, GtkMenu* popup, gpointer self);
 static void main_window_new_subject (MainWindow* self, gint tab_id, const gchar* message);
@@ -546,11 +514,11 @@ void sql_client_value_take_channel (GValue* value, gpointer v_object);
 gpointer sql_client_value_get_channel (const GValue* value);
 GType sql_client_channel_get_type (void) G_GNUC_CONST;
 void connection_send_output (Connection* self, const gchar* output);
-static Block5Data* block5_data_ref (Block5Data* _data5_);
-static void block5_data_unref (void * _userdata_);
-static void __lambda31_ (Block5Data* _data5_);
+static Block4Data* block4_data_ref (Block4Data* _data4_);
+static void block4_data_unref (void * _userdata_);
+static void __lambda31_ (Block4Data* _data4_);
 static void ___lambda31__gtk_entry_activate (GtkEntry* _sender, gpointer self);
-static void __lambda32_ (Block5Data* _data5_, gint id);
+static void __lambda32_ (Block4Data* _data4_, gint id);
 SqlClientServer* sql_client_server_new (void);
 SqlClientServer* sql_client_server_construct (GType object_type);
 void main_window_add_server (MainWindow* self, SqlClientServer* server, GeeLinkedList* connect_channels);
@@ -560,29 +528,32 @@ const gchar* channel_tab_get_channel_name (ChannelTab* self);
 void connection_do_exit (Connection* self);
 static void main_window_show_welcome_screen (MainWindow* self);
 void main_window_refresh_icon (MainWindow* self, gint add);
+static void main_window_make_user_popover (MainWindow* self, const gchar* search_str, gboolean need_show);
+static Block5Data* block5_data_ref (Block5Data* _data5_);
+static void block5_data_unref (void * _userdata_);
+static gint __lambda47_ (Block5Data* _data5_);
+static void main_window_make_user_popover_idle (MainWindow* self, ChannelTab* using_tab, const gchar* _search_str);
+static gpointer ___lambda47__gthread_func (gpointer self);
 static Block6Data* block6_data_ref (Block6Data* _data6_);
 static void block6_data_unref (void * _userdata_);
-static gint __lambda43_ (Block6Data* _data6_);
-static void main_window_make_user_popover_idle (MainWindow* self, ChannelTab* using_tab, const gchar* _search_str);
-static gpointer ___lambda43__gthread_func (gpointer self);
-static Block7Data* block7_data_ref (Block7Data* _data7_);
-static void block7_data_unref (void * _userdata_);
 GeeLinkedList* channel_tab_get_all_user_lists (ChannelTab* self);
 static GtkEventBox* main_window_make_user_eventbox (MainWindow* self, const gchar* user, gint type);
-static gboolean __lambda47_ (Block7Data* _data7_);
-static gboolean ___lambda47__gsource_func (gpointer self);
-static Block8Data* block8_data_ref (Block8Data* _data8_);
-static void block8_data_unref (void * _userdata_);
-static gboolean __lambda44_ (Block8Data* _data8_);
-static gboolean ___lambda44__gtk_widget_enter_notify_event (GtkWidget* _sender, GdkEventCrossing* event, gpointer self);
-static gboolean __lambda45_ (Block8Data* _data8_);
-static gboolean ___lambda45__gtk_widget_leave_notify_event (GtkWidget* _sender, GdkEventCrossing* event, gpointer self);
+static gboolean __lambda51_ (Block6Data* _data6_);
+static gboolean ___lambda51__gsource_func (gpointer self);
+static Block7Data* block7_data_ref (Block7Data* _data7_);
+static void block7_data_unref (void * _userdata_);
+static gboolean __lambda48_ (Block7Data* _data7_);
+static gboolean ___lambda48__gtk_widget_enter_notify_event (GtkWidget* _sender, GdkEventCrossing* event, gpointer self);
+static gboolean __lambda49_ (Block7Data* _data7_);
+static gboolean ___lambda49__gtk_widget_leave_notify_event (GtkWidget* _sender, GdkEventCrossing* event, gpointer self);
 #define IRC_USER_LENGTH 18
-static gboolean __lambda46_ (Block8Data* _data8_, GdkEventButton* event);
+static gboolean __lambda50_ (Block7Data* _data7_, GdkEventButton* event);
 void main_window_fill_input (const gchar* message);
-static gboolean ___lambda46__gtk_widget_button_press_event (GtkWidget* _sender, GdkEventButton* event, gpointer self);
+static gboolean ___lambda50__gtk_widget_button_press_event (GtkWidget* _sender, GdkEventButton* event, gpointer self);
+static gboolean main_window_click_private_message (MainWindow* self, GdkEventButton* event);
 ChannelTab* connection_add_channel_tab (Connection* self, const gchar* _name, gboolean primsg);
 gchar* irc_remove_user_prefix (const gchar* name);
+static gboolean main_window_click_block (MainWindow* self, GdkEventButton* event);
 void channel_tab_remove_block_list (ChannelTab* self, const gchar* name);
 void channel_tab_add_block_list (ChannelTab* self, const gchar* name);
 Connection* connection_new (void);
@@ -594,8 +565,8 @@ static void _main_window_sidebar_state_connection_change_channel_state (Connecti
 gboolean connection_connect_to_server (Connection* self, SqlClientServer* _server);
 static void _main_window_sidebar_item_activated_granite_widgets_source_list_item_activated (GraniteWidgetsSourceListItem* _sender, gpointer self);
 void connection_join (Connection* self, const gchar* channel);
-static Block9Data* block9_data_ref (Block9Data* _data9_);
-static void block9_data_unref (void * _userdata_);
+static Block8Data* block8_data_ref (Block8Data* _data8_);
+static void block8_data_unref (void * _userdata_);
 const gchar* message_get_message (Message* self);
 void channel_tab_display_error (ChannelTab* self, Message* message);
 void channel_tab_display_message (ChannelTab* self, Message* message);
@@ -603,7 +574,7 @@ gint channel_tab_get_tab_index (ChannelTab* self);
 const gchar* message_get_command (Message* self);
 #define IRC_PRIVATE_MESSAGE "PRIVMSG"
 gchar** message_get_parameters (Message* self, int* result_length1);
-static gboolean ___lambda39_ (Block9Data* _data9_);
+static gboolean ___lambda39_ (Block8Data* _data8_);
 static gboolean ____lambda39__gsource_func (gpointer self);
 void channel_tab_send_text_out (ChannelTab* self, const gchar* message);
 void message_user_name_set (Message* self, const gchar* name);
@@ -612,38 +583,19 @@ gint main_window_move_slider_t (MainWindow* self);
 static gpointer _main_window_move_slider_t_gthread_func (gpointer self);
 gdouble relay_ease_out_elastic (gfloat t, gfloat b, gfloat c, gfloat d);
 gfloat relay_ease_in_bounce (gfloat t, gfloat b, gfloat c, gfloat d);
+void main_window_file_uploaded (MainWindow* self, const gchar* url);
 GeeLinkedList* sql_client_server_get_autoconnect_channels (SqlClientServer* self);
-static void __lambda52_ (MainWindow* self, gint index);
+static void __lambda42_ (MainWindow* self, gint index);
 gboolean server_manager_open_window (ServerManager* self);
-static void ___lambda52__granite_widgets_welcome_activated (GraniteWidgetsWelcome* _sender, gint index, gpointer self);
-static gboolean __lambda51_ (MainWindow* self, GdkEventButton* event);
-static gboolean ___lambda51__gtk_widget_button_release_event (GtkWidget* _sender, GdkEventButton* event, gpointer self);
+static void ___lambda42__granite_widgets_welcome_activated (GraniteWidgetsWelcome* _sender, gint index, gpointer self);
+static gboolean __lambda41_ (MainWindow* self, GdkEventButton* event);
+static gboolean ___lambda41__gtk_widget_button_release_event (GtkWidget* _sender, GdkEventButton* event, gpointer self);
 static gboolean __lambda29_ (MainWindow* self, GeeMapEntry* tab);
 void channel_tab_update_tag_table (ChannelTab* self);
 static gboolean ___lambda29__gee_forall_func (gpointer g, gpointer self);
 void relay_show_error_window (const gchar* error_msg);
 void main_window_on_destroy (GtkWidget* window, MainWindow* self);
 static void main_window_finalize (GObject* obj);
-
-extern const GtkTargetEntry DRAG_FILE_TARGETS[1];
-
-static Block1Data* block1_data_ref (Block1Data* _data1_) {
-	g_atomic_int_inc (&_data1_->_ref_count_);
-	return _data1_;
-}
-
-
-static void block1_data_unref (void * _userdata_) {
-	Block1Data* _data1_;
-	_data1_ = (Block1Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data1_->_ref_count_)) {
-		MainWindow* self;
-		self = _data1_->self;
-		_g_object_unref0 (_data1_->subject_popover);
-		_g_object_unref0 (self);
-		g_slice_free (Block1Data, _data1_);
-	}
-}
 
 
 static gpointer _g_object_ref0 (gpointer self) {
@@ -687,13 +639,6 @@ static void _main_window_relay_close_program_gtk_widget_destroy (GtkWidget* _sen
 }
 
 
-static gboolean _main_window_slide_panel_gtk_widget_button_release_event (GtkWidget* _sender, GdkEventButton* event, gpointer self) {
-	gboolean result;
-	result = main_window_slide_panel ((MainWindow*) self);
-	return result;
-}
-
-
 static void ___lambda40_ (MainWindow* self) {
 	GtkEntry* _tmp0_ = NULL;
 	const gchar* _tmp1_ = NULL;
@@ -711,111 +656,8 @@ static void ____lambda40__gtk_entry_activate (GtkEntry* _sender, gpointer self) 
 }
 
 
-static void ___lambda41_ (Block1Data* _data1_) {
-	MainWindow* self;
-	GtkPopover* _tmp0_ = NULL;
-	self = _data1_->self;
-	_tmp0_ = _data1_->subject_popover;
-	gtk_widget_show_all ((GtkWidget*) _tmp0_);
-}
-
-
-static void ____lambda41__gtk_button_clicked (GtkButton* _sender, gpointer self) {
-	___lambda41_ (self);
-}
-
-
-static void ___lambda42_ (MainWindow* self) {
-	GtkSearchEntry* _tmp0_ = NULL;
-	_tmp0_ = self->priv->users_search;
-	gtk_entry_set_text ((GtkEntry*) _tmp0_, "");
-	main_window_make_user_popover (self, "", TRUE);
-}
-
-
-static void ____lambda42__gtk_button_clicked (GtkButton* _sender, gpointer self) {
-	___lambda42_ ((MainWindow*) self);
-}
-
-
-static gboolean ___lambda48_ (MainWindow* self, GdkEventFocus* event) {
-	gboolean result = FALSE;
-	GtkPopover* _tmp0_ = NULL;
-	GtkSearchEntry* _tmp1_ = NULL;
-	g_return_val_if_fail (event != NULL, FALSE);
-	_tmp0_ = self->priv->users_popover;
-	g_signal_emit_by_name (_tmp0_, "closed");
-	_tmp1_ = self->priv->users_search;
-	gtk_entry_set_text ((GtkEntry*) _tmp1_, "");
-	result = TRUE;
-	return result;
-}
-
-
-static gboolean ____lambda48__gtk_widget_focus_out_event (GtkWidget* _sender, GdkEventFocus* event, gpointer self) {
-	gboolean result;
-	result = ___lambda48_ ((MainWindow*) self, event);
-	return result;
-}
-
-
-static gboolean ___lambda49_ (MainWindow* self) {
-	gboolean result = FALSE;
-	GtkHeaderBar* _tmp0_ = NULL;
-	_tmp0_ = self->priv->toolbar;
-	gtk_widget_grab_focus ((GtkWidget*) _tmp0_);
-	result = TRUE;
-	return result;
-}
-
-
-static gboolean ____lambda49__gtk_widget_button_press_event (GtkWidget* _sender, GdkEventButton* event, gpointer self) {
-	gboolean result;
-	result = ___lambda49_ ((MainWindow*) self);
-	return result;
-}
-
-
-static void ___lambda50_ (MainWindow* self) {
-	GtkSearchEntry* _tmp0_ = NULL;
-	const gchar* _tmp1_ = NULL;
-	_tmp0_ = self->priv->users_search;
-	_tmp1_ = gtk_entry_get_text ((GtkEntry*) _tmp0_);
-	main_window_make_user_popover (self, _tmp1_, FALSE);
-}
-
-
-static void ____lambda50__gtk_search_entry_search_changed (GtkSearchEntry* _sender, gpointer self) {
-	___lambda50_ ((MainWindow*) self);
-}
-
-
-static gboolean _main_window_click_private_message_gtk_widget_button_release_event (GtkWidget* _sender, GdkEventButton* event, gpointer self) {
-	gboolean result;
-	result = main_window_click_private_message ((MainWindow*) self, event);
-	return result;
-}
-
-
-static gboolean _main_window_click_block_gtk_widget_button_release_event (GtkWidget* _sender, GdkEventButton* event, gpointer self) {
-	gboolean result;
-	result = main_window_click_block ((MainWindow*) self, event);
-	return result;
-}
-
-
 static void _main_window_set_item_selected_granite_widgets_source_list_item_selected (GraniteWidgetsSourceList* _sender, GraniteWidgetsSourceListItem* item, gpointer self) {
 	main_window_set_item_selected ((MainWindow*) self, item);
-}
-
-
-static void _main_window_file_uploaded_drag_file_file_uploaded (DragFile* _sender, const gchar* url, gpointer self) {
-	main_window_file_uploaded ((MainWindow*) self, url);
-}
-
-
-static void _drag_file_drop_file_gtk_widget_drag_data_received (GtkWidget* _sender, GdkDragContext* context, gint x, gint y, GtkSelectionData* selection_data, guint info, guint time_, gpointer self) {
-	drag_file_drop_file ((DragFile*) self, context, x, y, selection_data, info, time_);
 }
 
 
@@ -829,7 +671,7 @@ static void _main_window_tab_switch_granite_widgets_dynamic_notebook_tab_switche
 }
 
 
-static void ___lambda53_ (MainWindow* self) {
+static void ___lambda43_ (MainWindow* self) {
 	{
 		GeeHashMap* _item_list = NULL;
 		GeeHashMap* _tmp0_ = NULL;
@@ -894,8 +736,8 @@ static void ___lambda53_ (MainWindow* self) {
 }
 
 
-static void ____lambda53__gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self) {
-	___lambda53_ ((MainWindow*) self);
+static void ____lambda43__gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self) {
+	___lambda43_ ((MainWindow*) self);
 }
 
 
@@ -904,22 +746,17 @@ static void _main_window_new_tab_requested_gtk_menu_item_activate (GtkMenuItem* 
 }
 
 
-static void ___lambda54_ (MainWindow* self) {
+static void ___lambda44_ (MainWindow* self) {
 	main_window_refresh_server_list (self);
 }
 
 
-static void ____lambda54__server_manager_close (ServerManager* _sender, gpointer self) {
-	___lambda54_ ((MainWindow*) self);
+static void ____lambda44__server_manager_close (ServerManager* _sender, gpointer self) {
+	___lambda44_ ((MainWindow*) self);
 }
 
 
-static void _vala_PangoFontDescription_free (PangoFontDescription* self) {
-	g_boxed_free (pango_font_description_get_type (), self);
-}
-
-
-static gboolean ___lambda56_ (MainWindow* self, GeeMapEntry* output) {
+static gboolean ___lambda46_ (MainWindow* self, GeeMapEntry* output) {
 	gboolean result = FALSE;
 	Message* msg = NULL;
 	Message* _tmp0_ = NULL;
@@ -943,14 +780,14 @@ static gboolean ___lambda56_ (MainWindow* self, GeeMapEntry* output) {
 }
 
 
-static gboolean ____lambda56__gee_forall_func (gpointer g, gpointer self) {
+static gboolean ____lambda46__gee_forall_func (gpointer g, gpointer self) {
 	gboolean result;
-	result = ___lambda56_ ((MainWindow*) self, (GeeMapEntry*) g);
+	result = ___lambda46_ ((MainWindow*) self, (GeeMapEntry*) g);
 	return result;
 }
 
 
-static void __lambda55_ (MainWindow* self, gboolean on) {
+static void __lambda45_ (MainWindow* self, gboolean on) {
 	gboolean _tmp0_ = FALSE;
 	_tmp0_ = on;
 	if (!_tmp0_) {
@@ -962,28 +799,27 @@ static void __lambda55_ (MainWindow* self, gboolean on) {
 		}
 		main_window_network_state = FALSE;
 		_tmp2_ = self->priv->outputs;
-		gee_abstract_map_foreach ((GeeAbstractMap*) _tmp2_, ____lambda56__gee_forall_func, self);
+		gee_abstract_map_foreach ((GeeAbstractMap*) _tmp2_, ____lambda46__gee_forall_func, self);
 	} else {
 		main_window_network_state = TRUE;
 	}
 }
 
 
-static void ___lambda55__g_network_monitor_network_changed (GNetworkMonitor* _sender, gboolean available, gpointer self) {
-	__lambda55_ ((MainWindow*) self, available);
+static void ___lambda45__g_network_monitor_network_changed (GNetworkMonitor* _sender, gboolean available, gpointer self) {
+	__lambda45_ ((MainWindow*) self, available);
 }
 
 
 MainWindow* main_window_construct (GType object_type, Relay* application) {
 	MainWindow * self = NULL;
 	GNetworkMonitor* network_monitor = NULL;
-	GNetworkMonitor* _tmp237_ = NULL;
-	GNetworkMonitor* _tmp238_ = NULL;
+	GNetworkMonitor* _tmp111_ = NULL;
+	GNetworkMonitor* _tmp112_ = NULL;
 	GError * _inner_error_ = NULL;
 	g_return_val_if_fail (application != NULL, NULL);
 	self = (MainWindow*) g_object_new (object_type, NULL);
 	{
-		Block1Data* _data1_;
 		Relay* _tmp0_ = NULL;
 		Relay* _tmp1_ = NULL;
 		GdkPixbuf* _tmp2_ = NULL;
@@ -1055,186 +891,49 @@ MainWindow* main_window_construct (GType object_type, Relay* application) {
 		GtkBox* _tmp67_ = NULL;
 		GtkBox* _tmp68_ = NULL;
 		GraniteWidgetsSourceList* _tmp69_ = NULL;
-		GtkImage* icon = NULL;
-		gchar* _tmp70_ = NULL;
-		gchar* _tmp71_ = NULL;
-		GtkImage* _tmp72_ = NULL;
-		GtkImage* _tmp73_ = NULL;
-		GdkPixbuf* icon_buf = NULL;
-		GtkImage* _tmp74_ = NULL;
-		GdkPixbuf* _tmp75_ = NULL;
-		GdkPixbuf* _tmp76_ = NULL;
-		GtkButton* select_channel = NULL;
-		GtkButton* _tmp77_ = NULL;
-		GtkButton* _tmp78_ = NULL;
-		GdkPixbuf* _tmp79_ = NULL;
-		GtkImage* _tmp80_ = NULL;
-		GtkImage* _tmp81_ = NULL;
-		gchar* _tmp82_ = NULL;
-		gchar* _tmp83_ = NULL;
-		GtkImage* _tmp84_ = NULL;
-		GtkImage* _tmp85_ = NULL;
-		GdkPixbuf* _tmp86_ = NULL;
-		GdkPixbuf* _tmp87_ = NULL;
-		GtkButton* _tmp88_ = NULL;
-		const gchar* _tmp89_ = NULL;
-		GtkHeaderBar* _tmp90_ = NULL;
-		GtkButton* _tmp91_ = NULL;
-		GtkButton* _tmp92_ = NULL;
-		GtkPaned* _tmp93_ = NULL;
+		GtkPaned* _tmp70_ = NULL;
 		GtkBox* entry_wrapper = NULL;
-		GtkBuilder* _tmp94_ = NULL;
-		GObject* _tmp95_ = NULL;
-		GtkBox* _tmp96_ = NULL;
-		MainEntry* _tmp97_ = NULL;
-		GtkBox* _tmp98_ = NULL;
-		GtkEntry* _tmp99_ = NULL;
-		GtkEntry* _tmp100_ = NULL;
-		gchar* _tmp101_ = NULL;
-		gchar* _tmp102_ = NULL;
-		GtkImage* _tmp103_ = NULL;
-		GtkImage* _tmp104_ = NULL;
-		GdkPixbuf* _tmp105_ = NULL;
-		GdkPixbuf* _tmp106_ = NULL;
-		GtkButton* _tmp107_ = NULL;
-		GdkPixbuf* _tmp108_ = NULL;
-		GtkImage* _tmp109_ = NULL;
-		GtkImage* _tmp110_ = NULL;
-		GtkButton* _tmp111_ = NULL;
-		const gchar* _tmp112_ = NULL;
-		GtkButton* _tmp113_ = NULL;
-		GtkPopover* _tmp114_ = NULL;
-		GtkButton* _tmp115_ = NULL;
-		GtkButton* _tmp116_ = NULL;
-		GtkButton* _tmp117_ = NULL;
-		GtkScrolledWindow* scrolled = NULL;
-		GtkScrolledWindow* _tmp118_ = NULL;
-		GtkLabel* _tmp119_ = NULL;
-		GtkLabel* _tmp120_ = NULL;
-		GtkScrolledWindow* _tmp121_ = NULL;
-		GtkScrolledWindow* _tmp122_ = NULL;
-		GtkLabel* _tmp123_ = NULL;
-		GtkPopover* _tmp124_ = NULL;
-		GtkScrolledWindow* _tmp125_ = NULL;
-		GtkHeaderBar* _tmp126_ = NULL;
-		GtkButton* _tmp127_ = NULL;
-		gchar* _tmp128_ = NULL;
-		gchar* _tmp129_ = NULL;
-		GtkImage* _tmp130_ = NULL;
-		GtkImage* _tmp131_ = NULL;
-		GdkPixbuf* _tmp132_ = NULL;
-		GdkPixbuf* _tmp133_ = NULL;
-		GtkButton* _tmp134_ = NULL;
-		GdkPixbuf* _tmp135_ = NULL;
-		GtkImage* _tmp136_ = NULL;
-		GtkImage* _tmp137_ = NULL;
-		GtkButton* _tmp138_ = NULL;
-		const gchar* _tmp139_ = NULL;
-		GtkButton* _tmp140_ = NULL;
-		GtkButton* _tmp141_ = NULL;
-		GtkPopover* _tmp142_ = NULL;
-		GtkButton* _tmp143_ = NULL;
-		GtkPopover* _tmp144_ = NULL;
-		GtkHeaderBar* _tmp145_ = NULL;
-		GtkScrolledWindow* _tmp146_ = NULL;
-		GtkScrolledWindow* _tmp147_ = NULL;
-		GtkScrolledWindow* _tmp148_ = NULL;
-		GtkBox* _tmp149_ = NULL;
-		GtkBox* users_wrap = NULL;
-		GtkBox* _tmp150_ = NULL;
-		PangoFontDescription* font = NULL;
-		PangoFontDescription* _tmp151_ = NULL;
-		PangoFontDescription* _tmp152_ = NULL;
-		GtkSearchEntry* _tmp153_ = NULL;
-		GtkLabel* _tmp154_ = NULL;
-		PangoFontDescription* _tmp155_ = NULL;
-		GtkLabel* _tmp156_ = NULL;
-		GtkBox* _tmp157_ = NULL;
-		GtkLabel* _tmp158_ = NULL;
-		GtkBox* _tmp159_ = NULL;
-		GtkSearchEntry* _tmp160_ = NULL;
-		GtkBox* _tmp161_ = NULL;
-		GtkScrolledWindow* _tmp162_ = NULL;
-		GtkPopover* _tmp163_ = NULL;
-		GtkBox* _tmp164_ = NULL;
-		GtkHeaderBar* _tmp165_ = NULL;
-		GtkButton* _tmp166_ = NULL;
-		GtkMenuItem* private_message = NULL;
-		const gchar* _tmp167_ = NULL;
-		GtkMenuItem* _tmp168_ = NULL;
-		GtkMenu* _tmp169_ = NULL;
-		GtkMenuItem* _tmp170_ = NULL;
-		GtkMenuItem* block = NULL;
-		const gchar* _tmp171_ = NULL;
-		GtkMenuItem* _tmp172_ = NULL;
-		GtkMenuItem* _tmp173_ = NULL;
-		GtkMenuItem* _tmp174_ = NULL;
-		GtkMenu* _tmp175_ = NULL;
-		GtkMenuItem* _tmp176_ = NULL;
-		GtkMenu* _tmp177_ = NULL;
-		GraniteWidgetsSourceList* _tmp178_ = NULL;
-		GtkBuilder* _tmp179_ = NULL;
-		GtkHeaderBar* _tmp180_ = NULL;
-		Relay* _tmp181_ = NULL;
-		const gchar* _tmp182_ = NULL;
-		gboolean _tmp183_ = FALSE;
-		GtkWindow* _tmp185_ = NULL;
-		GtkHeaderBar* _tmp186_ = NULL;
-		GtkWindow* _tmp187_ = NULL;
-		GtkBox* _tmp188_ = NULL;
-		GtkButton* _tmp189_ = NULL;
-		GtkBox* _tmp190_ = NULL;
-		gchar* _tmp191_ = NULL;
-		gchar* _tmp192_ = NULL;
-		GtkImage* _tmp193_ = NULL;
-		GtkImage* _tmp194_ = NULL;
-		GdkPixbuf* _tmp195_ = NULL;
-		GdkPixbuf* _tmp196_ = NULL;
-		GdkPixbuf* _tmp197_ = NULL;
-		GtkImage* _tmp198_ = NULL;
-		GtkButton* _tmp199_ = NULL;
-		GtkImage* _tmp200_ = NULL;
-		GtkButton* _tmp201_ = NULL;
-		const gchar* _tmp202_ = NULL;
-		GtkButton* _tmp203_ = NULL;
-		GtkHeaderBar* _tmp204_ = NULL;
-		GtkBox* _tmp205_ = NULL;
-		DragFile* _tmp206_ = NULL;
-		GtkBox* _tmp207_ = NULL;
-		DragFile* _tmp208_ = NULL;
-		GtkButton* _tmp209_ = NULL;
-		GtkButton* _tmp210_ = NULL;
-		DragFile* _tmp211_ = NULL;
-		GtkButton* _tmp212_ = NULL;
-		DragFile* _tmp213_ = NULL;
-		GraniteWidgetsDynamicNotebook* _tmp214_ = NULL;
-		GraniteWidgetsDynamicNotebook* _tmp215_ = NULL;
+		GtkBuilder* _tmp71_ = NULL;
+		GObject* _tmp72_ = NULL;
+		GtkBox* _tmp73_ = NULL;
+		MainEntry* _tmp74_ = NULL;
+		GtkBox* _tmp75_ = NULL;
+		GtkEntry* _tmp76_ = NULL;
+		GtkEntry* _tmp77_ = NULL;
+		GraniteWidgetsSourceList* _tmp78_ = NULL;
+		GtkBuilder* _tmp79_ = NULL;
+		GtkHeaderBar* _tmp80_ = NULL;
+		Relay* _tmp81_ = NULL;
+		const gchar* _tmp82_ = NULL;
+		gboolean _tmp83_ = FALSE;
+		GtkWindow* _tmp85_ = NULL;
+		GtkHeaderBar* _tmp86_ = NULL;
+		GtkWindow* _tmp87_ = NULL;
+		GraniteWidgetsDynamicNotebook* _tmp88_ = NULL;
+		GraniteWidgetsDynamicNotebook* _tmp89_ = NULL;
 		GtkMenuItem* close_all = NULL;
-		const gchar* _tmp216_ = NULL;
-		GtkMenuItem* _tmp217_ = NULL;
-		GtkMenuItem* _tmp218_ = NULL;
+		const gchar* _tmp90_ = NULL;
+		GtkMenuItem* _tmp91_ = NULL;
+		GtkMenuItem* _tmp92_ = NULL;
 		GtkMenuItem* new_tab = NULL;
-		const gchar* _tmp219_ = NULL;
-		GtkMenuItem* _tmp220_ = NULL;
-		GtkMenuItem* _tmp221_ = NULL;
+		const gchar* _tmp93_ = NULL;
+		GtkMenuItem* _tmp94_ = NULL;
+		GtkMenuItem* _tmp95_ = NULL;
 		GtkMenuItem* channel_list_menu = NULL;
-		const gchar* _tmp222_ = NULL;
-		GtkMenuItem* _tmp223_ = NULL;
-		GtkMenuItem* _tmp224_ = NULL;
-		GtkMenu* _tmp225_ = NULL;
-		GtkMenu* _tmp226_ = NULL;
-		GtkMenuItem* _tmp227_ = NULL;
-		GtkMenu* _tmp228_ = NULL;
-		GtkMenuItem* _tmp229_ = NULL;
-		GtkMenu* _tmp230_ = NULL;
-		GtkMenuItem* _tmp231_ = NULL;
-		GtkMenu* _tmp232_ = NULL;
-		ServerManager* _tmp233_ = NULL;
-		Settings* _tmp234_ = NULL;
-		gboolean _tmp235_ = FALSE;
-		_data1_ = g_slice_new0 (Block1Data);
-		_data1_->_ref_count_ = 1;
-		_data1_->self = g_object_ref (self);
+		const gchar* _tmp96_ = NULL;
+		GtkMenuItem* _tmp97_ = NULL;
+		GtkMenuItem* _tmp98_ = NULL;
+		GtkMenu* _tmp99_ = NULL;
+		GtkMenu* _tmp100_ = NULL;
+		GtkMenuItem* _tmp101_ = NULL;
+		GtkMenu* _tmp102_ = NULL;
+		GtkMenuItem* _tmp103_ = NULL;
+		GtkMenu* _tmp104_ = NULL;
+		GtkMenuItem* _tmp105_ = NULL;
+		GtkMenu* _tmp106_ = NULL;
+		ServerManager* _tmp107_ = NULL;
+		Settings* _tmp108_ = NULL;
+		gboolean _tmp109_ = FALSE;
 		_tmp0_ = application;
 		_tmp1_ = _g_object_ref0 (_tmp0_);
 		_g_object_unref0 (self->priv->app);
@@ -1246,8 +945,6 @@ MainWindow* main_window_construct (GType object_type, Relay* application) {
 		_g_free0 (_tmp4_);
 		_tmp2_ = _tmp6_;
 		if (G_UNLIKELY (_inner_error_ != NULL)) {
-			block1_data_unref (_data1_);
-			_data1_ = NULL;
 			goto __catch0_g_error;
 		}
 		_tmp7_ = _tmp2_;
@@ -1262,8 +959,6 @@ MainWindow* main_window_construct (GType object_type, Relay* application) {
 		_tmp8_ = _tmp12_;
 		if (G_UNLIKELY (_inner_error_ != NULL)) {
 			_g_object_unref0 (_tmp2_);
-			block1_data_unref (_data1_);
-			_data1_ = NULL;
 			goto __catch0_g_error;
 		}
 		_tmp13_ = _tmp8_;
@@ -1279,8 +974,6 @@ MainWindow* main_window_construct (GType object_type, Relay* application) {
 		if (G_UNLIKELY (_inner_error_ != NULL)) {
 			_g_object_unref0 (_tmp8_);
 			_g_object_unref0 (_tmp2_);
-			block1_data_unref (_data1_);
-			_data1_ = NULL;
 			goto __catch0_g_error;
 		}
 		_tmp19_ = _tmp14_;
@@ -1299,8 +992,6 @@ MainWindow* main_window_construct (GType object_type, Relay* application) {
 			_g_object_unref0 (_tmp14_);
 			_g_object_unref0 (_tmp8_);
 			_g_object_unref0 (_tmp2_);
-			block1_data_unref (_data1_);
-			_data1_ = NULL;
 			goto __catch0_g_error;
 		}
 		_tmp24_ = builder;
@@ -1384,323 +1075,87 @@ MainWindow* main_window_construct (GType object_type, Relay* application) {
 		_tmp68_ = server_list_container;
 		_tmp69_ = self->priv->servers;
 		gtk_box_pack_start (_tmp68_, (GtkWidget*) _tmp69_, TRUE, TRUE, (guint) 0);
-		_tmp70_ = relay_get_asset_file ("assets/preferences-system-network.svg");
-		_tmp71_ = _tmp70_;
-		_tmp72_ = (GtkImage*) gtk_image_new_from_file (_tmp71_);
-		g_object_ref_sink (_tmp72_);
-		_tmp73_ = _tmp72_;
-		_g_free0 (_tmp71_);
-		icon = _tmp73_;
-		_tmp74_ = icon;
-		_tmp75_ = gtk_image_get_pixbuf (_tmp74_);
-		_tmp76_ = gdk_pixbuf_scale_simple (_tmp75_, 24, 24, GDK_INTERP_BILINEAR);
-		icon_buf = _tmp76_;
-		_tmp77_ = (GtkButton*) gtk_button_new ();
-		g_object_ref_sink (_tmp77_);
-		select_channel = _tmp77_;
-		_tmp78_ = select_channel;
-		_tmp79_ = icon_buf;
-		_tmp80_ = (GtkImage*) gtk_image_new_from_pixbuf (_tmp79_);
-		g_object_ref_sink (_tmp80_);
-		_tmp81_ = _tmp80_;
-		gtk_button_set_image (_tmp78_, (GtkWidget*) _tmp81_);
-		_g_object_unref0 (_tmp81_);
-		_tmp82_ = relay_get_asset_file ("assets/mail-unread.svg");
-		_tmp83_ = _tmp82_;
-		_tmp84_ = (GtkImage*) gtk_image_new_from_file (_tmp83_);
-		g_object_ref_sink (_tmp84_);
-		_g_object_unref0 (icon);
-		icon = _tmp84_;
-		_g_free0 (_tmp83_);
-		_tmp85_ = icon;
-		_tmp86_ = gtk_image_get_pixbuf (_tmp85_);
-		_tmp87_ = gdk_pixbuf_scale_simple (_tmp86_, 12, 12, GDK_INTERP_BILINEAR);
-		_g_object_unref0 (main_window_channel_tab_icon_new_msg);
-		main_window_channel_tab_icon_new_msg = (GIcon*) _tmp87_;
-		_tmp88_ = select_channel;
-		_tmp89_ = _ ("Open server/channel view");
-		gtk_widget_set_tooltip_text ((GtkWidget*) _tmp88_, _tmp89_);
-		_tmp90_ = self->priv->toolbar;
-		_tmp91_ = select_channel;
-		gtk_header_bar_pack_start (_tmp90_, (GtkWidget*) _tmp91_);
-		_tmp92_ = select_channel;
-		g_signal_connect_object ((GtkWidget*) _tmp92_, "button-release-event", (GCallback) _main_window_slide_panel_gtk_widget_button_release_event, self, 0);
-		_tmp93_ = self->priv->panel;
-		gtk_paned_set_position (_tmp93_, 1);
-		_tmp94_ = builder;
-		_tmp95_ = gtk_builder_get_object (_tmp94_, "entry_wrapper");
-		_tmp96_ = _g_object_ref0 (G_TYPE_CHECK_INSTANCE_TYPE (_tmp95_, gtk_box_get_type ()) ? ((GtkBox*) _tmp95_) : NULL);
-		entry_wrapper = _tmp96_;
-		_tmp97_ = main_entry_new ();
-		g_object_ref_sink (_tmp97_);
+		_tmp70_ = self->priv->panel;
+		gtk_paned_set_position (_tmp70_, 1);
+		_tmp71_ = builder;
+		_tmp72_ = gtk_builder_get_object (_tmp71_, "entry_wrapper");
+		_tmp73_ = _g_object_ref0 (G_TYPE_CHECK_INSTANCE_TYPE (_tmp72_, gtk_box_get_type ()) ? ((GtkBox*) _tmp72_) : NULL);
+		entry_wrapper = _tmp73_;
+		_tmp74_ = main_entry_new ();
+		g_object_ref_sink (_tmp74_);
 		_g_object_unref0 (main_window_input);
-		main_window_input = (GtkEntry*) _tmp97_;
-		_tmp98_ = entry_wrapper;
-		_tmp99_ = main_window_input;
-		gtk_box_pack_start (_tmp98_, (GtkWidget*) _tmp99_, TRUE, TRUE, (guint) 0);
-		_tmp100_ = main_window_input;
-		g_signal_connect_object (_tmp100_, "activate", (GCallback) ____lambda40__gtk_entry_activate, self, 0);
-		_tmp101_ = relay_get_asset_file ("assets/channel.svg");
-		_tmp102_ = _tmp101_;
-		_tmp103_ = (GtkImage*) gtk_image_new_from_file (_tmp102_);
-		g_object_ref_sink (_tmp103_);
-		_g_object_unref0 (icon);
-		icon = _tmp103_;
-		_g_free0 (_tmp102_);
-		_tmp104_ = icon;
-		_tmp105_ = gtk_image_get_pixbuf (_tmp104_);
-		_tmp106_ = gdk_pixbuf_scale_simple (_tmp105_, 24, 24, GDK_INTERP_BILINEAR);
-		_g_object_unref0 (icon_buf);
-		icon_buf = _tmp106_;
-		_tmp107_ = self->priv->channel_subject;
-		_tmp108_ = icon_buf;
-		_tmp109_ = (GtkImage*) gtk_image_new_from_pixbuf (_tmp108_);
-		g_object_ref_sink (_tmp109_);
-		_tmp110_ = _tmp109_;
-		gtk_button_set_image (_tmp107_, (GtkWidget*) _tmp110_);
-		_g_object_unref0 (_tmp110_);
-		_tmp111_ = self->priv->channel_subject;
-		_tmp112_ = _ ("Channel subject");
-		gtk_widget_set_tooltip_text ((GtkWidget*) _tmp111_, _tmp112_);
-		_tmp113_ = self->priv->channel_subject;
-		_tmp114_ = (GtkPopover*) gtk_popover_new ((GtkWidget*) _tmp113_);
-		g_object_ref_sink (_tmp114_);
-		_data1_->subject_popover = _tmp114_;
-		_tmp115_ = self->priv->channel_subject;
-		g_signal_connect_data (_tmp115_, "clicked", (GCallback) ____lambda41__gtk_button_clicked, block1_data_ref (_data1_), (GClosureNotify) block1_data_unref, 0);
-		_tmp116_ = self->priv->channel_subject;
-		gtk_widget_set_no_show_all ((GtkWidget*) _tmp116_, TRUE);
-		_tmp117_ = self->priv->channel_subject;
-		gtk_widget_hide ((GtkWidget*) _tmp117_);
-		_tmp118_ = (GtkScrolledWindow*) gtk_scrolled_window_new (NULL, NULL);
-		g_object_ref_sink (_tmp118_);
-		scrolled = _tmp118_;
-		_tmp119_ = self->priv->subject_text;
-		gtk_label_set_line_wrap (_tmp119_, TRUE);
-		_tmp120_ = self->priv->subject_text;
-		g_object_set ((GtkWidget*) _tmp120_, "margin", 10, NULL);
-		_tmp121_ = scrolled;
-		gtk_widget_set_size_request ((GtkWidget*) _tmp121_, 320, 110);
-		_tmp122_ = scrolled;
-		_tmp123_ = self->priv->subject_text;
-		gtk_container_add ((GtkContainer*) _tmp122_, (GtkWidget*) _tmp123_);
-		_tmp124_ = _data1_->subject_popover;
-		_tmp125_ = scrolled;
-		gtk_container_add ((GtkContainer*) _tmp124_, (GtkWidget*) _tmp125_);
-		_tmp126_ = self->priv->toolbar;
-		_tmp127_ = self->priv->channel_subject;
-		gtk_header_bar_pack_end (_tmp126_, (GtkWidget*) _tmp127_);
-		_tmp128_ = relay_get_asset_file ("assets/users.svg");
-		_tmp129_ = _tmp128_;
-		_tmp130_ = (GtkImage*) gtk_image_new_from_file (_tmp129_);
-		g_object_ref_sink (_tmp130_);
-		_g_object_unref0 (icon);
-		icon = _tmp130_;
-		_g_free0 (_tmp129_);
-		_tmp131_ = icon;
-		_tmp132_ = gtk_image_get_pixbuf (_tmp131_);
-		_tmp133_ = gdk_pixbuf_scale_simple (_tmp132_, 24, 24, GDK_INTERP_BILINEAR);
-		_g_object_unref0 (icon_buf);
-		icon_buf = _tmp133_;
-		_tmp134_ = self->priv->channel_users;
-		_tmp135_ = icon_buf;
-		_tmp136_ = (GtkImage*) gtk_image_new_from_pixbuf (_tmp135_);
-		g_object_ref_sink (_tmp136_);
-		_tmp137_ = _tmp136_;
-		gtk_button_set_image (_tmp134_, (GtkWidget*) _tmp137_);
-		_g_object_unref0 (_tmp137_);
-		_tmp138_ = self->priv->channel_users;
-		_tmp139_ = _ ("Channel users");
-		gtk_widget_set_tooltip_text ((GtkWidget*) _tmp138_, _tmp139_);
-		_tmp140_ = self->priv->channel_users;
-		gtk_widget_hide ((GtkWidget*) _tmp140_);
-		_tmp141_ = self->priv->channel_users;
-		_tmp142_ = (GtkPopover*) gtk_popover_new ((GtkWidget*) _tmp141_);
-		g_object_ref_sink (_tmp142_);
-		_g_object_unref0 (self->priv->users_popover);
-		self->priv->users_popover = _tmp142_;
-		_tmp143_ = self->priv->channel_users;
-		g_signal_connect_object (_tmp143_, "clicked", (GCallback) ____lambda42__gtk_button_clicked, self, 0);
-		_tmp144_ = self->priv->users_popover;
-		g_signal_connect_object ((GtkWidget*) _tmp144_, "focus-out-event", (GCallback) ____lambda48__gtk_widget_focus_out_event, self, 0);
-		_tmp145_ = self->priv->toolbar;
-		g_signal_connect_object ((GtkWidget*) _tmp145_, "button-press-event", (GCallback) ____lambda49__gtk_widget_button_press_event, self, 0);
-		_tmp146_ = self->priv->users_scrolled;
-		g_object_set (_tmp146_, "vscrollbar-policy", GTK_POLICY_NEVER, NULL);
-		_tmp147_ = self->priv->users_scrolled;
-		g_object_set (_tmp147_, "hscrollbar-policy", GTK_POLICY_AUTOMATIC, NULL);
-		_tmp148_ = self->priv->users_scrolled;
-		_tmp149_ = self->priv->users_list;
-		gtk_container_add ((GtkContainer*) _tmp148_, (GtkWidget*) _tmp149_);
-		_tmp150_ = (GtkBox*) gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-		g_object_ref_sink (_tmp150_);
-		users_wrap = _tmp150_;
-		_tmp151_ = pango_font_description_new ();
-		font = _tmp151_;
-		_tmp152_ = font;
-		pango_font_description_set_weight (_tmp152_, PANGO_WEIGHT_BOLD);
-		_tmp153_ = self->priv->users_search;
-		g_signal_connect_object (_tmp153_, "search-changed", (GCallback) ____lambda50__gtk_search_entry_search_changed, self, 0);
-		_tmp154_ = self->priv->users_header;
-		_tmp155_ = font;
-		gtk_widget_override_font ((GtkWidget*) _tmp154_, _tmp155_);
-		_tmp156_ = self->priv->users_header;
-		g_object_set ((GtkWidget*) _tmp156_, "height-request", 24, NULL);
-		_tmp157_ = users_wrap;
-		_tmp158_ = self->priv->users_header;
-		gtk_box_pack_start (_tmp157_, (GtkWidget*) _tmp158_, TRUE, FALSE, (guint) 4);
-		_tmp159_ = users_wrap;
-		_tmp160_ = self->priv->users_search;
-		gtk_box_pack_start (_tmp159_, (GtkWidget*) _tmp160_, TRUE, FALSE, (guint) 4);
-		_tmp161_ = users_wrap;
-		_tmp162_ = self->priv->users_scrolled;
-		gtk_box_pack_start (_tmp161_, (GtkWidget*) _tmp162_, TRUE, TRUE, (guint) 0);
-		_tmp163_ = self->priv->users_popover;
-		_tmp164_ = users_wrap;
-		gtk_container_add ((GtkContainer*) _tmp163_, (GtkWidget*) _tmp164_);
-		_tmp165_ = self->priv->toolbar;
-		_tmp166_ = self->priv->channel_users;
-		gtk_header_bar_pack_end (_tmp165_, (GtkWidget*) _tmp166_);
-		_tmp167_ = _ ("Privat meddelande");
-		_tmp168_ = (GtkMenuItem*) gtk_menu_item_new_with_label (_tmp167_);
-		g_object_ref_sink (_tmp168_);
-		private_message = _tmp168_;
-		_tmp169_ = self->priv->user_menu;
-		_tmp170_ = private_message;
-		gtk_container_add ((GtkContainer*) _tmp169_, (GtkWidget*) _tmp170_);
-		_tmp171_ = _ ("Block");
-		_tmp172_ = (GtkMenuItem*) gtk_menu_item_new_with_label (_tmp171_);
-		g_object_ref_sink (_tmp172_);
-		block = _tmp172_;
-		_tmp173_ = private_message;
-		g_signal_connect_object ((GtkWidget*) _tmp173_, "button-release-event", (GCallback) _main_window_click_private_message_gtk_widget_button_release_event, self, 0);
-		_tmp174_ = block;
-		g_signal_connect_object ((GtkWidget*) _tmp174_, "button-release-event", (GCallback) _main_window_click_block_gtk_widget_button_release_event, self, 0);
-		_tmp175_ = self->priv->user_menu;
-		_tmp176_ = block;
-		gtk_container_add ((GtkContainer*) _tmp175_, (GtkWidget*) _tmp176_);
-		_tmp177_ = self->priv->user_menu;
-		gtk_widget_show_all ((GtkWidget*) _tmp177_);
-		_tmp178_ = self->priv->servers;
-		g_signal_connect_object (_tmp178_, "item-selected", (GCallback) _main_window_set_item_selected_granite_widgets_source_list_item_selected, self, 0);
-		_tmp179_ = builder;
-		main_window_set_up_add_sever (self, _tmp179_);
-		_tmp180_ = self->priv->toolbar;
-		_tmp181_ = self->priv->app;
-		_tmp182_ = ((GraniteApplication*) _tmp181_)->program_name;
-		gtk_header_bar_set_title (_tmp180_, _tmp182_);
-		_tmp183_ = relay_on_kde;
-		if (!_tmp183_) {
-			GtkHeaderBar* _tmp184_ = NULL;
-			_tmp184_ = self->priv->toolbar;
-			gtk_header_bar_set_show_close_button (_tmp184_, TRUE);
+		main_window_input = (GtkEntry*) _tmp74_;
+		_tmp75_ = entry_wrapper;
+		_tmp76_ = main_window_input;
+		gtk_box_pack_start (_tmp75_, (GtkWidget*) _tmp76_, TRUE, TRUE, (guint) 0);
+		_tmp77_ = main_window_input;
+		g_signal_connect_object (_tmp77_, "activate", (GCallback) ____lambda40__gtk_entry_activate, self, 0);
+		_tmp78_ = self->priv->servers;
+		g_signal_connect_object (_tmp78_, "item-selected", (GCallback) _main_window_set_item_selected_granite_widgets_source_list_item_selected, self, 0);
+		_tmp79_ = builder;
+		main_window_set_up_add_sever (self, _tmp79_);
+		_tmp80_ = self->priv->toolbar;
+		_tmp81_ = self->priv->app;
+		_tmp82_ = ((GraniteApplication*) _tmp81_)->program_name;
+		gtk_header_bar_set_title (_tmp80_, _tmp82_);
+		_tmp83_ = relay_on_kde;
+		if (!_tmp83_) {
+			GtkHeaderBar* _tmp84_ = NULL;
+			_tmp84_ = self->priv->toolbar;
+			gtk_header_bar_set_show_close_button (_tmp84_, TRUE);
 		}
-		_tmp185_ = main_window_window;
-		_tmp186_ = self->priv->toolbar;
-		gtk_window_set_titlebar (_tmp185_, (GtkWidget*) _tmp186_);
-		_tmp187_ = main_window_window;
-		gtk_widget_show_all ((GtkWidget*) _tmp187_);
-		_tmp188_ = main_window_paste_box;
-		_tmp189_ = main_window_paste;
-		gtk_box_pack_start (_tmp188_, (GtkWidget*) _tmp189_, TRUE, TRUE, (guint) 0);
-		_tmp190_ = main_window_paste_box;
-		gtk_widget_show_all ((GtkWidget*) _tmp190_);
-		_tmp191_ = relay_get_asset_file ("assets/upload.svg");
-		_tmp192_ = _tmp191_;
-		_tmp193_ = (GtkImage*) gtk_image_new_from_file (_tmp192_);
-		g_object_ref_sink (_tmp193_);
-		_g_object_unref0 (icon);
-		icon = _tmp193_;
-		_g_free0 (_tmp192_);
-		_tmp194_ = icon;
-		_tmp195_ = gtk_image_get_pixbuf (_tmp194_);
-		_tmp196_ = gdk_pixbuf_scale_simple (_tmp195_, 24, 24, GDK_INTERP_BILINEAR);
-		_g_object_unref0 (icon_buf);
-		icon_buf = _tmp196_;
-		_tmp197_ = icon_buf;
-		_tmp198_ = (GtkImage*) gtk_image_new_from_pixbuf (_tmp197_);
-		g_object_ref_sink (_tmp198_);
-		_g_object_unref0 (icon);
-		icon = _tmp198_;
-		_tmp199_ = main_window_paste;
-		_tmp200_ = icon;
-		gtk_button_set_image (_tmp199_, (GtkWidget*) _tmp200_);
-		_tmp201_ = main_window_paste;
-		_tmp202_ = _ ("Drag a files here to upload to Hastebin.com");
-		gtk_widget_set_tooltip_text ((GtkWidget*) _tmp201_, _tmp202_);
-		_tmp203_ = main_window_paste;
-		g_signal_emit_by_name (_tmp203_, "activate");
-		_tmp204_ = self->priv->toolbar;
-		_tmp205_ = main_window_paste_box;
-		gtk_header_bar_pack_end (_tmp204_, (GtkWidget*) _tmp205_);
-		_tmp206_ = self->priv->drag_file;
-		_tmp207_ = main_window_paste_box;
-		drag_file_attach_spinner (_tmp206_, _tmp207_);
-		_tmp208_ = self->priv->drag_file;
-		_tmp209_ = main_window_paste;
-		drag_file_attach_button (_tmp208_, _tmp209_);
-		_tmp210_ = main_window_paste;
-		gtk_drag_dest_set ((GtkWidget*) _tmp210_, GTK_DEST_DEFAULT_ALL, DRAG_FILE_TARGETS, G_N_ELEMENTS (DRAG_FILE_TARGETS), GDK_ACTION_LINK);
-		_tmp211_ = self->priv->drag_file;
-		g_signal_connect_object (_tmp211_, "file-uploaded", (GCallback) _main_window_file_uploaded_drag_file_file_uploaded, self, 0);
-		_tmp212_ = main_window_paste;
-		_tmp213_ = self->priv->drag_file;
-		g_signal_connect_object ((GtkWidget*) _tmp212_, "drag-data-received", (GCallback) _drag_file_drop_file_gtk_widget_drag_data_received, _tmp213_, 0);
-		_tmp214_ = self->priv->tabs;
-		g_signal_connect_object (_tmp214_, "tab-removed", (GCallback) _main_window_tab_remove_granite_widgets_dynamic_notebook_tab_removed, self, 0);
-		_tmp215_ = self->priv->tabs;
-		g_signal_connect_object (_tmp215_, "tab-switched", (GCallback) _main_window_tab_switch_granite_widgets_dynamic_notebook_tab_switched, self, 0);
+		_tmp85_ = main_window_window;
+		_tmp86_ = self->priv->toolbar;
+		gtk_window_set_titlebar (_tmp85_, (GtkWidget*) _tmp86_);
+		_tmp87_ = main_window_window;
+		gtk_widget_show_all ((GtkWidget*) _tmp87_);
+		_tmp88_ = self->priv->tabs;
+		g_signal_connect_object (_tmp88_, "tab-removed", (GCallback) _main_window_tab_remove_granite_widgets_dynamic_notebook_tab_removed, self, 0);
+		_tmp89_ = self->priv->tabs;
+		g_signal_connect_object (_tmp89_, "tab-switched", (GCallback) _main_window_tab_switch_granite_widgets_dynamic_notebook_tab_switched, self, 0);
 		main_window_refresh_server_list (self);
 		main_window_load_autoconnect (self);
-		_tmp216_ = _ ("Close All");
-		_tmp217_ = (GtkMenuItem*) gtk_menu_item_new_with_label (_tmp216_);
-		g_object_ref_sink (_tmp217_);
-		close_all = _tmp217_;
-		_tmp218_ = close_all;
-		g_signal_connect_object (_tmp218_, "activate", (GCallback) ____lambda53__gtk_menu_item_activate, self, 0);
-		_tmp219_ = _ ("New Tab");
-		_tmp220_ = (GtkMenuItem*) gtk_menu_item_new_with_label (_tmp219_);
-		g_object_ref_sink (_tmp220_);
-		new_tab = _tmp220_;
-		_tmp221_ = new_tab;
-		g_signal_connect_object (_tmp221_, "activate", (GCallback) _main_window_new_tab_requested_gtk_menu_item_activate, self, 0);
-		_tmp222_ = _ ("Switch");
-		_tmp223_ = (GtkMenuItem*) gtk_menu_item_new_with_label (_tmp222_);
-		g_object_ref_sink (_tmp223_);
-		channel_list_menu = _tmp223_;
-		_tmp224_ = channel_list_menu;
-		_tmp225_ = self->priv->tab_channel_list;
-		gtk_menu_item_set_submenu (_tmp224_, (GtkWidget*) _tmp225_);
-		_tmp226_ = self->priv->tab_rightclick;
-		_tmp227_ = channel_list_menu;
-		gtk_container_add ((GtkContainer*) _tmp226_, (GtkWidget*) _tmp227_);
-		_tmp228_ = self->priv->tab_rightclick;
-		_tmp229_ = close_all;
-		gtk_container_add ((GtkContainer*) _tmp228_, (GtkWidget*) _tmp229_);
-		_tmp230_ = self->priv->tab_rightclick;
-		_tmp231_ = new_tab;
-		gtk_container_add ((GtkContainer*) _tmp230_, (GtkWidget*) _tmp231_);
-		_tmp232_ = self->priv->tab_rightclick;
-		gtk_widget_show_all ((GtkWidget*) _tmp232_);
-		_tmp233_ = main_window_server_manager;
-		g_signal_connect_object (_tmp233_, "close", (GCallback) ____lambda54__server_manager_close, self, 0);
-		_tmp234_ = main_window_settings;
-		_tmp235_ = settings_get_bool (_tmp234_, "show_sidebar");
-		if (_tmp235_) {
+		_tmp90_ = _ ("Close All");
+		_tmp91_ = (GtkMenuItem*) gtk_menu_item_new_with_label (_tmp90_);
+		g_object_ref_sink (_tmp91_);
+		close_all = _tmp91_;
+		_tmp92_ = close_all;
+		g_signal_connect_object (_tmp92_, "activate", (GCallback) ____lambda43__gtk_menu_item_activate, self, 0);
+		_tmp93_ = _ ("New Tab");
+		_tmp94_ = (GtkMenuItem*) gtk_menu_item_new_with_label (_tmp93_);
+		g_object_ref_sink (_tmp94_);
+		new_tab = _tmp94_;
+		_tmp95_ = new_tab;
+		g_signal_connect_object (_tmp95_, "activate", (GCallback) _main_window_new_tab_requested_gtk_menu_item_activate, self, 0);
+		_tmp96_ = _ ("Switch");
+		_tmp97_ = (GtkMenuItem*) gtk_menu_item_new_with_label (_tmp96_);
+		g_object_ref_sink (_tmp97_);
+		channel_list_menu = _tmp97_;
+		_tmp98_ = channel_list_menu;
+		_tmp99_ = self->priv->tab_channel_list;
+		gtk_menu_item_set_submenu (_tmp98_, (GtkWidget*) _tmp99_);
+		_tmp100_ = self->priv->tab_rightclick;
+		_tmp101_ = channel_list_menu;
+		gtk_container_add ((GtkContainer*) _tmp100_, (GtkWidget*) _tmp101_);
+		_tmp102_ = self->priv->tab_rightclick;
+		_tmp103_ = close_all;
+		gtk_container_add ((GtkContainer*) _tmp102_, (GtkWidget*) _tmp103_);
+		_tmp104_ = self->priv->tab_rightclick;
+		_tmp105_ = new_tab;
+		gtk_container_add ((GtkContainer*) _tmp104_, (GtkWidget*) _tmp105_);
+		_tmp106_ = self->priv->tab_rightclick;
+		gtk_widget_show_all ((GtkWidget*) _tmp106_);
+		_tmp107_ = main_window_server_manager;
+		g_signal_connect_object (_tmp107_, "close", (GCallback) ____lambda44__server_manager_close, self, 0);
+		_tmp108_ = main_window_settings;
+		_tmp109_ = settings_get_bool (_tmp108_, "show_sidebar");
+		if (_tmp109_) {
 			main_window_slide_panel (self);
 		}
 		_g_object_unref0 (channel_list_menu);
 		_g_object_unref0 (new_tab);
 		_g_object_unref0 (close_all);
-		_g_object_unref0 (block);
-		_g_object_unref0 (private_message);
-		__vala_PangoFontDescription_free0 (font);
-		_g_object_unref0 (users_wrap);
-		_g_object_unref0 (scrolled);
 		_g_object_unref0 (entry_wrapper);
-		_g_object_unref0 (select_channel);
-		_g_object_unref0 (icon_buf);
-		_g_object_unref0 (icon);
 		_g_object_unref0 (server_list_container);
 		_g_object_unref0 (nb_wrapper);
 		_g_object_unref0 (settings_btn);
@@ -1708,18 +1163,16 @@ MainWindow* main_window_construct (GType object_type, Relay* application) {
 		_g_object_unref0 (_tmp14_);
 		_g_object_unref0 (_tmp8_);
 		_g_object_unref0 (_tmp2_);
-		block1_data_unref (_data1_);
-		_data1_ = NULL;
 	}
 	goto __finally0;
 	__catch0_g_error:
 	{
 		GError* e = NULL;
-		const gchar* _tmp236_ = NULL;
+		const gchar* _tmp110_ = NULL;
 		e = _inner_error_;
 		_inner_error_ = NULL;
-		_tmp236_ = e->message;
-		g_error ("main_window.vala:292: Could not load UI: %s\n", _tmp236_);
+		_tmp110_ = e->message;
+		g_error ("main_window.vala:294: Could not load UI: %s\n", _tmp110_);
 		_g_error_free0 (e);
 	}
 	__finally0:
@@ -1728,10 +1181,10 @@ MainWindow* main_window_construct (GType object_type, Relay* application) {
 		g_clear_error (&_inner_error_);
 		return NULL;
 	}
-	_tmp237_ = g_network_monitor_get_default ();
-	_tmp238_ = _g_object_ref0 (_tmp237_);
-	network_monitor = _tmp238_;
-	g_signal_connect_object (network_monitor, "network-changed", (GCallback) ___lambda55__g_network_monitor_network_changed, self, 0);
+	_tmp111_ = g_network_monitor_get_default ();
+	_tmp112_ = _g_object_ref0 (_tmp111_);
+	network_monitor = _tmp112_;
+	g_signal_connect_object (network_monitor, "network-changed", (GCallback) ___lambda45__g_network_monitor_network_changed, self, 0);
 	_g_object_unref0 (network_monitor);
 	return self;
 }
@@ -1757,35 +1210,35 @@ static void ___lambda37__gtk_callback (GtkWidget* widget, gpointer self) {
 }
 
 
-static Block2Data* block2_data_ref (Block2Data* _data2_) {
-	g_atomic_int_inc (&_data2_->_ref_count_);
-	return _data2_;
+static Block1Data* block1_data_ref (Block1Data* _data1_) {
+	g_atomic_int_inc (&_data1_->_ref_count_);
+	return _data1_;
 }
 
 
-static void block2_data_unref (void * _userdata_) {
-	Block2Data* _data2_;
-	_data2_ = (Block2Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data2_->_ref_count_)) {
+static void block1_data_unref (void * _userdata_) {
+	Block1Data* _data1_;
+	_data1_ = (Block1Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data1_->_ref_count_)) {
 		MainWindow* self;
-		self = _data2_->self;
-		_g_object_unref0 (_data2_->tab);
+		self = _data1_->self;
+		_g_object_unref0 (_data1_->tab);
 		_g_object_unref0 (self);
-		g_slice_free (Block2Data, _data2_);
+		g_slice_free (Block1Data, _data1_);
 	}
 }
 
 
-static void ____lambda38_ (Block2Data* _data2_) {
+static void ____lambda38_ (Block1Data* _data1_) {
 	MainWindow* self;
 	GraniteWidgetsDynamicNotebook* _tmp0_ = NULL;
 	GeeMapEntry* _tmp1_ = NULL;
 	gconstpointer _tmp2_ = NULL;
 	ChannelTab* _tmp3_ = NULL;
 	GraniteWidgetsTab* _tmp4_ = NULL;
-	self = _data2_->self;
+	self = _data1_->self;
 	_tmp0_ = self->priv->tabs;
-	_tmp1_ = _data2_->tab;
+	_tmp1_ = _data1_->tab;
 	_tmp2_ = gee_map_entry_get_value (_tmp1_);
 	_tmp3_ = _tmp2_;
 	_tmp4_ = ((ChannelTab*) _tmp3_)->tab;
@@ -1821,7 +1274,7 @@ void main_window_rebuild_channel_list_menu (MainWindow* self) {
 		_g_object_unref0 (_tmp4_);
 		_tab_it = _tmp6_;
 		while (TRUE) {
-			Block2Data* _data2_;
+			Block1Data* _data1_;
 			GeeIterator* _tmp7_ = NULL;
 			gboolean _tmp8_ = FALSE;
 			GeeIterator* _tmp9_ = NULL;
@@ -1838,20 +1291,20 @@ void main_window_rebuild_channel_list_menu (MainWindow* self) {
 			GtkMenu* _tmp19_ = NULL;
 			GtkMenuItem* _tmp20_ = NULL;
 			GtkMenuItem* _tmp21_ = NULL;
-			_data2_ = g_slice_new0 (Block2Data);
-			_data2_->_ref_count_ = 1;
-			_data2_->self = g_object_ref (self);
+			_data1_ = g_slice_new0 (Block1Data);
+			_data1_->_ref_count_ = 1;
+			_data1_->self = g_object_ref (self);
 			_tmp7_ = _tab_it;
 			_tmp8_ = gee_iterator_next (_tmp7_);
 			if (!_tmp8_) {
-				block2_data_unref (_data2_);
-				_data2_ = NULL;
+				block1_data_unref (_data1_);
+				_data1_ = NULL;
 				break;
 			}
 			_tmp9_ = _tab_it;
 			_tmp10_ = gee_iterator_get (_tmp9_);
-			_data2_->tab = (GeeMapEntry*) _tmp10_;
-			_tmp11_ = _data2_->tab;
+			_data1_->tab = (GeeMapEntry*) _tmp10_;
+			_tmp11_ = _data1_->tab;
 			_tmp12_ = gee_map_entry_get_value (_tmp11_);
 			_tmp13_ = _tmp12_;
 			_tmp14_ = ((ChannelTab*) _tmp13_)->tab;
@@ -1861,15 +1314,15 @@ void main_window_rebuild_channel_list_menu (MainWindow* self) {
 			g_object_ref_sink (_tmp17_);
 			item = _tmp17_;
 			_tmp18_ = item;
-			g_signal_connect_data (_tmp18_, "activate", (GCallback) _____lambda38__gtk_menu_item_activate, block2_data_ref (_data2_), (GClosureNotify) block2_data_unref, 0);
+			g_signal_connect_data (_tmp18_, "activate", (GCallback) _____lambda38__gtk_menu_item_activate, block1_data_ref (_data1_), (GClosureNotify) block1_data_unref, 0);
 			_tmp19_ = self->priv->tab_channel_list;
 			_tmp20_ = item;
 			gtk_container_add ((GtkContainer*) _tmp19_, (GtkWidget*) _tmp20_);
 			_tmp21_ = item;
 			gtk_widget_show_all ((GtkWidget*) _tmp21_);
 			_g_object_unref0 (item);
-			block2_data_unref (_data2_);
-			_data2_ = NULL;
+			block1_data_unref (_data1_);
+			_data1_ = NULL;
 		}
 		_g_object_unref0 (_tab_it);
 	}
@@ -1908,6 +1361,26 @@ static void main_window_set_item_selected (MainWindow* self, GraniteWidgetsSourc
 }
 
 
+static Block2Data* block2_data_ref (Block2Data* _data2_) {
+	g_atomic_int_inc (&_data2_->_ref_count_);
+	return _data2_;
+}
+
+
+static void block2_data_unref (void * _userdata_) {
+	Block2Data* _data2_;
+	_data2_ = (Block2Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data2_->_ref_count_)) {
+		MainWindow* self;
+		self = _data2_->self;
+		_g_object_unref0 (_data2_->new_tab);
+		_g_free0 (_data2_->name);
+		_g_object_unref0 (self);
+		g_slice_free (Block2Data, _data2_);
+	}
+}
+
+
 static Block3Data* block3_data_ref (Block3Data* _data3_) {
 	g_atomic_int_inc (&_data3_->_ref_count_);
 	return _data3_;
@@ -1919,37 +1392,22 @@ static void block3_data_unref (void * _userdata_) {
 	_data3_ = (Block3Data*) _userdata_;
 	if (g_atomic_int_dec_and_test (&_data3_->_ref_count_)) {
 		MainWindow* self;
-		self = _data3_->self;
-		_g_object_unref0 (_data3_->new_tab);
-		_g_free0 (_data3_->name);
-		_g_object_unref0 (self);
+		self = _data3_->_data2_->self;
+		_g_object_unref0 (_data3_->output);
+		block2_data_unref (_data3_->_data2_);
+		_data3_->_data2_ = NULL;
 		g_slice_free (Block3Data, _data3_);
 	}
 }
 
 
-static Block4Data* block4_data_ref (Block4Data* _data4_) {
-	g_atomic_int_inc (&_data4_->_ref_count_);
-	return _data4_;
+static void _vala_PangoFontDescription_free (PangoFontDescription* self) {
+	g_boxed_free (pango_font_description_get_type (), self);
 }
 
 
-static void block4_data_unref (void * _userdata_) {
-	Block4Data* _data4_;
-	_data4_ = (Block4Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data4_->_ref_count_)) {
-		MainWindow* self;
-		self = _data4_->_data3_->self;
-		_g_object_unref0 (_data4_->output);
-		block3_data_unref (_data4_->_data3_);
-		_data4_->_data3_ = NULL;
-		g_slice_free (Block4Data, _data4_);
-	}
-}
-
-
-static void __lambda35_ (Block4Data* _data4_) {
-	Block3Data* _data3_;
+static void __lambda35_ (Block3Data* _data3_) {
+	Block2Data* _data2_;
 	MainWindow* self;
 	GtkTextIter start = {0};
 	GtkTextIter end = {0};
@@ -1965,15 +1423,15 @@ static void __lambda35_ (Block4Data* _data4_) {
 	GtkTextIter _tmp9_ = {0};
 	gchar* _tmp10_ = NULL;
 	gchar* _tmp11_ = NULL;
-	_data3_ = _data4_->_data3_;
-	self = _data3_->self;
-	_tmp0_ = _data4_->output;
+	_data2_ = _data3_->_data2_;
+	self = _data2_->self;
+	_tmp0_ = _data3_->output;
 	_tmp1_ = gtk_text_view_get_buffer (_tmp0_);
 	_tmp2_ = _tmp1_;
 	gtk_text_buffer_get_selection_bounds (_tmp2_, &_tmp3_, &_tmp4_);
 	start = _tmp3_;
 	end = _tmp4_;
-	_tmp5_ = _data4_->output;
+	_tmp5_ = _data3_->output;
 	_tmp6_ = gtk_text_view_get_buffer (_tmp5_);
 	_tmp7_ = _tmp6_;
 	_tmp8_ = start;
@@ -1990,8 +1448,8 @@ static void ___lambda35__gtk_menu_item_activate (GtkMenuItem* _sender, gpointer 
 }
 
 
-static void __lambda36_ (Block4Data* _data4_) {
-	Block3Data* _data3_;
+static void __lambda36_ (Block3Data* _data3_) {
+	Block2Data* _data2_;
 	MainWindow* self;
 	GtkTextView* _tmp0_ = NULL;
 	GtkTextBuffer* _tmp1_ = NULL;
@@ -1999,9 +1457,9 @@ static void __lambda36_ (Block4Data* _data4_) {
 	gchar* _tmp3_ = NULL;
 	gchar* _tmp4_ = NULL;
 	gchar* _tmp5_ = NULL;
-	_data3_ = _data4_->_data3_;
-	self = _data3_->self;
-	_tmp0_ = _data4_->output;
+	_data2_ = _data3_->_data2_;
+	self = _data2_->self;
+	_tmp0_ = _data3_->output;
 	_tmp1_ = gtk_text_view_get_buffer (_tmp0_);
 	_tmp2_ = _tmp1_;
 	g_object_get (_tmp2_, "text", &_tmp3_, NULL);
@@ -2017,8 +1475,8 @@ static void ___lambda36__gtk_menu_item_activate (GtkMenuItem* _sender, gpointer 
 }
 
 
-static void __lambda34_ (Block4Data* _data4_, GtkMenu* menu) {
-	Block3Data* _data3_;
+static void __lambda34_ (Block3Data* _data3_, GtkMenu* menu) {
+	Block2Data* _data2_;
 	MainWindow* self;
 	GtkSeparatorMenuItem* seperator = NULL;
 	GtkSeparatorMenuItem* _tmp0_ = NULL;
@@ -2042,8 +1500,8 @@ static void __lambda34_ (Block4Data* _data4_, GtkMenu* menu) {
 	gboolean _tmp16_ = FALSE;
 	GtkMenuItem* _tmp18_ = NULL;
 	GtkMenuItem* _tmp19_ = NULL;
-	_data3_ = _data4_->_data3_;
-	self = _data3_->self;
+	_data2_ = _data3_->_data2_;
+	self = _data2_->self;
 	g_return_if_fail (menu != NULL);
 	_tmp0_ = (GtkSeparatorMenuItem*) gtk_separator_menu_item_new ();
 	g_object_ref_sink (_tmp0_);
@@ -2067,7 +1525,7 @@ static void __lambda34_ (Block4Data* _data4_, GtkMenu* menu) {
 	gtk_container_add ((GtkContainer*) _tmp9_, (GtkWidget*) _tmp10_);
 	_tmp11_ = menu;
 	gtk_widget_show_all ((GtkWidget*) _tmp11_);
-	_tmp12_ = _data4_->output;
+	_tmp12_ = _data3_->output;
 	_tmp13_ = gtk_text_view_get_buffer (_tmp12_);
 	_tmp14_ = _tmp13_;
 	_tmp15_ = gtk_text_buffer_get_has_selection (_tmp14_);
@@ -2078,9 +1536,9 @@ static void __lambda34_ (Block4Data* _data4_, GtkMenu* menu) {
 		gtk_widget_set_sensitive ((GtkWidget*) _tmp17_, FALSE);
 	}
 	_tmp18_ = save_selection;
-	g_signal_connect_data (_tmp18_, "activate", (GCallback) ___lambda35__gtk_menu_item_activate, block4_data_ref (_data4_), (GClosureNotify) block4_data_unref, 0);
+	g_signal_connect_data (_tmp18_, "activate", (GCallback) ___lambda35__gtk_menu_item_activate, block3_data_ref (_data3_), (GClosureNotify) block3_data_unref, 0);
 	_tmp19_ = save_conversation;
-	g_signal_connect_data (_tmp19_, "activate", (GCallback) ___lambda36__gtk_menu_item_activate, block4_data_ref (_data4_), (GClosureNotify) block4_data_unref, 0);
+	g_signal_connect_data (_tmp19_, "activate", (GCallback) ___lambda36__gtk_menu_item_activate, block3_data_ref (_data3_), (GClosureNotify) block3_data_unref, 0);
 	_g_object_unref0 (save_conversation);
 	_g_object_unref0 (save_selection);
 	_g_object_unref0 (seperator);
@@ -2102,10 +1560,10 @@ static void _vala_PangoTabArray_free (PangoTabArray* self) {
 }
 
 
-static gboolean __lambda33_ (Block3Data* _data3_) {
+static gboolean __lambda33_ (Block2Data* _data2_) {
 	MainWindow* self;
 	gboolean result = FALSE;
-	Block4Data* _data4_;
+	Block3Data* _data3_;
 	ChannelTab* _tmp0_ = NULL;
 	GraniteWidgetsTab* _tmp1_ = NULL;
 	ChannelTab* _tmp2_ = NULL;
@@ -2125,69 +1583,72 @@ static gboolean __lambda33_ (Block3Data* _data3_) {
 	GtkTextView* _tmp25_ = NULL;
 	GtkTextView* _tmp26_ = NULL;
 	GtkTextView* _tmp27_ = NULL;
+	PangoFontDescription* _tmp28_ = NULL;
+	PangoFontDescription* _tmp29_ = NULL;
+	GtkTextView* _tmp30_ = NULL;
 	GtkScrolledWindow* scrolled = NULL;
-	GtkScrolledWindow* _tmp28_ = NULL;
-	gboolean _tmp29_ = FALSE;
 	GtkScrolledWindow* _tmp31_ = NULL;
-	GtkTextView* _tmp32_ = NULL;
-	PangoTabArray* ptabs = NULL;
-	PangoTabArray* _tmp33_ = NULL;
-	PangoTabArray* _tmp34_ = NULL;
+	gboolean _tmp32_ = FALSE;
+	GtkScrolledWindow* _tmp34_ = NULL;
 	GtkTextView* _tmp35_ = NULL;
+	PangoTabArray* ptabs = NULL;
 	PangoTabArray* _tmp36_ = NULL;
-	ChannelTab* _tmp37_ = NULL;
-	GraniteWidgetsTab* _tmp38_ = NULL;
-	GtkScrolledWindow* _tmp39_ = NULL;
+	PangoTabArray* _tmp37_ = NULL;
+	GtkTextView* _tmp38_ = NULL;
+	PangoTabArray* _tmp39_ = NULL;
 	ChannelTab* _tmp40_ = NULL;
-	GraniteWidgetsDynamicNotebook* _tmp41_ = NULL;
-	ChannelTab* _tmp42_ = NULL;
-	GraniteWidgetsTab* _tmp43_ = NULL;
-	ChannelTab* _tmp44_ = NULL;
-	GtkTextView* _tmp45_ = NULL;
-	GeeHashMap* _tmp46_ = NULL;
-	gint _tmp47_ = 0;
-	ChannelTab* _tmp48_ = NULL;
-	GraniteWidgetsDynamicNotebook* _tmp49_ = NULL;
-	ChannelTab* _tmp50_ = NULL;
-	gint _tmp51_ = 0;
-	ChannelTab* _tmp52_ = NULL;
-	gboolean _tmp53_ = FALSE;
-	GraniteWidgetsDynamicNotebook* _tmp59_ = NULL;
-	gint _tmp60_ = 0;
-	gint _tmp61_ = 0;
+	GraniteWidgetsTab* _tmp41_ = NULL;
+	GtkScrolledWindow* _tmp42_ = NULL;
+	ChannelTab* _tmp43_ = NULL;
+	GraniteWidgetsDynamicNotebook* _tmp44_ = NULL;
+	ChannelTab* _tmp45_ = NULL;
+	GraniteWidgetsTab* _tmp46_ = NULL;
+	ChannelTab* _tmp47_ = NULL;
+	GtkTextView* _tmp48_ = NULL;
+	GeeHashMap* _tmp49_ = NULL;
+	gint _tmp50_ = 0;
+	ChannelTab* _tmp51_ = NULL;
+	GraniteWidgetsDynamicNotebook* _tmp52_ = NULL;
+	ChannelTab* _tmp53_ = NULL;
+	gint _tmp54_ = 0;
+	ChannelTab* _tmp55_ = NULL;
+	gboolean _tmp56_ = FALSE;
+	GraniteWidgetsDynamicNotebook* _tmp62_ = NULL;
+	gint _tmp63_ = 0;
 	gint _tmp64_ = 0;
-	GeeHashMap* _tmp65_ = NULL;
-	ChannelTab* _tmp66_ = NULL;
-	GraniteWidgetsTab* _tmp67_ = NULL;
-	const gchar* _tmp68_ = NULL;
-	const gchar* _tmp69_ = NULL;
-	gboolean _tmp70_ = FALSE;
-	Settings* _tmp79_ = NULL;
-	gboolean _tmp80_ = FALSE;
-	GraniteWidgetsDynamicNotebook* _tmp84_ = NULL;
-	Settings* _tmp85_ = NULL;
-	gboolean _tmp86_ = FALSE;
-	self = _data3_->self;
-	_data4_ = g_slice_new0 (Block4Data);
-	_data4_->_ref_count_ = 1;
-	_data4_->_data3_ = block3_data_ref (_data3_);
-	_tmp0_ = _data3_->new_tab;
+	gint _tmp67_ = 0;
+	GeeHashMap* _tmp68_ = NULL;
+	ChannelTab* _tmp69_ = NULL;
+	GraniteWidgetsTab* _tmp70_ = NULL;
+	const gchar* _tmp71_ = NULL;
+	const gchar* _tmp72_ = NULL;
+	gboolean _tmp73_ = FALSE;
+	Settings* _tmp82_ = NULL;
+	gboolean _tmp83_ = FALSE;
+	GraniteWidgetsDynamicNotebook* _tmp87_ = NULL;
+	Settings* _tmp88_ = NULL;
+	gboolean _tmp89_ = FALSE;
+	self = _data2_->self;
+	_data3_ = g_slice_new0 (Block3Data);
+	_data3_->_ref_count_ = 1;
+	_data3_->_data2_ = block2_data_ref (_data2_);
+	_tmp0_ = _data2_->new_tab;
 	_tmp1_ = granite_widgets_tab_new ("", NULL, NULL);
 	g_object_ref_sink (_tmp1_);
 	_g_object_unref0 (_tmp0_->tab);
 	_tmp0_->tab = _tmp1_;
-	_tmp2_ = _data3_->new_tab;
+	_tmp2_ = _data2_->new_tab;
 	_tmp3_ = _tmp2_->tab;
-	_tmp4_ = _data3_->name;
+	_tmp4_ = _data2_->name;
 	granite_widgets_tab_set_label (_tmp3_, _tmp4_);
-	_tmp5_ = _data3_->new_tab;
+	_tmp5_ = _data2_->new_tab;
 	_tmp6_ = _tmp5_->tab;
 	_tmp7_ = self->priv->tab_rightclick;
 	granite_widgets_tab_set_menu (_tmp6_, _tmp7_);
-	_tmp8_ = _data3_->new_tab;
+	_tmp8_ = _data2_->new_tab;
 	_tmp9_ = _tmp8_->tab;
 	granite_widgets_tab_set_ellipsize_mode (_tmp9_, PANGO_ELLIPSIZE_NONE);
-	_tmp10_ = _data3_->new_tab;
+	_tmp10_ = _data2_->new_tab;
 	_tmp11_ = _tmp10_->is_server_tab;
 	if (_tmp11_) {
 		ChannelTab* _tmp12_ = NULL;
@@ -2196,10 +1657,10 @@ static gboolean __lambda33_ (Block3Data* _data3_) {
 		Connection* _tmp15_ = NULL;
 		Connection* _tmp16_ = NULL;
 		gboolean _tmp17_ = FALSE;
-		_tmp12_ = _data3_->new_tab;
+		_tmp12_ = _data2_->new_tab;
 		_tmp13_ = _tmp12_->tab;
 		granite_widgets_tab_set_working (_tmp13_, TRUE);
-		_tmp14_ = _data3_->new_tab;
+		_tmp14_ = _data2_->new_tab;
 		_tmp15_ = channel_tab_get_connection (_tmp14_);
 		_tmp16_ = _tmp15_;
 		_tmp17_ = _tmp16_->error_state;
@@ -2208,145 +1669,150 @@ static gboolean __lambda33_ (Block3Data* _data3_) {
 			ChannelTab* _tmp19_ = NULL;
 			GraniteWidgetsTab* _tmp20_ = NULL;
 			_tmp18_ = self->priv->tabs;
-			_tmp19_ = _data3_->new_tab;
+			_tmp19_ = _data2_->new_tab;
 			_tmp20_ = _tmp19_->tab;
 			granite_widgets_dynamic_notebook_remove_tab (_tmp18_, _tmp20_);
 			result = FALSE;
-			block4_data_unref (_data4_);
-			_data4_ = NULL;
+			block3_data_unref (_data3_);
+			_data3_ = NULL;
 			return result;
 		}
 	}
 	_tmp21_ = (GtkTextView*) gtk_text_view_new ();
 	g_object_ref_sink (_tmp21_);
-	_data4_->output = _tmp21_;
-	_tmp22_ = _data4_->output;
+	_data3_->output = _tmp21_;
+	_tmp22_ = _data3_->output;
 	gtk_text_view_set_editable (_tmp22_, FALSE);
-	_tmp23_ = _data4_->output;
+	_tmp23_ = _data3_->output;
 	gtk_text_view_set_cursor_visible (_tmp23_, FALSE);
-	_tmp24_ = _data4_->output;
+	_tmp24_ = _data3_->output;
 	gtk_text_view_set_wrap_mode (_tmp24_, GTK_WRAP_WORD_CHAR);
-	_tmp25_ = _data4_->output;
+	_tmp25_ = _data3_->output;
 	gtk_text_view_set_left_margin (_tmp25_, IRC_USER_WIDTH);
-	_tmp26_ = _data4_->output;
+	_tmp26_ = _data3_->output;
 	gtk_text_view_set_indent (_tmp26_, IRC_USER_WIDTH * -1);
-	_tmp27_ = _data4_->output;
-	g_signal_connect_data (_tmp27_, "populate-popup", (GCallback) ___lambda34__gtk_text_view_populate_popup, block4_data_ref (_data4_), (GClosureNotify) block4_data_unref, 0);
-	_tmp28_ = (GtkScrolledWindow*) gtk_scrolled_window_new (NULL, NULL);
-	g_object_ref_sink (_tmp28_);
-	scrolled = _tmp28_;
-	_tmp29_ = relay_on_ubuntu;
-	if (!_tmp29_) {
-		GtkScrolledWindow* _tmp30_ = NULL;
-		_tmp30_ = scrolled;
-		g_object_set ((GtkWidget*) _tmp30_, "margin", 3, NULL);
+	_tmp27_ = _data3_->output;
+	_tmp28_ = pango_font_description_from_string ("Open Sans Regular 10");
+	_tmp29_ = _tmp28_;
+	gtk_widget_override_font ((GtkWidget*) _tmp27_, _tmp29_);
+	__vala_PangoFontDescription_free0 (_tmp29_);
+	_tmp30_ = _data3_->output;
+	g_signal_connect_data (_tmp30_, "populate-popup", (GCallback) ___lambda34__gtk_text_view_populate_popup, block3_data_ref (_data3_), (GClosureNotify) block3_data_unref, 0);
+	_tmp31_ = (GtkScrolledWindow*) gtk_scrolled_window_new (NULL, NULL);
+	g_object_ref_sink (_tmp31_);
+	scrolled = _tmp31_;
+	_tmp32_ = relay_on_ubuntu;
+	if (!_tmp32_) {
+		GtkScrolledWindow* _tmp33_ = NULL;
+		_tmp33_ = scrolled;
+		g_object_set ((GtkWidget*) _tmp33_, "margin", 0, NULL);
 	}
-	_tmp31_ = scrolled;
-	_tmp32_ = _data4_->output;
-	gtk_container_add ((GtkContainer*) _tmp31_, (GtkWidget*) _tmp32_);
-	_tmp33_ = pango_tab_array_new (1, TRUE);
-	ptabs = _tmp33_;
-	_tmp34_ = ptabs;
-	pango_tab_array_set_tab (_tmp34_, 0, PANGO_TAB_LEFT, IRC_USER_WIDTH);
-	_tmp35_ = _data4_->output;
-	_tmp36_ = ptabs;
-	gtk_text_view_set_tabs (_tmp35_, _tmp36_);
-	_tmp37_ = _data3_->new_tab;
-	_tmp38_ = _tmp37_->tab;
-	_tmp39_ = scrolled;
-	granite_widgets_tab_set_page (_tmp38_, (GtkWidget*) _tmp39_);
-	_tmp40_ = _data3_->new_tab;
-	g_signal_connect_object (_tmp40_, "new-subject", (GCallback) _main_window_new_subject_channel_tab_new_subject, self, 0);
-	_tmp41_ = self->priv->tabs;
-	_tmp42_ = _data3_->new_tab;
-	_tmp43_ = _tmp42_->tab;
-	granite_widgets_dynamic_notebook_insert_tab (_tmp41_, _tmp43_, -1);
-	_tmp44_ = _data3_->new_tab;
-	_tmp45_ = _data4_->output;
-	channel_tab_set_output (_tmp44_, _tmp45_);
-	_tmp46_ = self->priv->outputs;
-	_tmp47_ = main_window_index;
-	_tmp48_ = _data3_->new_tab;
-	gee_abstract_map_set ((GeeAbstractMap*) _tmp46_, (gpointer) ((gintptr) _tmp47_), _tmp48_);
-	_tmp49_ = self->priv->tabs;
-	gtk_widget_show_all ((GtkWidget*) _tmp49_);
-	_tmp50_ = _data3_->new_tab;
-	_tmp51_ = main_window_index;
-	channel_tab_set_tab_index (_tmp50_, _tmp51_);
-	_tmp52_ = _data3_->new_tab;
-	_tmp53_ = _tmp52_->is_server_tab;
-	if (!_tmp53_) {
-		ChannelTab* _tmp54_ = NULL;
-		Connection* _tmp55_ = NULL;
-		Connection* _tmp56_ = NULL;
+	_tmp34_ = scrolled;
+	_tmp35_ = _data3_->output;
+	gtk_container_add ((GtkContainer*) _tmp34_, (GtkWidget*) _tmp35_);
+	_tmp36_ = pango_tab_array_new (1, TRUE);
+	ptabs = _tmp36_;
+	_tmp37_ = ptabs;
+	pango_tab_array_set_tab (_tmp37_, 0, PANGO_TAB_LEFT, IRC_USER_WIDTH);
+	_tmp38_ = _data3_->output;
+	_tmp39_ = ptabs;
+	gtk_text_view_set_tabs (_tmp38_, _tmp39_);
+	_tmp40_ = _data2_->new_tab;
+	_tmp41_ = _tmp40_->tab;
+	_tmp42_ = scrolled;
+	granite_widgets_tab_set_page (_tmp41_, (GtkWidget*) _tmp42_);
+	_tmp43_ = _data2_->new_tab;
+	g_signal_connect_object (_tmp43_, "new-subject", (GCallback) _main_window_new_subject_channel_tab_new_subject, self, 0);
+	_tmp44_ = self->priv->tabs;
+	_tmp45_ = _data2_->new_tab;
+	_tmp46_ = _tmp45_->tab;
+	granite_widgets_dynamic_notebook_insert_tab (_tmp44_, _tmp46_, -1);
+	_tmp47_ = _data2_->new_tab;
+	_tmp48_ = _data3_->output;
+	channel_tab_set_output (_tmp47_, _tmp48_);
+	_tmp49_ = self->priv->outputs;
+	_tmp50_ = main_window_index;
+	_tmp51_ = _data2_->new_tab;
+	gee_abstract_map_set ((GeeAbstractMap*) _tmp49_, (gpointer) ((gintptr) _tmp50_), _tmp51_);
+	_tmp52_ = self->priv->tabs;
+	gtk_widget_show_all ((GtkWidget*) _tmp52_);
+	_tmp53_ = _data2_->new_tab;
+	_tmp54_ = main_window_index;
+	channel_tab_set_tab_index (_tmp53_, _tmp54_);
+	_tmp55_ = _data2_->new_tab;
+	_tmp56_ = _tmp55_->is_server_tab;
+	if (!_tmp56_) {
 		ChannelTab* _tmp57_ = NULL;
-		GraniteWidgetsTab* _tmp58_ = NULL;
-		_tmp54_ = _data3_->new_tab;
-		_tmp55_ = channel_tab_get_connection (_tmp54_);
-		_tmp56_ = _tmp55_;
-		_tmp57_ = _tmp56_->server_tab;
-		_tmp58_ = _tmp57_->tab;
-		granite_widgets_tab_set_working (_tmp58_, FALSE);
+		Connection* _tmp58_ = NULL;
+		Connection* _tmp59_ = NULL;
+		ChannelTab* _tmp60_ = NULL;
+		GraniteWidgetsTab* _tmp61_ = NULL;
+		_tmp57_ = _data2_->new_tab;
+		_tmp58_ = channel_tab_get_connection (_tmp57_);
+		_tmp59_ = _tmp58_;
+		_tmp60_ = _tmp59_->server_tab;
+		_tmp61_ = _tmp60_->tab;
+		granite_widgets_tab_set_working (_tmp61_, FALSE);
 	}
-	_tmp59_ = self->priv->tabs;
-	_tmp60_ = granite_widgets_dynamic_notebook_get_n_tabs (_tmp59_);
-	_tmp61_ = _tmp60_;
-	if (_tmp61_ == 1) {
-		ChannelTab* _tmp62_ = NULL;
-		GraniteWidgetsTab* _tmp63_ = NULL;
-		_tmp62_ = _data3_->new_tab;
-		_tmp63_ = _tmp62_->tab;
-		main_window_tab_switch (self, NULL, _tmp63_);
+	_tmp62_ = self->priv->tabs;
+	_tmp63_ = granite_widgets_dynamic_notebook_get_n_tabs (_tmp62_);
+	_tmp64_ = _tmp63_;
+	if (_tmp64_ == 1) {
+		ChannelTab* _tmp65_ = NULL;
+		GraniteWidgetsTab* _tmp66_ = NULL;
+		_tmp65_ = _data2_->new_tab;
+		_tmp66_ = _tmp65_->tab;
+		main_window_tab_switch (self, NULL, _tmp66_);
 	}
-	_tmp64_ = main_window_index;
-	main_window_index = _tmp64_ + 1;
-	_tmp65_ = main_window_items_sidebar;
-	_tmp66_ = _data3_->new_tab;
-	_tmp67_ = _tmp66_->tab;
-	_tmp68_ = granite_widgets_tab_get_label (_tmp67_);
-	_tmp69_ = _tmp68_;
-	_tmp70_ = gee_abstract_map_has_key ((GeeAbstractMap*) _tmp65_, _tmp69_);
-	if (_tmp70_) {
-		GeeHashMap* _tmp71_ = NULL;
-		ChannelTab* _tmp72_ = NULL;
-		GraniteWidgetsTab* _tmp73_ = NULL;
-		const gchar* _tmp74_ = NULL;
-		const gchar* _tmp75_ = NULL;
-		gpointer _tmp76_ = NULL;
-		GraniteWidgetsSourceListItem* _tmp77_ = NULL;
-		GIcon* _tmp78_ = NULL;
-		_tmp71_ = main_window_items_sidebar;
-		_tmp72_ = _data3_->new_tab;
-		_tmp73_ = _tmp72_->tab;
-		_tmp74_ = granite_widgets_tab_get_label (_tmp73_);
-		_tmp75_ = _tmp74_;
-		_tmp76_ = gee_abstract_map_get ((GeeAbstractMap*) _tmp71_, _tmp75_);
-		_tmp77_ = (GraniteWidgetsSourceListItem*) _tmp76_;
-		_tmp78_ = main_window_active_channel;
-		granite_widgets_source_list_item_set_icon (_tmp77_, _tmp78_);
-		_g_object_unref0 (_tmp77_);
+	_tmp67_ = main_window_index;
+	main_window_index = _tmp67_ + 1;
+	_tmp68_ = main_window_items_sidebar;
+	_tmp69_ = _data2_->new_tab;
+	_tmp70_ = _tmp69_->tab;
+	_tmp71_ = granite_widgets_tab_get_label (_tmp70_);
+	_tmp72_ = _tmp71_;
+	_tmp73_ = gee_abstract_map_has_key ((GeeAbstractMap*) _tmp68_, _tmp72_);
+	if (_tmp73_) {
+		GeeHashMap* _tmp74_ = NULL;
+		ChannelTab* _tmp75_ = NULL;
+		GraniteWidgetsTab* _tmp76_ = NULL;
+		const gchar* _tmp77_ = NULL;
+		const gchar* _tmp78_ = NULL;
+		gpointer _tmp79_ = NULL;
+		GraniteWidgetsSourceListItem* _tmp80_ = NULL;
+		GIcon* _tmp81_ = NULL;
+		_tmp74_ = main_window_items_sidebar;
+		_tmp75_ = _data2_->new_tab;
+		_tmp76_ = _tmp75_->tab;
+		_tmp77_ = granite_widgets_tab_get_label (_tmp76_);
+		_tmp78_ = _tmp77_;
+		_tmp79_ = gee_abstract_map_get ((GeeAbstractMap*) _tmp74_, _tmp78_);
+		_tmp80_ = (GraniteWidgetsSourceListItem*) _tmp79_;
+		_tmp81_ = main_window_active_channel;
+		granite_widgets_source_list_item_set_icon (_tmp80_, _tmp81_);
+		_g_object_unref0 (_tmp80_);
 	}
-	_tmp79_ = main_window_settings;
-	_tmp80_ = settings_get_bool (_tmp79_, "change_tab");
-	if (_tmp80_) {
-		GraniteWidgetsDynamicNotebook* _tmp81_ = NULL;
-		ChannelTab* _tmp82_ = NULL;
-		GraniteWidgetsTab* _tmp83_ = NULL;
-		_tmp81_ = self->priv->tabs;
-		_tmp82_ = _data3_->new_tab;
-		_tmp83_ = _tmp82_->tab;
-		granite_widgets_dynamic_notebook_set_current (_tmp81_, _tmp83_);
+	_tmp82_ = main_window_settings;
+	_tmp83_ = settings_get_bool (_tmp82_, "change_tab");
+	if (_tmp83_) {
+		GraniteWidgetsDynamicNotebook* _tmp84_ = NULL;
+		ChannelTab* _tmp85_ = NULL;
+		GraniteWidgetsTab* _tmp86_ = NULL;
+		_tmp84_ = self->priv->tabs;
+		_tmp85_ = _data2_->new_tab;
+		_tmp86_ = _tmp85_->tab;
+		granite_widgets_dynamic_notebook_set_current (_tmp84_, _tmp86_);
 	}
 	main_window_rebuild_channel_list_menu (self);
-	_tmp84_ = self->priv->tabs;
-	_tmp85_ = main_window_settings;
-	_tmp86_ = settings_get_bool (_tmp85_, "show_tabs");
-	granite_widgets_dynamic_notebook_set_show_tabs (_tmp84_, _tmp86_);
+	_tmp87_ = self->priv->tabs;
+	_tmp88_ = main_window_settings;
+	_tmp89_ = settings_get_bool (_tmp88_, "show_tabs");
+	granite_widgets_dynamic_notebook_set_show_tabs (_tmp87_, _tmp89_);
 	result = FALSE;
 	__vala_PangoTabArray_free0 (ptabs);
 	_g_object_unref0 (scrolled);
-	block4_data_unref (_data4_);
-	_data4_ = NULL;
+	block3_data_unref (_data3_);
+	_data3_ = NULL;
 	return result;
 }
 
@@ -2359,7 +1825,7 @@ static gboolean ___lambda33__gsource_func (gpointer self) {
 
 
 void main_window_add_tab (MainWindow* self, ChannelTab* new_tab, const gchar* name) {
-	Block3Data* _data3_;
+	Block2Data* _data2_;
 	ChannelTab* _tmp0_ = NULL;
 	ChannelTab* _tmp1_ = NULL;
 	const gchar* _tmp2_ = NULL;
@@ -2373,20 +1839,20 @@ void main_window_add_tab (MainWindow* self, ChannelTab* new_tab, const gchar* na
 	g_return_if_fail (self != NULL);
 	g_return_if_fail (new_tab != NULL);
 	g_return_if_fail (name != NULL);
-	_data3_ = g_slice_new0 (Block3Data);
-	_data3_->_ref_count_ = 1;
-	_data3_->self = g_object_ref (self);
+	_data2_ = g_slice_new0 (Block2Data);
+	_data2_->_ref_count_ = 1;
+	_data2_->self = g_object_ref (self);
 	_tmp0_ = new_tab;
 	_tmp1_ = _g_object_ref0 (_tmp0_);
-	_g_object_unref0 (_data3_->new_tab);
-	_data3_->new_tab = _tmp1_;
+	_g_object_unref0 (_data2_->new_tab);
+	_data2_->new_tab = _tmp1_;
 	_tmp2_ = name;
 	_tmp3_ = g_strdup (_tmp2_);
-	_g_free0 (_data3_->name);
-	_data3_->name = _tmp3_;
-	g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ___lambda33__gsource_func, block3_data_ref (_data3_), block3_data_unref);
-	_tmp4_ = _data3_->name;
-	_tmp5_ = _data3_->new_tab;
+	_g_free0 (_data2_->name);
+	_data2_->name = _tmp3_;
+	g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ___lambda33__gsource_func, block2_data_ref (_data2_), block2_data_unref);
+	_tmp4_ = _data2_->name;
+	_tmp5_ = _data2_->new_tab;
 	_tmp6_ = channel_tab_get_connection (_tmp5_);
 	_tmp7_ = _tmp6_;
 	_tmp8_ = _tmp7_->server;
@@ -2398,44 +1864,44 @@ void main_window_add_tab (MainWindow* self, ChannelTab* new_tab, const gchar* na
 		const gchar* _tmp13_ = NULL;
 		gchar* _tmp14_ = NULL;
 		gchar* _tmp15_ = NULL;
-		_tmp10_ = _data3_->new_tab;
+		_tmp10_ = _data2_->new_tab;
 		_tmp11_ = channel_tab_get_connection (_tmp10_);
 		_tmp12_ = _tmp11_;
-		_tmp13_ = _data3_->name;
+		_tmp13_ = _data2_->name;
 		_tmp14_ = g_strconcat ("TOPIC ", _tmp13_, NULL);
 		_tmp15_ = _tmp14_;
 		connection_send_output (_tmp12_, _tmp15_);
 		_g_free0 (_tmp15_);
 	}
-	block3_data_unref (_data3_);
-	_data3_ = NULL;
+	block2_data_unref (_data2_);
+	_data2_ = NULL;
 }
 
 
-static Block5Data* block5_data_ref (Block5Data* _data5_) {
-	g_atomic_int_inc (&_data5_->_ref_count_);
-	return _data5_;
+static Block4Data* block4_data_ref (Block4Data* _data4_) {
+	g_atomic_int_inc (&_data4_->_ref_count_);
+	return _data4_;
 }
 
 
-static void block5_data_unref (void * _userdata_) {
-	Block5Data* _data5_;
-	_data5_ = (Block5Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data5_->_ref_count_)) {
+static void block4_data_unref (void * _userdata_) {
+	Block4Data* _data4_;
+	_data4_ = (Block4Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data4_->_ref_count_)) {
 		MainWindow* self;
-		self = _data5_->self;
-		_g_object_unref0 (_data5_->server_name);
-		_g_object_unref0 (_data5_->dialog);
+		self = _data4_->self;
+		_g_object_unref0 (_data4_->server_name);
+		_g_object_unref0 (_data4_->dialog);
 		_g_object_unref0 (self);
-		g_slice_free (Block5Data, _data5_);
+		g_slice_free (Block4Data, _data4_);
 	}
 }
 
 
-static void __lambda31_ (Block5Data* _data5_) {
+static void __lambda31_ (Block4Data* _data4_) {
 	MainWindow* self;
-	self = _data5_->self;
-	gtk_dialog_response (_data5_->dialog, (gint) GTK_RESPONSE_ACCEPT);
+	self = _data4_->self;
+	gtk_dialog_response (_data4_->dialog, (gint) GTK_RESPONSE_ACCEPT);
 }
 
 
@@ -2459,10 +1925,10 @@ static gchar* string_strip (const gchar* self) {
 }
 
 
-static void __lambda32_ (Block5Data* _data5_, gint id) {
+static void __lambda32_ (Block4Data* _data4_, gint id) {
 	MainWindow* self;
 	gint _tmp0_ = 0;
-	self = _data5_->self;
+	self = _data4_->self;
 	_tmp0_ = id;
 	switch (_tmp0_) {
 		case GTK_RESPONSE_ACCEPT:
@@ -2473,7 +1939,7 @@ static void __lambda32_ (Block5Data* _data5_, gint id) {
 			const gchar* _tmp3_ = NULL;
 			gint _tmp4_ = 0;
 			gint _tmp5_ = 0;
-			_tmp1_ = gtk_entry_get_text (_data5_->server_name);
+			_tmp1_ = gtk_entry_get_text (_data4_->server_name);
 			_tmp2_ = string_strip (_tmp1_);
 			name = _tmp2_;
 			_tmp3_ = name;
@@ -2511,7 +1977,7 @@ static void __lambda32_ (Block5Data* _data5_, gint id) {
 				_tmp10_->nickname = _tmp15_;
 				_tmp16_ = server;
 				main_window_add_server (self, _tmp16_, NULL);
-				g_signal_emit_by_name (_data5_->dialog, "close");
+				g_signal_emit_by_name (_data4_->dialog, "close");
 				_sql_client_server_unref0 (server);
 			}
 			_g_free0 (name);
@@ -2519,7 +1985,7 @@ static void __lambda32_ (Block5Data* _data5_, gint id) {
 		}
 		case GTK_RESPONSE_CANCEL:
 		{
-			g_signal_emit_by_name (_data5_->dialog, "close");
+			g_signal_emit_by_name (_data4_->dialog, "close");
 			break;
 		}
 		default:
@@ -2534,7 +2000,7 @@ static void ___lambda32__gtk_dialog_response (GtkDialog* _sender, gint response_
 
 
 void main_window_new_tab_requested (MainWindow* self) {
-	Block5Data* _data5_;
+	Block4Data* _data4_;
 	const gchar* _tmp0_ = NULL;
 	GtkWindow* _tmp1_ = NULL;
 	const gchar* _tmp2_ = NULL;
@@ -2547,16 +2013,16 @@ void main_window_new_tab_requested (MainWindow* self) {
 	GtkLabel* _tmp8_ = NULL;
 	GtkEntry* _tmp9_ = NULL;
 	g_return_if_fail (self != NULL);
-	_data5_ = g_slice_new0 (Block5Data);
-	_data5_->_ref_count_ = 1;
-	_data5_->self = g_object_ref (self);
+	_data4_ = g_slice_new0 (Block4Data);
+	_data4_->_ref_count_ = 1;
+	_data4_->self = g_object_ref (self);
 	_tmp0_ = _ ("New Connection");
 	_tmp1_ = main_window_window;
 	_tmp2_ = _ ("Connect");
 	_tmp3_ = (GtkDialog*) gtk_dialog_new_with_buttons (_tmp0_, _tmp1_, GTK_DIALOG_DESTROY_WITH_PARENT, _tmp2_, GTK_RESPONSE_ACCEPT, "_Cancel", GTK_RESPONSE_CANCEL, NULL);
 	g_object_ref_sink (_tmp3_);
-	_data5_->dialog = _tmp3_;
-	_tmp4_ = (GtkBox*) gtk_dialog_get_content_area (_data5_->dialog);
+	_data4_->dialog = _tmp3_;
+	_tmp4_ = (GtkBox*) gtk_dialog_get_content_area (_data4_->dialog);
 	_tmp5_ = _g_object_ref0 (G_TYPE_CHECK_INSTANCE_TYPE (_tmp4_, gtk_box_get_type ()) ? ((GtkBox*) _tmp4_) : NULL);
 	content = _tmp5_;
 	_tmp6_ = _ ("Server address");
@@ -2567,14 +2033,14 @@ void main_window_new_tab_requested (MainWindow* self) {
 	_g_object_unref0 (_tmp8_);
 	_tmp9_ = (GtkEntry*) gtk_entry_new ();
 	g_object_ref_sink (_tmp9_);
-	_data5_->server_name = _tmp9_;
-	g_signal_connect_data (_data5_->server_name, "activate", (GCallback) ___lambda31__gtk_entry_activate, block5_data_ref (_data5_), (GClosureNotify) block5_data_unref, 0);
-	gtk_box_pack_start (content, (GtkWidget*) _data5_->server_name, FALSE, FALSE, (guint) 5);
-	gtk_widget_show_all ((GtkWidget*) _data5_->dialog);
-	g_signal_connect_data (_data5_->dialog, "response", (GCallback) ___lambda32__gtk_dialog_response, block5_data_ref (_data5_), (GClosureNotify) block5_data_unref, 0);
+	_data4_->server_name = _tmp9_;
+	g_signal_connect_data (_data4_->server_name, "activate", (GCallback) ___lambda31__gtk_entry_activate, block4_data_ref (_data4_), (GClosureNotify) block4_data_unref, 0);
+	gtk_box_pack_start (content, (GtkWidget*) _data4_->server_name, FALSE, FALSE, (guint) 5);
+	gtk_widget_show_all ((GtkWidget*) _data4_->dialog);
+	g_signal_connect_data (_data4_->dialog, "response", (GCallback) ___lambda32__gtk_dialog_response, block4_data_ref (_data4_), (GClosureNotify) block4_data_unref, 0);
 	_g_object_unref0 (content);
-	block5_data_unref (_data5_);
-	_data5_ = NULL;
+	block4_data_unref (_data4_);
+	_data4_ = NULL;
 }
 
 
@@ -2688,7 +2154,7 @@ static void main_window_tab_remove (MainWindow* self, GraniteWidgetsTab* tab) {
 		Connection* _tmp40_ = NULL;
 		SqlClientServer* _tmp41_ = NULL;
 		const gchar* _tmp42_ = NULL;
-		g_info ("main_window.vala:482: Closing server");
+		g_info ("main_window.vala:484: Closing server");
 		_tmp38_ = tab_server;
 		connection_do_exit (_tmp38_);
 		_tmp39_ = self->priv->clients;
@@ -3051,6 +2517,92 @@ static void main_window_tab_switch (MainWindow* self, GraniteWidgetsTab* old_tab
 }
 
 
+static Block5Data* block5_data_ref (Block5Data* _data5_) {
+	g_atomic_int_inc (&_data5_->_ref_count_);
+	return _data5_;
+}
+
+
+static void block5_data_unref (void * _userdata_) {
+	Block5Data* _data5_;
+	_data5_ = (Block5Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data5_->_ref_count_)) {
+		MainWindow* self;
+		self = _data5_->self;
+		_g_free0 (_data5_->search_str);
+		_g_object_unref0 (self);
+		g_slice_free (Block5Data, _data5_);
+	}
+}
+
+
+static gint __lambda47_ (Block5Data* _data5_) {
+	MainWindow* self;
+	gint result = 0;
+	GeeHashMap* _tmp0_ = NULL;
+	gint _tmp1_ = 0;
+	gpointer _tmp2_ = NULL;
+	ChannelTab* _tmp3_ = NULL;
+	const gchar* _tmp4_ = NULL;
+	self = _data5_->self;
+	_tmp0_ = self->priv->outputs;
+	_tmp1_ = main_window_current_tab;
+	_tmp2_ = gee_abstract_map_get ((GeeAbstractMap*) _tmp0_, (gpointer) ((gintptr) _tmp1_));
+	_tmp3_ = (ChannelTab*) _tmp2_;
+	_tmp4_ = _data5_->search_str;
+	main_window_make_user_popover_idle (self, _tmp3_, _tmp4_);
+	_g_object_unref0 (_tmp3_);
+	result = 0;
+	return result;
+}
+
+
+static gpointer ___lambda47__gthread_func (gpointer self) {
+	gpointer result;
+	result = (gpointer) ((gintptr) __lambda47_ (self));
+	block5_data_unref (self);
+	return result;
+}
+
+
+static void main_window_make_user_popover (MainWindow* self, const gchar* search_str, gboolean need_show) {
+	Block5Data* _data5_;
+	const gchar* _tmp0_ = NULL;
+	gchar* _tmp1_ = NULL;
+	GtkLabel* _tmp2_ = NULL;
+	const gchar* _tmp3_ = NULL;
+	gboolean _tmp4_ = FALSE;
+	GtkBox* _tmp6_ = NULL;
+	GThread* _tmp7_ = NULL;
+	GThread* _tmp8_ = NULL;
+	g_return_if_fail (self != NULL);
+	g_return_if_fail (search_str != NULL);
+	_data5_ = g_slice_new0 (Block5Data);
+	_data5_->_ref_count_ = 1;
+	_data5_->self = g_object_ref (self);
+	_tmp0_ = search_str;
+	_tmp1_ = g_strdup (_tmp0_);
+	_g_free0 (_data5_->search_str);
+	_data5_->search_str = _tmp1_;
+	_tmp2_ = self->priv->users_header;
+	_tmp3_ = _ ("Loading...");
+	gtk_label_set_text (_tmp2_, _tmp3_);
+	_tmp4_ = need_show;
+	if (_tmp4_) {
+		GtkPopover* _tmp5_ = NULL;
+		_tmp5_ = self->priv->users_popover;
+		gtk_widget_show_all ((GtkWidget*) _tmp5_);
+	}
+	_tmp6_ = self->priv->users_list;
+	gtk_widget_hide ((GtkWidget*) _tmp6_);
+	_tmp7_ = g_thread_new ("User popover", ___lambda47__gthread_func, block5_data_ref (_data5_));
+	_tmp8_ = _tmp7_;
+	_g_thread_unref0 (_tmp8_);
+	block5_data_unref (_data5_);
+	_data5_ = NULL;
+}
+
+
 static Block6Data* block6_data_ref (Block6Data* _data6_) {
 	g_atomic_int_inc (&_data6_->_ref_count_);
 	return _data6_;
@@ -3063,95 +2615,9 @@ static void block6_data_unref (void * _userdata_) {
 	if (g_atomic_int_dec_and_test (&_data6_->_ref_count_)) {
 		MainWindow* self;
 		self = _data6_->self;
-		_g_free0 (_data6_->search_str);
+		_g_object_unref0 (_data6_->lb_wrappers);
 		_g_object_unref0 (self);
 		g_slice_free (Block6Data, _data6_);
-	}
-}
-
-
-static gint __lambda43_ (Block6Data* _data6_) {
-	MainWindow* self;
-	gint result = 0;
-	GeeHashMap* _tmp0_ = NULL;
-	gint _tmp1_ = 0;
-	gpointer _tmp2_ = NULL;
-	ChannelTab* _tmp3_ = NULL;
-	const gchar* _tmp4_ = NULL;
-	self = _data6_->self;
-	_tmp0_ = self->priv->outputs;
-	_tmp1_ = main_window_current_tab;
-	_tmp2_ = gee_abstract_map_get ((GeeAbstractMap*) _tmp0_, (gpointer) ((gintptr) _tmp1_));
-	_tmp3_ = (ChannelTab*) _tmp2_;
-	_tmp4_ = _data6_->search_str;
-	main_window_make_user_popover_idle (self, _tmp3_, _tmp4_);
-	_g_object_unref0 (_tmp3_);
-	result = 0;
-	return result;
-}
-
-
-static gpointer ___lambda43__gthread_func (gpointer self) {
-	gpointer result;
-	result = (gpointer) ((gintptr) __lambda43_ (self));
-	block6_data_unref (self);
-	return result;
-}
-
-
-static void main_window_make_user_popover (MainWindow* self, const gchar* search_str, gboolean need_show) {
-	Block6Data* _data6_;
-	const gchar* _tmp0_ = NULL;
-	gchar* _tmp1_ = NULL;
-	GtkLabel* _tmp2_ = NULL;
-	const gchar* _tmp3_ = NULL;
-	gboolean _tmp4_ = FALSE;
-	GtkBox* _tmp6_ = NULL;
-	GThread* _tmp7_ = NULL;
-	GThread* _tmp8_ = NULL;
-	g_return_if_fail (self != NULL);
-	g_return_if_fail (search_str != NULL);
-	_data6_ = g_slice_new0 (Block6Data);
-	_data6_->_ref_count_ = 1;
-	_data6_->self = g_object_ref (self);
-	_tmp0_ = search_str;
-	_tmp1_ = g_strdup (_tmp0_);
-	_g_free0 (_data6_->search_str);
-	_data6_->search_str = _tmp1_;
-	_tmp2_ = self->priv->users_header;
-	_tmp3_ = _ ("Loading...");
-	gtk_label_set_text (_tmp2_, _tmp3_);
-	_tmp4_ = need_show;
-	if (_tmp4_) {
-		GtkPopover* _tmp5_ = NULL;
-		_tmp5_ = self->priv->users_popover;
-		gtk_widget_show_all ((GtkWidget*) _tmp5_);
-	}
-	_tmp6_ = self->priv->users_list;
-	gtk_widget_hide ((GtkWidget*) _tmp6_);
-	_tmp7_ = g_thread_new ("User popover", ___lambda43__gthread_func, block6_data_ref (_data6_));
-	_tmp8_ = _tmp7_;
-	_g_thread_unref0 (_tmp8_);
-	block6_data_unref (_data6_);
-	_data6_ = NULL;
-}
-
-
-static Block7Data* block7_data_ref (Block7Data* _data7_) {
-	g_atomic_int_inc (&_data7_->_ref_count_);
-	return _data7_;
-}
-
-
-static void block7_data_unref (void * _userdata_) {
-	Block7Data* _data7_;
-	_data7_ = (Block7Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data7_->_ref_count_)) {
-		MainWindow* self;
-		self = _data7_->self;
-		_g_object_unref0 (_data7_->lb_wrappers);
-		_g_object_unref0 (self);
-		g_slice_free (Block7Data, _data7_);
 	}
 }
 
@@ -3169,7 +2635,7 @@ static gboolean string_contains (const gchar* self, const gchar* needle) {
 }
 
 
-static gboolean __lambda47_ (Block7Data* _data7_) {
+static gboolean __lambda51_ (Block6Data* _data6_) {
 	MainWindow* self;
 	gboolean result = FALSE;
 	GtkBox* _tmp0_ = NULL;
@@ -3190,7 +2656,7 @@ static gboolean __lambda47_ (Block7Data* _data7_) {
 	gint _tmp29_ = 0;
 	gint _tmp30_ = 0;
 	GtkScrolledWindow* _tmp35_ = NULL;
-	self = _data7_->self;
+	self = _data6_->self;
 	_tmp0_ = self->priv->users_list;
 	_tmp1_ = gtk_container_get_children ((GtkContainer*) _tmp0_);
 	{
@@ -3219,7 +2685,7 @@ static gboolean __lambda47_ (Block7Data* _data7_) {
 		gint _tmp7_ = 0;
 		gint _tmp8_ = 0;
 		gint _wrapper_index = 0;
-		_tmp4_ = _data7_->lb_wrappers;
+		_tmp4_ = _data6_->lb_wrappers;
 		_tmp5_ = _g_object_ref0 (_tmp4_);
 		_wrapper_list = _tmp5_;
 		_tmp6_ = _wrapper_list;
@@ -3259,7 +2725,7 @@ static gboolean __lambda47_ (Block7Data* _data7_) {
 	gtk_widget_show_all ((GtkWidget*) _tmp17_);
 	_tmp18_ = self->priv->users_header;
 	_tmp19_ = _ ("Total users: ");
-	_tmp20_ = _data7_->i;
+	_tmp20_ = _data6_->i;
 	_tmp21_ = g_strdup_printf ("%i", _tmp20_);
 	_tmp22_ = _tmp21_;
 	_tmp23_ = g_strconcat (_tmp19_, _tmp22_, NULL);
@@ -3267,23 +2733,23 @@ static gboolean __lambda47_ (Block7Data* _data7_) {
 	gtk_label_set_text (_tmp18_, _tmp24_);
 	_g_free0 (_tmp24_);
 	_g_free0 (_tmp22_);
-	_tmp25_ = _data7_->i;
-	_tmp26_ = _data7_->PER_BOX;
+	_tmp25_ = _data6_->i;
+	_tmp26_ = _data6_->PER_BOX;
 	_tmp27_ = ceilf (((gfloat) _tmp25_) / ((gfloat) _tmp26_));
 	cols = (gint) _tmp27_;
 	_tmp29_ = cols;
-	_tmp30_ = _data7_->MAX_COLS;
+	_tmp30_ = _data6_->MAX_COLS;
 	if (_tmp29_ > _tmp30_) {
 		gint _tmp31_ = 0;
 		gint _tmp32_ = 0;
-		_tmp31_ = _data7_->BOX_WIDTH;
-		_tmp32_ = _data7_->MAX_COLS;
+		_tmp31_ = _data6_->BOX_WIDTH;
+		_tmp32_ = _data6_->MAX_COLS;
 		_tmp28_ = _tmp31_ * _tmp32_;
 	} else {
 		gint _tmp33_ = 0;
 		gint _tmp34_ = 0;
 		_tmp33_ = cols;
-		_tmp34_ = _data7_->BOX_WIDTH;
+		_tmp34_ = _data6_->BOX_WIDTH;
 		_tmp28_ = _tmp33_ * _tmp34_;
 	}
 	_tmp35_ = self->priv->users_scrolled;
@@ -3293,15 +2759,15 @@ static gboolean __lambda47_ (Block7Data* _data7_) {
 }
 
 
-static gboolean ___lambda47__gsource_func (gpointer self) {
+static gboolean ___lambda51__gsource_func (gpointer self) {
 	gboolean result;
-	result = __lambda47_ (self);
+	result = __lambda51_ (self);
 	return result;
 }
 
 
 static void main_window_make_user_popover_idle (MainWindow* self, ChannelTab* using_tab, const gchar* _search_str) {
-	Block7Data* _data7_;
+	Block6Data* _data6_;
 	const gchar* _tmp0_ = NULL;
 	gchar* search_str = NULL;
 	const gchar* _tmp7_ = NULL;
@@ -3337,9 +2803,9 @@ static void main_window_make_user_popover_idle (MainWindow* self, ChannelTab* us
 	GtkBox* _tmp122_ = NULL;
 	g_return_if_fail (self != NULL);
 	g_return_if_fail (_search_str != NULL);
-	_data7_ = g_slice_new0 (Block7Data);
-	_data7_->_ref_count_ = 1;
-	_data7_->self = g_object_ref (self);
+	_data6_ = g_slice_new0 (Block6Data);
+	_data6_->_ref_count_ = 1;
+	_data6_->self = g_object_ref (self);
 	_tmp0_ = _search_str;
 	if (g_strcmp0 (_tmp0_, "") == 0) {
 		gint _tmp1_ = 0;
@@ -3360,23 +2826,23 @@ static void main_window_make_user_popover_idle (MainWindow* self, ChannelTab* us
 		_tmp4_ = current_invoke_cnt;
 		_tmp5_ = self->priv->invoke_count;
 		if (_tmp4_ != _tmp5_) {
-			block7_data_unref (_data7_);
-			_data7_ = NULL;
+			block6_data_unref (_data6_);
+			_data6_ = NULL;
 			return;
 		}
 		_tmp6_ = using_tab;
 		if (_tmp6_ == NULL) {
-			block7_data_unref (_data7_);
-			_data7_ = NULL;
+			block6_data_unref (_data6_);
+			_data6_ = NULL;
 			return;
 		}
 	}
 	_tmp7_ = _search_str;
 	_tmp8_ = g_utf8_strdown (_tmp7_, (gssize) -1);
 	search_str = _tmp8_;
-	_data7_->PER_BOX = 15;
-	_data7_->BOX_WIDTH = 140;
-	_data7_->MAX_COLS = 4;
+	_data6_->PER_BOX = 15;
+	_data6_->BOX_WIDTH = 140;
+	_data6_->MAX_COLS = 4;
 	type_change = 0;
 	_tmp9_ = search_str;
 	if (g_strcmp0 (_tmp9_, "") != 0) {
@@ -3624,14 +3090,14 @@ static void main_window_make_user_popover_idle (MainWindow* self, ChannelTab* us
 		_g_object_unref0 (_type_list);
 	}
 	_tmp93_ = gee_linked_list_new (gtk_box_get_type (), (GBoxedCopyFunc) g_object_ref, g_object_unref, NULL, NULL, NULL);
-	_data7_->lb_wrappers = _tmp93_;
+	_data6_->lb_wrappers = _tmp93_;
 	_tmp94_ = (GtkBox*) gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	g_object_ref_sink (_tmp94_);
 	listbox = _tmp94_;
 	_tmp95_ = listbox;
-	_tmp96_ = _data7_->BOX_WIDTH;
+	_tmp96_ = _data6_->BOX_WIDTH;
 	g_object_set ((GtkWidget*) _tmp95_, "width-request", _tmp96_, NULL);
-	_data7_->i = 0;
+	_data6_->i = 0;
 	{
 		GeeLinkedList* _box_list = NULL;
 		GeeLinkedList* _tmp97_ = NULL;
@@ -3674,18 +3140,18 @@ static void main_window_make_user_popover_idle (MainWindow* self, ChannelTab* us
 			_tmp106_ = _box_index;
 			_tmp107_ = gee_abstract_list_get ((GeeAbstractList*) _tmp105_, _tmp106_);
 			box = (GtkEventBox*) _tmp107_;
-			_tmp108_ = _data7_->i;
-			_data7_->i = _tmp108_ + 1;
+			_tmp108_ = _data6_->i;
+			_data6_->i = _tmp108_ + 1;
 			_tmp109_ = listbox;
 			_tmp110_ = box;
 			gtk_box_pack_start (_tmp109_, (GtkWidget*) _tmp110_, FALSE, FALSE, (guint) 0);
-			_tmp112_ = _data7_->i;
-			_tmp113_ = _data7_->PER_BOX;
+			_tmp112_ = _data6_->i;
+			_tmp113_ = _data6_->PER_BOX;
 			if ((_tmp112_ % _tmp113_) == 0) {
 				gint _tmp114_ = 0;
 				gint _tmp115_ = 0;
 				_tmp114_ = total_size;
-				_tmp115_ = _data7_->i;
+				_tmp115_ = _data6_->i;
 				_tmp111_ = _tmp114_ >= _tmp115_;
 			} else {
 				_tmp111_ = FALSE;
@@ -3697,9 +3163,9 @@ static void main_window_make_user_popover_idle (MainWindow* self, ChannelTab* us
 				GtkBox* _tmp119_ = NULL;
 				GtkBox* _tmp120_ = NULL;
 				_tmp116_ = listbox;
-				_tmp117_ = _data7_->BOX_WIDTH;
+				_tmp117_ = _data6_->BOX_WIDTH;
 				g_object_set ((GtkWidget*) _tmp116_, "width-request", _tmp117_, NULL);
-				_tmp118_ = _data7_->lb_wrappers;
+				_tmp118_ = _data6_->lb_wrappers;
 				_tmp119_ = listbox;
 				gee_abstract_collection_add ((GeeAbstractCollection*) _tmp118_, _tmp119_);
 				_tmp120_ = (GtkBox*) gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
@@ -3711,83 +3177,83 @@ static void main_window_make_user_popover_idle (MainWindow* self, ChannelTab* us
 		}
 		_g_object_unref0 (_box_list);
 	}
-	_tmp121_ = _data7_->lb_wrappers;
+	_tmp121_ = _data6_->lb_wrappers;
 	_tmp122_ = listbox;
 	gee_abstract_collection_add ((GeeAbstractCollection*) _tmp121_, _tmp122_);
-	g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ___lambda47__gsource_func, block7_data_ref (_data7_), block7_data_unref);
+	g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ___lambda51__gsource_func, block6_data_ref (_data6_), block6_data_unref);
 	_g_object_unref0 (listbox);
 	_g_object_unref0 (list_boxes);
 	_g_object_unref0 (user_types);
 	_g_free0 (search_str);
-	block7_data_unref (_data7_);
-	_data7_ = NULL;
+	block6_data_unref (_data6_);
+	_data6_ = NULL;
 }
 
 
-static Block8Data* block8_data_ref (Block8Data* _data8_) {
-	g_atomic_int_inc (&_data8_->_ref_count_);
-	return _data8_;
+static Block7Data* block7_data_ref (Block7Data* _data7_) {
+	g_atomic_int_inc (&_data7_->_ref_count_);
+	return _data7_;
 }
 
 
-static void block8_data_unref (void * _userdata_) {
-	Block8Data* _data8_;
-	_data8_ = (Block8Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data8_->_ref_count_)) {
+static void block7_data_unref (void * _userdata_) {
+	Block7Data* _data7_;
+	_data7_ = (Block7Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data7_->_ref_count_)) {
 		MainWindow* self;
-		self = _data8_->self;
-		_g_object_unref0 (_data8_->eb);
-		_g_free0 (_data8_->user);
+		self = _data7_->self;
+		_g_object_unref0 (_data7_->eb);
+		_g_free0 (_data7_->user);
 		_g_object_unref0 (self);
-		g_slice_free (Block8Data, _data8_);
+		g_slice_free (Block7Data, _data7_);
 	}
 }
 
 
-static gboolean __lambda44_ (Block8Data* _data8_) {
+static gboolean __lambda48_ (Block7Data* _data7_) {
 	MainWindow* self;
 	gboolean result = FALSE;
 	GtkEventBox* _tmp0_ = NULL;
-	self = _data8_->self;
-	_tmp0_ = _data8_->eb;
+	self = _data7_->self;
+	_tmp0_ = _data7_->eb;
 	gtk_widget_set_state_flags ((GtkWidget*) _tmp0_, GTK_STATE_FLAG_PRELIGHT | GTK_STATE_FLAG_SELECTED, TRUE);
 	result = FALSE;
 	return result;
 }
 
 
-static gboolean ___lambda44__gtk_widget_enter_notify_event (GtkWidget* _sender, GdkEventCrossing* event, gpointer self) {
+static gboolean ___lambda48__gtk_widget_enter_notify_event (GtkWidget* _sender, GdkEventCrossing* event, gpointer self) {
 	gboolean result;
-	result = __lambda44_ (self);
+	result = __lambda48_ (self);
 	return result;
 }
 
 
-static gboolean __lambda45_ (Block8Data* _data8_) {
+static gboolean __lambda49_ (Block7Data* _data7_) {
 	MainWindow* self;
 	gboolean result = FALSE;
 	GtkEventBox* _tmp0_ = NULL;
-	self = _data8_->self;
-	_tmp0_ = _data8_->eb;
+	self = _data7_->self;
+	_tmp0_ = _data7_->eb;
 	gtk_widget_set_state_flags ((GtkWidget*) _tmp0_, GTK_STATE_FLAG_NORMAL, TRUE);
 	result = FALSE;
 	return result;
 }
 
 
-static gboolean ___lambda45__gtk_widget_leave_notify_event (GtkWidget* _sender, GdkEventCrossing* event, gpointer self) {
+static gboolean ___lambda49__gtk_widget_leave_notify_event (GtkWidget* _sender, GdkEventCrossing* event, gpointer self) {
 	gboolean result;
-	result = __lambda45_ (self);
+	result = __lambda49_ (self);
 	return result;
 }
 
 
-static gboolean __lambda46_ (Block8Data* _data8_, GdkEventButton* event) {
+static gboolean __lambda50_ (Block7Data* _data7_, GdkEventButton* event) {
 	MainWindow* self;
 	gboolean result = FALSE;
 	GdkEventButton* _tmp0_ = NULL;
 	guint _tmp1_ = 0U;
-	self = _data8_->self;
+	self = _data7_->self;
 	g_return_val_if_fail (event != NULL, FALSE);
 	_tmp0_ = event;
 	_tmp1_ = _tmp0_->button;
@@ -3799,7 +3265,7 @@ static gboolean __lambda46_ (Block8Data* _data8_, GdkEventButton* event) {
 		guint _tmp6_ = 0U;
 		GdkEventButton* _tmp7_ = NULL;
 		guint32 _tmp8_ = 0U;
-		_tmp2_ = _data8_->user;
+		_tmp2_ = _data7_->user;
 		_tmp3_ = g_strdup (_tmp2_);
 		_g_free0 (self->priv->channel_user_selected);
 		self->priv->channel_user_selected = _tmp3_;
@@ -3818,7 +3284,7 @@ static gboolean __lambda46_ (Block8Data* _data8_, GdkEventButton* event) {
 			const gchar* _tmp11_ = NULL;
 			gchar* _tmp12_ = NULL;
 			gchar* _tmp13_ = NULL;
-			_tmp11_ = _data8_->user;
+			_tmp11_ = _data7_->user;
 			_tmp12_ = g_strconcat (_tmp11_, ": ", NULL);
 			_tmp13_ = _tmp12_;
 			main_window_fill_input (_tmp13_);
@@ -3830,16 +3296,16 @@ static gboolean __lambda46_ (Block8Data* _data8_, GdkEventButton* event) {
 }
 
 
-static gboolean ___lambda46__gtk_widget_button_press_event (GtkWidget* _sender, GdkEventButton* event, gpointer self) {
+static gboolean ___lambda50__gtk_widget_button_press_event (GtkWidget* _sender, GdkEventButton* event, gpointer self) {
 	gboolean result;
-	result = __lambda46_ (self, event);
+	result = __lambda50_ (self, event);
 	return result;
 }
 
 
 static GtkEventBox* main_window_make_user_eventbox (MainWindow* self, const gchar* user, gint type) {
 	GtkEventBox* result = NULL;
-	Block8Data* _data8_;
+	Block7Data* _data7_;
 	const gchar* _tmp0_ = NULL;
 	gchar* _tmp1_ = NULL;
 	GtkEventBox* _tmp2_ = NULL;
@@ -3861,20 +3327,20 @@ static GtkEventBox* main_window_make_user_eventbox (MainWindow* self, const gcha
 	GtkEventBox* _tmp40_ = NULL;
 	g_return_val_if_fail (self != NULL, NULL);
 	g_return_val_if_fail (user != NULL, NULL);
-	_data8_ = g_slice_new0 (Block8Data);
-	_data8_->_ref_count_ = 1;
-	_data8_->self = g_object_ref (self);
+	_data7_ = g_slice_new0 (Block7Data);
+	_data7_->_ref_count_ = 1;
+	_data7_->self = g_object_ref (self);
 	_tmp0_ = user;
 	_tmp1_ = g_strdup (_tmp0_);
-	_g_free0 (_data8_->user);
-	_data8_->user = _tmp1_;
+	_g_free0 (_data7_->user);
+	_data7_->user = _tmp1_;
 	_tmp2_ = (GtkEventBox*) gtk_event_box_new ();
 	g_object_ref_sink (_tmp2_);
-	_data8_->eb = _tmp2_;
-	_tmp3_ = _data8_->eb;
-	g_signal_connect_data ((GtkWidget*) _tmp3_, "enter-notify-event", (GCallback) ___lambda44__gtk_widget_enter_notify_event, block8_data_ref (_data8_), (GClosureNotify) block8_data_unref, 0);
-	_tmp4_ = _data8_->eb;
-	g_signal_connect_data ((GtkWidget*) _tmp4_, "leave-notify-event", (GCallback) ___lambda45__gtk_widget_leave_notify_event, block8_data_ref (_data8_), (GClosureNotify) block8_data_unref, 0);
+	_data7_->eb = _tmp2_;
+	_tmp3_ = _data7_->eb;
+	g_signal_connect_data ((GtkWidget*) _tmp3_, "enter-notify-event", (GCallback) ___lambda48__gtk_widget_enter_notify_event, block7_data_ref (_data7_), (GClosureNotify) block7_data_unref, 0);
+	_tmp4_ = _data7_->eb;
+	g_signal_connect_data ((GtkWidget*) _tmp4_, "leave-notify-event", (GCallback) ___lambda49__gtk_widget_leave_notify_event, block7_data_ref (_data7_), (GClosureNotify) block7_data_unref, 0);
 	_tmp5_ = (GtkLabel*) gtk_label_new ("");
 	g_object_ref_sink (_tmp5_);
 	label = _tmp5_;
@@ -3936,7 +3402,7 @@ static GtkEventBox* main_window_make_user_eventbox (MainWindow* self, const gcha
 				_tmp23_ = gee_abstract_map_get ((GeeAbstractMap*) _tmp21_, (gpointer) ((gintptr) _tmp22_));
 				_tmp24_ = (ChannelTab*) _tmp23_;
 				_tmp25_ = _tmp24_->blocked_users;
-				_tmp26_ = _data8_->user;
+				_tmp26_ = _data7_->user;
 				_tmp27_ = gee_abstract_collection_contains ((GeeAbstractCollection*) _tmp25_, _tmp26_);
 				_tmp28_ = _tmp27_;
 				_g_object_unref0 (_tmp24_);
@@ -3952,7 +3418,7 @@ static GtkEventBox* main_window_make_user_eventbox (MainWindow* self, const gcha
 		}
 	}
 	_tmp31_ = label;
-	_tmp32_ = _data8_->user;
+	_tmp32_ = _data7_->user;
 	gtk_label_set_text (_tmp31_, _tmp32_);
 	_tmp33_ = label;
 	gtk_label_set_width_chars (_tmp33_, IRC_USER_LENGTH);
@@ -3960,17 +3426,17 @@ static GtkEventBox* main_window_make_user_eventbox (MainWindow* self, const gcha
 	_tmp35_ = label;
 	gtk_widget_set_margin_bottom ((GtkWidget*) _tmp35_, 4);
 	gtk_widget_set_margin_top ((GtkWidget*) _tmp34_, 4);
-	_tmp36_ = _data8_->eb;
+	_tmp36_ = _data7_->eb;
 	_tmp37_ = label;
 	gtk_container_add ((GtkContainer*) _tmp36_, (GtkWidget*) _tmp37_);
-	_tmp38_ = _data8_->eb;
-	g_signal_connect_data ((GtkWidget*) _tmp38_, "button-press-event", (GCallback) ___lambda46__gtk_widget_button_press_event, block8_data_ref (_data8_), (GClosureNotify) block8_data_unref, 0);
-	_tmp39_ = _data8_->eb;
+	_tmp38_ = _data7_->eb;
+	g_signal_connect_data ((GtkWidget*) _tmp38_, "button-press-event", (GCallback) ___lambda50__gtk_widget_button_press_event, block7_data_ref (_data7_), (GClosureNotify) block7_data_unref, 0);
+	_tmp39_ = _data7_->eb;
 	_tmp40_ = _g_object_ref0 (_tmp39_);
 	result = _tmp40_;
 	_g_object_unref0 (label);
-	block8_data_unref (_data8_);
-	_data8_ = NULL;
+	block7_data_unref (_data7_);
+	_data7_ = NULL;
 	return result;
 }
 
@@ -4001,7 +3467,7 @@ static gboolean main_window_click_private_message (MainWindow* self, GdkEventBut
 	_tmp0_ = self->priv->channel_user_selected;
 	_tmp1_ = g_strconcat ("Selected user is ", _tmp0_, NULL);
 	_tmp2_ = _tmp1_;
-	g_info ("main_window.vala:696: %s", _tmp2_);
+	g_info ("main_window.vala:698: %s", _tmp2_);
 	_g_free0 (_tmp2_);
 	_tmp3_ = self->priv->user_menu;
 	gtk_menu_popdown (_tmp3_);
@@ -4943,21 +4409,21 @@ static void main_window_sidebar_item_activated (MainWindow* self) {
 }
 
 
-static Block9Data* block9_data_ref (Block9Data* _data9_) {
-	g_atomic_int_inc (&_data9_->_ref_count_);
-	return _data9_;
+static Block8Data* block8_data_ref (Block8Data* _data8_) {
+	g_atomic_int_inc (&_data8_->_ref_count_);
+	return _data8_;
 }
 
 
-static void block9_data_unref (void * _userdata_) {
-	Block9Data* _data9_;
-	_data9_ = (Block9Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data9_->_ref_count_)) {
+static void block8_data_unref (void * _userdata_) {
+	Block8Data* _data8_;
+	_data8_ = (Block8Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data8_->_ref_count_)) {
 		MainWindow* self;
-		self = _data9_->self;
-		_g_object_unref0 (_data9_->tab);
+		self = _data8_->self;
+		_g_object_unref0 (_data8_->tab);
 		_g_object_unref0 (self);
-		g_slice_free (Block9Data, _data9_);
+		g_slice_free (Block8Data, _data8_);
 	}
 }
 
@@ -4974,7 +4440,7 @@ static gchar string_get (const gchar* self, glong index) {
 }
 
 
-static gboolean ___lambda39_ (Block9Data* _data9_) {
+static gboolean ___lambda39_ (Block8Data* _data8_) {
 	MainWindow* self;
 	gboolean result = FALSE;
 	GeeHashMap* _tmp0_ = NULL;
@@ -4986,9 +4452,9 @@ static gboolean ___lambda39_ (Block9Data* _data9_) {
 	ChannelTab* _tmp17_ = NULL;
 	GraniteWidgetsTab* _tmp18_ = NULL;
 	GIcon* _tmp19_ = NULL;
-	self = _data9_->self;
+	self = _data8_->self;
 	_tmp0_ = main_window_items_sidebar;
-	_tmp1_ = _data9_->tab;
+	_tmp1_ = _data8_->tab;
 	_tmp2_ = _tmp1_->tab;
 	_tmp3_ = granite_widgets_tab_get_label (_tmp2_);
 	_tmp4_ = _tmp3_;
@@ -5006,13 +4472,13 @@ static gboolean ___lambda39_ (Block9Data* _data9_) {
 		gchar* _tmp15_ = NULL;
 		gchar* _tmp16_ = NULL;
 		_tmp6_ = main_window_items_sidebar;
-		_tmp7_ = _data9_->tab;
+		_tmp7_ = _data8_->tab;
 		_tmp8_ = _tmp7_->tab;
 		_tmp9_ = granite_widgets_tab_get_label (_tmp8_);
 		_tmp10_ = _tmp9_;
 		_tmp11_ = gee_abstract_map_get ((GeeAbstractMap*) _tmp6_, _tmp10_);
 		_tmp12_ = (GraniteWidgetsSourceListItem*) _tmp11_;
-		_tmp13_ = _data9_->tab;
+		_tmp13_ = _data8_->tab;
 		_tmp14_ = _tmp13_->message_count;
 		_tmp15_ = g_strdup_printf ("%i", _tmp14_);
 		_tmp16_ = _tmp15_;
@@ -5020,7 +4486,7 @@ static gboolean ___lambda39_ (Block9Data* _data9_) {
 		_g_free0 (_tmp16_);
 		_g_object_unref0 (_tmp12_);
 	}
-	_tmp17_ = _data9_->tab;
+	_tmp17_ = _data8_->tab;
 	_tmp18_ = _tmp17_->tab;
 	_tmp19_ = main_window_channel_tab_icon_new_msg;
 	granite_widgets_tab_set_icon (_tmp18_, _tmp19_);
@@ -5037,7 +4503,7 @@ static gboolean ____lambda39__gsource_func (gpointer self) {
 
 
 void main_window_add_text (MainWindow* self, ChannelTab* tab, Message* message, gboolean _error_) {
-	Block9Data* _data9_;
+	Block8Data* _data8_;
 	ChannelTab* _tmp0_ = NULL;
 	ChannelTab* _tmp1_ = NULL;
 	ChannelTab* _tmp2_ = NULL;
@@ -5047,20 +4513,19 @@ void main_window_add_text (MainWindow* self, ChannelTab* tab, Message* message, 
 	ChannelTab* _tmp17_ = NULL;
 	gint _tmp18_ = 0;
 	gint _tmp19_ = 0;
-	GError * _inner_error_ = NULL;
 	g_return_if_fail (self != NULL);
 	g_return_if_fail (message != NULL);
-	_data9_ = g_slice_new0 (Block9Data);
-	_data9_->_ref_count_ = 1;
-	_data9_->self = g_object_ref (self);
+	_data8_ = g_slice_new0 (Block8Data);
+	_data8_->_ref_count_ = 1;
+	_data8_->self = g_object_ref (self);
 	_tmp0_ = tab;
 	_tmp1_ = _g_object_ref0 (_tmp0_);
-	_g_object_unref0 (_data9_->tab);
-	_data9_->tab = _tmp1_;
-	_tmp2_ = _data9_->tab;
+	_g_object_unref0 (_data8_->tab);
+	_data8_->tab = _tmp1_;
+	_tmp2_ = _data8_->tab;
 	if (_tmp2_ == NULL) {
-		block9_data_unref (_data9_);
-		_data9_ = NULL;
+		block8_data_unref (_data8_);
+		_data8_ = NULL;
 		return;
 	}
 	_tmp3_ = _error_;
@@ -5083,24 +4548,24 @@ void main_window_add_text (MainWindow* self, ChannelTab* tab, Message* message, 
 		_tmp10_ = _tmp9_;
 		message_set_message (_tmp4_, _tmp10_);
 		_g_free0 (_tmp10_);
-		_tmp11_ = _data9_->tab;
+		_tmp11_ = _data8_->tab;
 		_tmp12_ = message;
 		channel_tab_display_error (_tmp11_, _tmp12_);
 	} else {
 		ChannelTab* _tmp13_ = NULL;
 		Message* _tmp14_ = NULL;
-		_tmp13_ = _data9_->tab;
+		_tmp13_ = _data8_->tab;
 		_tmp14_ = message;
 		channel_tab_display_message (_tmp13_, _tmp14_);
 	}
 	_tmp16_ = main_window_current_tab;
-	_tmp17_ = _data9_->tab;
+	_tmp17_ = _data8_->tab;
 	_tmp18_ = channel_tab_get_tab_index (_tmp17_);
 	_tmp19_ = _tmp18_;
 	if (_tmp16_ != _tmp19_) {
 		ChannelTab* _tmp20_ = NULL;
 		gboolean _tmp21_ = FALSE;
-		_tmp20_ = _data9_->tab;
+		_tmp20_ = _data8_->tab;
 		_tmp21_ = _tmp20_->is_server_tab;
 		_tmp15_ = !_tmp21_;
 	} else {
@@ -5113,7 +4578,7 @@ void main_window_add_text (MainWindow* self, ChannelTab* tab, Message* message, 
 		Message* _tmp25_ = NULL;
 		const gchar* _tmp26_ = NULL;
 		const gchar* _tmp27_ = NULL;
-		_tmp22_ = _data9_->tab;
+		_tmp22_ = _data8_->tab;
 		_tmp23_ = _tmp22_->message_count;
 		_tmp22_->message_count = _tmp23_ + 1;
 		_tmp25_ = message;
@@ -5138,37 +4603,11 @@ void main_window_add_text (MainWindow* self, ChannelTab* tab, Message* message, 
 			_tmp24_ = FALSE;
 		}
 		if (_tmp24_) {
-			NotifyNotification* ConnectedNotification = NULL;
-			Message* _tmp33_ = NULL;
-			const gchar* _tmp34_ = NULL;
-			Message* _tmp35_ = NULL;
-			const gchar* _tmp36_ = NULL;
-			const gchar* _tmp37_ = NULL;
-			NotifyNotification* _tmp38_ = NULL;
-			NotifyNotification* _tmp39_ = NULL;
-			_tmp33_ = message;
-			_tmp34_ = _tmp33_->user_name;
-			_tmp35_ = message;
-			_tmp36_ = message_get_message (_tmp35_);
-			_tmp37_ = _tmp36_;
-			_tmp38_ = notify_notification_new (_tmp34_, _tmp37_, "dialog-information");
-			ConnectedNotification = _tmp38_;
-			_tmp39_ = ConnectedNotification;
-			notify_notification_show (_tmp39_, &_inner_error_);
-			if (G_UNLIKELY (_inner_error_ != NULL)) {
-				_g_object_unref0 (ConnectedNotification);
-				block9_data_unref (_data9_);
-				_data9_ = NULL;
-				g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
-				g_clear_error (&_inner_error_);
-				return;
-			}
-			_g_object_unref0 (ConnectedNotification);
 		}
-		g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ____lambda39__gsource_func, block9_data_ref (_data9_), block9_data_unref);
+		g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ____lambda39__gsource_func, block8_data_ref (_data8_), block8_data_unref);
 	}
-	block9_data_unref (_data9_);
-	_data9_ = NULL;
+	block8_data_unref (_data8_);
+	_data8_ = NULL;
 }
 
 
@@ -5655,9 +5094,6 @@ void main_window_file_uploaded (MainWindow* self, const gchar* url) {
 
 static void main_window_load_autoconnect (MainWindow* self) {
 	gboolean opened_tab = FALSE;
-	NotifyNotification* ConnectedNotification = NULL;
-	NotifyNotification* _tmp21_ = NULL;
-	GError * _inner_error_ = NULL;
 	g_return_if_fail (self != NULL);
 	opened_tab = FALSE;
 	{
@@ -5723,21 +5159,10 @@ static void main_window_load_autoconnect (MainWindow* self) {
 		}
 		_g_object_unref0 (_server_it);
 	}
-	notify_init ("Ansluten");
-	_tmp21_ = notify_notification_new ("Ansluten", "Ansluten till server.", "dialog-information");
-	ConnectedNotification = _tmp21_;
-	notify_notification_show (ConnectedNotification, &_inner_error_);
-	if (G_UNLIKELY (_inner_error_ != NULL)) {
-		_g_object_unref0 (ConnectedNotification);
-		g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
-		g_clear_error (&_inner_error_);
-		return;
-	}
-	_g_object_unref0 (ConnectedNotification);
 }
 
 
-static void __lambda52_ (MainWindow* self, gint index) {
+static void __lambda42_ (MainWindow* self, gint index) {
 	gint _tmp0_ = 0;
 	_tmp0_ = index;
 	switch (_tmp0_) {
@@ -5764,8 +5189,8 @@ static void __lambda52_ (MainWindow* self, gint index) {
 }
 
 
-static void ___lambda52__granite_widgets_welcome_activated (GraniteWidgetsWelcome* _sender, gint index, gpointer self) {
-	__lambda52_ ((MainWindow*) self, index);
+static void ___lambda42__granite_widgets_welcome_activated (GraniteWidgetsWelcome* _sender, gint index, gpointer self) {
+	__lambda42_ ((MainWindow*) self, index);
 }
 
 
@@ -5897,7 +5322,7 @@ static void main_window_show_welcome_screen (MainWindow* self) {
 	_tmp44_ = settings_get_bool (_tmp43_, "show_tabs");
 	granite_widgets_dynamic_notebook_set_show_tabs (_tmp42_, _tmp44_);
 	_tmp45_ = welcome;
-	g_signal_connect_object (_tmp45_, "activated", (GCallback) ___lambda52__granite_widgets_welcome_activated, self, 0);
+	g_signal_connect_object (_tmp45_, "activated", (GCallback) ___lambda42__granite_widgets_welcome_activated, self, 0);
 	_g_object_unref0 (tab);
 	_g_object_unref0 (welcome);
 	_g_free0 (message);
@@ -5905,7 +5330,7 @@ static void main_window_show_welcome_screen (MainWindow* self) {
 }
 
 
-static gboolean __lambda51_ (MainWindow* self, GdkEventButton* event) {
+static gboolean __lambda41_ (MainWindow* self, GdkEventButton* event) {
 	gboolean result = FALSE;
 	ServerManager* _tmp0_ = NULL;
 	g_return_val_if_fail (event != NULL, FALSE);
@@ -5916,9 +5341,9 @@ static gboolean __lambda51_ (MainWindow* self, GdkEventButton* event) {
 }
 
 
-static gboolean ___lambda51__gtk_widget_button_release_event (GtkWidget* _sender, GdkEventButton* event, gpointer self) {
+static gboolean ___lambda41__gtk_widget_button_release_event (GtkWidget* _sender, GdkEventButton* event, gpointer self) {
 	gboolean result;
-	result = __lambda51_ ((MainWindow*) self, event);
+	result = __lambda41_ ((MainWindow*) self, event);
 	return result;
 }
 
@@ -5934,7 +5359,7 @@ void main_window_set_up_add_sever (MainWindow* self, GtkBuilder* builder) {
 	_tmp1_ = gtk_builder_get_object (_tmp0_, "manage_servers");
 	_tmp2_ = _g_object_ref0 (G_TYPE_CHECK_INSTANCE_TYPE (_tmp1_, gtk_button_get_type ()) ? ((GtkButton*) _tmp1_) : NULL);
 	add_server_button = _tmp2_;
-	g_signal_connect_object ((GtkWidget*) add_server_button, "button-release-event", (GCallback) ___lambda51__gtk_widget_button_release_event, self, 0);
+	g_signal_connect_object ((GtkWidget*) add_server_button, "button-release-event", (GCallback) ___lambda41__gtk_widget_button_release_event, self, 0);
 	_g_object_unref0 (add_server_button);
 }
 

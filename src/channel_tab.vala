@@ -230,6 +230,8 @@ public class ChannelTab : GLib.Object {
 
 	public void set_output(TextView _output) {
 		output = _output;
+		output.top_margin = 30;
+		output.bottom_margin = 30;
 		output.buffer.changed.connect(do_autoscroll);
 
 		user_other_tag = output.buffer.create_tag("user_other");
@@ -401,10 +403,10 @@ public class ChannelTab : GLib.Object {
 		var rich_text = new RichText(text);
 		if (tag == full_width_tag || tag == std_message_tag) {
 			rich_text.parse_links();
-			if (tag == std_message_tag) {
+/*			if (tag == std_message_tag) {
 				foreach (var usr in users)
 					rich_text.parse_name(usr);
-			}
+			}*/
 		}
 
 		while (is_locked) {
@@ -431,7 +433,7 @@ public class ChannelTab : GLib.Object {
 					end.set_offset(end.get_offset() - rich_text.link_locations_end[i]);
 					output.buffer.apply_tag(link_tag, start, end);
 				}
-			}
+			}/*
 			if (rich_text.has_names) {
 				for (int i = 0; i < rich_text.names.size; i++)
 				{
@@ -445,7 +447,7 @@ public class ChannelTab : GLib.Object {
 					             utag, 
 					             start, end);
 				}
-			}
+			}*/
 			is_locked = false;
 			return false;
 		});
@@ -457,24 +459,30 @@ public class ChannelTab : GLib.Object {
 		var color = Gdk.RGBA();
 		color.parse(MainWindow.settings.get_color("user-other-color"));
 		user_other_tag.foreground_rgba = color;
-		user_other_tag.left_margin = 0;
+		user_other_tag.left_margin = 30;
+		user_other_tag.right_margin = 30;
 		user_other_tag.weight = Pango.Weight.SEMIBOLD;
 		user_other_tag.event.connect(user_name_clicked);
                     
 		color.parse(MainWindow.settings.get_color("user-self-color"));
 		user_self_tag.foreground_rgba = color;
-		user_self_tag.left_margin = 0;
+		user_self_tag.left_margin = 30;
+		user_self_tag.right_margin = 30;
 		user_self_tag.weight = Pango.Weight.SEMIBOLD;
 
 		color.parse(MainWindow.settings.get_color("message-color"));
 		std_message_tag.foreground_rgba = color;
 		std_message_tag.indent = 0;
+		std_message_tag.left_margin = 156;
+		std_message_tag.right_margin = 30;
 
-		full_width_tag.left_margin = 0;
+		full_width_tag.left_margin = 30;
+		full_width_tag.right_margin = 30;
 
 		color.parse(Relay.is_light_theme ? "#752712" : "#C54725");
 		error_tag.foreground_rgba = color;
-		error_tag.left_margin = 0;
+		error_tag.left_margin = 30;
+		error_tag.right_margin = 30;
 
 		color.parse(MainWindow.settings.get_color("link-color"));
 		link_tag.foreground_rgba = color;
@@ -492,8 +500,9 @@ public class ChannelTab : GLib.Object {
 		color.parse(MainWindow.settings.get_color("timestamp-color"));
 		timestamp_tag.foreground_rgba = color;
 		timestamp_tag.justification = Justification.RIGHT;
+		timestamp_tag.right_margin = 30;
 		timestamp_tag.size_points = 8;
-		timestamp_tag.family = "Liberation Sans";
+		timestamp_tag.family = "Open Sans Regular";
 		timestamp_tag.pixels_above_lines = 7;
 		timestamp_tag.pixels_below_lines = 3;
 

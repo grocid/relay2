@@ -151,7 +151,7 @@ public class Relay : Granite.Application {
             debug("Not attempting to switch theme.");
         }
 
-        Gtk.Settings.get_default().gtk_application_prefer_dark_theme = true;
+        Gtk.Settings.get_default().gtk_application_prefer_dark_theme = false;
         
         window = new MainWindow(this);
         Gtk.main ();

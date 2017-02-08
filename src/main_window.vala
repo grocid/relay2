@@ -121,12 +121,12 @@ public class MainWindow : Object
 			nb_wrapper.pack_start(tabs, true, true, 0);
 			tabs.show_all();
 
-
+			
 			//Slide out panel
 			panel = builder.get_object("panel") as Paned;
 			var server_list_container = builder.get_object("server_list_container") as Box;
 			server_list_container.pack_start(servers, true, true, 0);
-
+/*
 			//Slide out panel button
 			Image icon = new Image.from_file(Relay.get_asset_file("assets/preferences-system-network.svg"));
 			var icon_buf = icon.get_pixbuf().scale_simple (24, 24, InterpType.BILINEAR);
@@ -141,6 +141,7 @@ public class MainWindow : Object
 			select_channel.tooltip_text = _("Open server/channel view");
 			toolbar.pack_start(select_channel);
 			select_channel.button_release_event.connect(slide_panel);
+			*/
 			panel.position = 1;
 
 			Box entry_wrapper = builder.get_object("entry_wrapper") as Box;
@@ -150,7 +151,7 @@ public class MainWindow : Object
 				send_text_out(input.get_text ());
 				input.set_text("");
 			});
-
+			/*
 			//Channel subject button
 
 			icon = new Image.from_file(Relay.get_asset_file("assets/channel.svg"));
@@ -219,7 +220,7 @@ public class MainWindow : Object
 			block.button_release_event.connect(click_block);
 			user_menu.add(block);
 			user_menu.show_all();
-
+*/
 			servers.item_selected.connect(set_item_selected);
 
 			set_up_add_sever(builder);
@@ -233,7 +234,7 @@ public class MainWindow : Object
 
 			/*
 			 * Hastebin code
-			 */
+			 *
 			paste_box.pack_start(paste);
 			paste_box.show_all();
 			//paste.focus_on_click = false;
@@ -252,9 +253,10 @@ public class MainWindow : Object
 			                  Gdk.DragAction.LINK);
 			drag_file.file_uploaded.connect(file_uploaded);
 			paste.drag_data_received.connect(drag_file.drop_file);
-
+*/
 			tabs.tab_removed.connect(tab_remove);
 			tabs.tab_switched.connect(tab_switch);
+			
 
 			refresh_server_list();
 
@@ -363,7 +365,7 @@ public class MainWindow : Object
 			output.set_wrap_mode (Gtk.WrapMode.WORD_CHAR);
 			output.set_left_margin(IRC.USER_WIDTH);
 			output.set_indent(IRC.USER_WIDTH * -1);
-			//output.override_font(FontDescription.from_string("Inconsolata 9"));
+			output.override_font(FontDescription.from_string("Open Sans Regular 10"));
 
 
 
@@ -390,7 +392,7 @@ public class MainWindow : Object
 
 			ScrolledWindow scrolled = new Gtk.ScrolledWindow (null, null);
 			if (!Relay.on_ubuntu)
-				scrolled.margin = 3;
+				scrolled.margin = 0;
 			scrolled.add(output);
 
 			var ptabs = new Pango.TabArray(1, true);
@@ -839,8 +841,8 @@ public class MainWindow : Object
 			tab.message_count++;
 
 			if (message.command == IRC.PRIVATE_MESSAGE && message.parameters[0][0] != '#') {
-				var ConnectedNotification = new Notify.Notification(message.user_name, message.message, "dialog-information");
-				ConnectedNotification.show ();
+				//var ConnectedNotification = new Notify.Notification(message.user_name, message.message, "dialog-information");
+				//ConnectedNotification.show ();
 			}
 
 			Idle.add( ()=> {
@@ -975,12 +977,12 @@ public class MainWindow : Object
 				add_server(server.value, to_connect);
 			}
 		}
-		Notify.init ("Ansluten");
-		var ConnectedNotification = new Notify.Notification("Ansluten", "Ansluten till server.", "dialog-information");
+		//Notify.init ("Ansluten");
+		//var ConnectedNotification = new Notify.Notification("Ansluten", "Ansluten till server.", "dialog-information");
 		/*Image icon = new Image.from_file(Relay.get_asset_file("assets/preferences-system-network.svg"));
 		var icon_buf = icon.get_pixbuf();
 		Hello.set_image_from_pixbuf(icon_buf);*/
-		ConnectedNotification.show ();
+		//ConnectedNotification.show ();
 
 		//if (!opened_tab)
 		//	show_welcome_screen();

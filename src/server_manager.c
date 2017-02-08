@@ -77,11 +77,11 @@ typedef struct _SqlClientServerPrivate SqlClientServerPrivate;
 
 typedef struct _SqlClientChannel SqlClientChannel;
 typedef struct _SqlClientChannelClass SqlClientChannelClass;
-typedef struct _Block11Data Block11Data;
+typedef struct _Block10Data Block10Data;
 #define _g_list_free0(var) ((var == NULL) ? NULL : (var = (g_list_free (var), NULL)))
 #define _sql_client_channel_unref0(var) ((var == NULL) ? NULL : (var = (sql_client_channel_unref (var), NULL)))
 typedef struct _SqlClientChannelPrivate SqlClientChannelPrivate;
-typedef struct _Block12Data Block12Data;
+typedef struct _Block11Data Block11Data;
 
 struct _ServerManager {
 	GObject parent_instance;
@@ -140,7 +140,7 @@ struct _SqlClientServerClass {
 	void (*finalize) (SqlClientServer *self);
 };
 
-struct _Block11Data {
+struct _Block10Data {
 	int _ref_count_;
 	ServerManager* self;
 	GtkMessageDialog* msg;
@@ -161,7 +161,7 @@ struct _SqlClientChannelClass {
 	void (*finalize) (SqlClientChannel *self);
 };
 
-struct _Block12Data {
+struct _Block11Data {
 	int _ref_count_;
 	ServerManager* self;
 	GtkMessageDialog* msg;
@@ -222,9 +222,9 @@ gpointer sql_client_value_get_channel (const GValue* value);
 GType sql_client_channel_get_type (void) G_GNUC_CONST;
 gint sql_client_server_update (SqlClientServer* self);
 static GtkListBoxRow* server_manager_get_list_box_row (ServerManager* self, const gchar* name);
-static Block11Data* block11_data_ref (Block11Data* _data11_);
-static void block11_data_unref (void * _userdata_);
-static void ___lambda27_ (Block11Data* _data11_, gint response_id);
+static Block10Data* block10_data_ref (Block10Data* _data10_);
+static void block10_data_unref (void * _userdata_);
+static void ___lambda27_ (Block10Data* _data10_, gint response_id);
 static void ____lambda27__gtk_dialog_response (GtkDialog* _sender, gint response_id, gpointer self);
 SqlClientServer* sql_client_server_new (void);
 SqlClientServer* sql_client_server_construct (GType object_type);
@@ -234,9 +234,9 @@ static gboolean _sql_client_channel_update_autoconnect_gtk_switch_state_set (Gtk
 SqlClientChannel* sql_client_server_find_channel_by_name (SqlClientServer* self, const gchar* name);
 void sql_client_channel_delete_channel (SqlClientChannel* self);
 static gboolean _vala_char_array_contains (gchar* stack, int stack_length, gchar needle);
-static Block12Data* block12_data_ref (Block12Data* _data12_);
-static void block12_data_unref (void * _userdata_);
-static void ___lambda26_ (Block12Data* _data12_, gint response_id);
+static Block11Data* block11_data_ref (Block11Data* _data11_);
+static void block11_data_unref (void * _userdata_);
+static void ___lambda26_ (Block11Data* _data11_, gint response_id);
 static void ____lambda26__gtk_dialog_response (GtkDialog* _sender, gint response_id, gpointer self);
 SqlClientChannel* sql_client_channel_new (void);
 SqlClientChannel* sql_client_channel_construct (GType object_type);
@@ -895,33 +895,33 @@ void server_manager_save_changes (ServerManager* self, GtkListBoxRow* row) {
 }
 
 
-static Block11Data* block11_data_ref (Block11Data* _data11_) {
-	g_atomic_int_inc (&_data11_->_ref_count_);
-	return _data11_;
+static Block10Data* block10_data_ref (Block10Data* _data10_) {
+	g_atomic_int_inc (&_data10_->_ref_count_);
+	return _data10_;
 }
 
 
-static void block11_data_unref (void * _userdata_) {
-	Block11Data* _data11_;
-	_data11_ = (Block11Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data11_->_ref_count_)) {
+static void block10_data_unref (void * _userdata_) {
+	Block10Data* _data10_;
+	_data10_ = (Block10Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data10_->_ref_count_)) {
 		ServerManager* self;
-		self = _data11_->self;
-		_g_object_unref0 (_data11_->msg);
+		self = _data10_->self;
+		_g_object_unref0 (_data10_->msg);
 		_g_object_unref0 (self);
-		g_slice_free (Block11Data, _data11_);
+		g_slice_free (Block10Data, _data10_);
 	}
 }
 
 
-static void ___lambda27_ (Block11Data* _data11_, gint response_id) {
+static void ___lambda27_ (Block10Data* _data10_, gint response_id) {
 	ServerManager* self;
 	GtkEntry* _tmp0_ = NULL;
 	GtkMessageDialog* _tmp1_ = NULL;
-	self = _data11_->self;
+	self = _data10_->self;
 	_tmp0_ = self->priv->host;
 	gtk_widget_grab_focus ((GtkWidget*) _tmp0_);
-	_tmp1_ = _data11_->msg;
+	_tmp1_ = _data10_->msg;
 	gtk_widget_destroy ((GtkWidget*) _tmp1_);
 }
 
@@ -993,26 +993,26 @@ static gboolean server_manager_host_text_changed (ServerManager* self, GdkEventF
 	}
 	_tmp18_ = message;
 	if (g_strcmp0 (_tmp18_, "") != 0) {
-		Block11Data* _data11_;
+		Block10Data* _data10_;
 		GtkWindow* _tmp19_ = NULL;
 		const gchar* _tmp20_ = NULL;
 		GtkMessageDialog* _tmp21_ = NULL;
 		GtkMessageDialog* _tmp22_ = NULL;
 		GtkMessageDialog* _tmp23_ = NULL;
-		_data11_ = g_slice_new0 (Block11Data);
-		_data11_->_ref_count_ = 1;
-		_data11_->self = g_object_ref (self);
+		_data10_ = g_slice_new0 (Block10Data);
+		_data10_->_ref_count_ = 1;
+		_data10_->self = g_object_ref (self);
 		_tmp19_ = self->window;
 		_tmp20_ = message;
 		_tmp21_ = (GtkMessageDialog*) gtk_message_dialog_new (_tmp19_, GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK, "%s", _tmp20_);
 		g_object_ref_sink (_tmp21_);
-		_data11_->msg = _tmp21_;
-		_tmp22_ = _data11_->msg;
-		g_signal_connect_data ((GtkDialog*) _tmp22_, "response", (GCallback) ____lambda27__gtk_dialog_response, block11_data_ref (_data11_), (GClosureNotify) block11_data_unref, 0);
-		_tmp23_ = _data11_->msg;
+		_data10_->msg = _tmp21_;
+		_tmp22_ = _data10_->msg;
+		g_signal_connect_data ((GtkDialog*) _tmp22_, "response", (GCallback) ____lambda27__gtk_dialog_response, block10_data_ref (_data10_), (GClosureNotify) block10_data_unref, 0);
+		_tmp23_ = _data10_->msg;
 		gtk_widget_show ((GtkWidget*) _tmp23_);
-		block11_data_unref (_data11_);
-		_data11_ = NULL;
+		block10_data_unref (_data10_);
+		_data10_ = NULL;
 	}
 	result = FALSE;
 	_sql_client_server_unref0 (exists);
@@ -1481,33 +1481,33 @@ static gboolean _vala_char_array_contains (gchar* stack, int stack_length, gchar
 }
 
 
-static Block12Data* block12_data_ref (Block12Data* _data12_) {
-	g_atomic_int_inc (&_data12_->_ref_count_);
-	return _data12_;
+static Block11Data* block11_data_ref (Block11Data* _data11_) {
+	g_atomic_int_inc (&_data11_->_ref_count_);
+	return _data11_;
 }
 
 
-static void block12_data_unref (void * _userdata_) {
-	Block12Data* _data12_;
-	_data12_ = (Block12Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data12_->_ref_count_)) {
+static void block11_data_unref (void * _userdata_) {
+	Block11Data* _data11_;
+	_data11_ = (Block11Data*) _userdata_;
+	if (g_atomic_int_dec_and_test (&_data11_->_ref_count_)) {
 		ServerManager* self;
-		self = _data12_->self;
-		_g_object_unref0 (_data12_->msg);
+		self = _data11_->self;
+		_g_object_unref0 (_data11_->msg);
 		_g_object_unref0 (self);
-		g_slice_free (Block12Data, _data12_);
+		g_slice_free (Block11Data, _data11_);
 	}
 }
 
 
-static void ___lambda26_ (Block12Data* _data12_, gint response_id) {
+static void ___lambda26_ (Block11Data* _data11_, gint response_id) {
 	ServerManager* self;
 	GtkEntry* _tmp0_ = NULL;
 	GtkMessageDialog* _tmp1_ = NULL;
-	self = _data12_->self;
+	self = _data11_->self;
 	_tmp0_ = self->priv->host;
 	gtk_widget_grab_focus ((GtkWidget*) _tmp0_);
-	_tmp1_ = _data12_->msg;
+	_tmp1_ = _data11_->msg;
 	gtk_widget_destroy ((GtkWidget*) _tmp1_);
 }
 
@@ -1588,7 +1588,7 @@ static gboolean server_manager_add_channel_clicked (ServerManager* self, GdkEven
 	_tmp13_ = self->CHANNEL_CHAR;
 	_tmp13__length1 = self->CHANNEL_CHAR_length1;
 	if (!_vala_char_array_contains (_tmp13_, _tmp13__length1, _tmp12_)) {
-		Block12Data* _data12_;
+		Block11Data* _data11_;
 		GtkWindow* _tmp14_ = NULL;
 		const gchar* _tmp15_ = NULL;
 		gchar* _tmp16_ = NULL;
@@ -1606,9 +1606,9 @@ static gboolean server_manager_add_channel_clicked (ServerManager* self, GdkEven
 		GtkMessageDialog* _tmp24_ = NULL;
 		GtkMessageDialog* _tmp25_ = NULL;
 		GtkMessageDialog* _tmp26_ = NULL;
-		_data12_ = g_slice_new0 (Block12Data);
-		_data12_->_ref_count_ = 1;
-		_data12_->self = g_object_ref (self);
+		_data11_ = g_slice_new0 (Block11Data);
+		_data11_->_ref_count_ = 1;
+		_data11_->self = g_object_ref (self);
 		_tmp14_ = self->window;
 		_tmp15_ = server_manager_CHANNEL_ERROR;
 		_tmp16_ = self->CHANNEL_CHAR;
@@ -1625,14 +1625,14 @@ static gboolean server_manager_add_channel_clicked (ServerManager* self, GdkEven
 		_tmp23_ = _tmp22_[3];
 		_tmp24_ = (GtkMessageDialog*) gtk_message_dialog_new (_tmp14_, GTK_DIALOG_MODAL, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK, _tmp15_, _tmp17_, _tmp19_, _tmp21_, _tmp23_);
 		g_object_ref_sink (_tmp24_);
-		_data12_->msg = _tmp24_;
-		_tmp25_ = _data12_->msg;
-		g_signal_connect_data ((GtkDialog*) _tmp25_, "response", (GCallback) ____lambda26__gtk_dialog_response, block12_data_ref (_data12_), (GClosureNotify) block12_data_unref, 0);
-		_tmp26_ = _data12_->msg;
+		_data11_->msg = _tmp24_;
+		_tmp25_ = _data11_->msg;
+		g_signal_connect_data ((GtkDialog*) _tmp25_, "response", (GCallback) ____lambda26__gtk_dialog_response, block11_data_ref (_data11_), (GClosureNotify) block11_data_unref, 0);
+		_tmp26_ = _data11_->msg;
 		gtk_widget_show ((GtkWidget*) _tmp26_);
 		result = FALSE;
-		block12_data_unref (_data12_);
-		_data12_ = NULL;
+		block11_data_unref (_data11_);
+		_data11_ = NULL;
 		_g_free0 (chan_name);
 		return result;
 	}
